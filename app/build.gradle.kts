@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.dlmtech"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.dlmtech"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
 
 
