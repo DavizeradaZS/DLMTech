@@ -12,7 +12,6 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +45,18 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#CC0000"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.073" />
+
     <LinearLayout
         android:id="@+id/linearLayout15"
         android:layout_width="411dp"
@@ -61,7 +72,7 @@
             android:layout_width="396dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#141313"
+            android:fontFamily="sans-serif-condensed-medium"
             android:text="Dashboard"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -72,24 +83,19 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="406dp"
-        android:layout_height="78dp"
+        android:layout_height="64dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout15" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="Categorias"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FF0000"
@@ -103,11 +109,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="184dp"
+            android:layout_height="49dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.516"
+            app:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,20 +148,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
+            android:text="Mais Vendidos"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#FF0000"
             android:textStyle="bold" />
+
     </LinearLayout>
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginBottom="4dp"
         android:background="#CC0000"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteY="831dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
