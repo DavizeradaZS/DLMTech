@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141313"
-    tools:context=".activity_home">
+    android:background="@drawable/degrade"
+    tools:context=".activity_login">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -30,16 +30,16 @@
 
         <EditText
             android:id="@+id/editTextText2"
-            android:layout_width="235dp"
-            android:layout_height="49dp"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="7dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bordaredonda"
             android:ems="10"
+            android:hint="Pesquisa"
             android:inputType="text"
-            android:text="Name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -48,8 +48,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout15"
-        android:layout_width="408dp"
-        android:layout_height="323dp"
+        android:layout_width="411dp"
+        android:layout_height="437dp"
         android:layout_marginTop="75dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +71,11 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="409dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="406dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
@@ -96,13 +97,13 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout15" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout15"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,17 +112,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="416dp"
-        android:layout_height="199dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="410dp"
+        android:layout_height="193dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3"
-        app:layout_constraintVertical_bias="0.228">
+        app:layout_constraintVertical_bias="0.722">
 
         <TextView
             android:id="@+id/textView8"
@@ -134,5 +136,14 @@
             android:textColor="#FF0000"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="4dp"
+        android:background="#CC0000"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

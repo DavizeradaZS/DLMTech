@@ -13,13 +13,13 @@
         android:theme="@style/Theme.DLMTech"
         tools:targetApi="31">
         <activity
-            android:name=".activity_home"
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity_login"
             android:exported="false" />
         <activity
             android:name=".activity_produto"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
