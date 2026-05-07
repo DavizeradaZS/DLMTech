@@ -55,7 +55,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnCancelar"
         android:layout_width="100sp"
         android:layout_height="50sp"
         android:backgroundTint="#B22222"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.858" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnCadSalv"
         android:layout_width="100sp"
         android:layout_height="50sp"
         android:backgroundTint="#B22222"
@@ -195,7 +195,7 @@
         app:layout_constraintVertical_bias="0.303" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/cadNome"
         android:layout_width="361dp"
         android:layout_height="41dp"
         android:background="@drawable/bordaredonda"
@@ -211,7 +211,7 @@
         app:layout_constraintVertical_bias="0.235" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/cadDataNasc"
         android:layout_width="156dp"
         android:layout_height="35dp"
         android:background="@drawable/bordaredonda"
@@ -297,7 +297,7 @@
         app:layout_constraintVertical_bias="0.655" />
 
     <EditText
-        android:id="@+id/editTextText6"
+        android:id="@+id/cadCpf"
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:background="@drawable/bordaredonda"
@@ -312,7 +312,7 @@
         app:layout_constraintVertical_bias="0.352" />
 
     <EditText
-        android:id="@+id/editTextText10"
+        android:id="@+id/cadNum"
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:background="@drawable/bordaredonda"
@@ -327,7 +327,7 @@
         app:layout_constraintVertical_bias="0.707" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/cadCep"
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:background="@drawable/bordaredonda"
@@ -342,19 +342,19 @@
         app:layout_constraintVertical_bias="0.501" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/cepBusca"
         android:layout_width="33dp"
         android:layout_height="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextText7"
+        app:layout_constraintStart_toEndOf="@+id/cadCep"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
         app:layout_constraintVertical_bias="0.502"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/cadBairro"
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:background="@drawable/bordaredonda"
@@ -369,7 +369,7 @@
         app:layout_constraintVertical_bias="0.708" />
 
     <EditText
-        android:id="@+id/editTextText8"
+        android:id="@+id/cadRua"
         android:layout_width="361sp"
         android:layout_height="40sp"
         android:background="@drawable/bordaredonda"

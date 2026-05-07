@@ -114,7 +114,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.534" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -159,6 +159,7 @@
             android:paddingEnd="16dp">
 
             <LinearLayout
+                android:id="@+id/cardCat1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -166,6 +167,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat1"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -179,6 +181,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardCat2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -186,6 +189,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat2"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -199,6 +203,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardCat3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -206,6 +211,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat3"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -219,6 +225,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardCat4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -226,6 +233,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat4"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -239,6 +247,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardCat5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -246,6 +255,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat5"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -259,6 +269,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardCat6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -266,6 +277,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgCat6"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:src="@drawable/dlmtech2_removebg_preview" />
@@ -302,7 +314,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imgVend1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:srcCompat="@drawable/dlmtech2_removebg_preview" />
@@ -322,7 +334,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/imgVend2"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:srcCompat="@drawable/dlmtech2_removebg_preview" />
@@ -341,7 +353,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imgVend3"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:srcCompat="@drawable/dlmtech2_removebg_preview" />
