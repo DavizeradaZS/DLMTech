@@ -5,7 +5,7 @@
     <solid android:color="#141414" />
 
     <!-- Bordas arredondadas: aumente o radius para mais curva -->
-    <corners android:radius="25dp" />
+    <corners android:radius="20dp" />
 
     <!-- (Opcional) Linha da borda -->
     <stroke
