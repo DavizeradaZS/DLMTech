@@ -6,41 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/degrade"
-    tools:context=".activity_produto">
+    tools:context=".Activity_produto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="90dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <EditText
+            android:id="@+id/editTextText3"
+            style="@style/EditTextPesquisa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/logo_description"
+            style="@style/LogoStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            tools:layout_editor_absoluteY="7dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -54,9 +48,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:text="Produto"
+            android:textColor="#EE3131"
+            android:textSize="26sp"
+            android:textStyle="bold" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="165dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <FrameLayout
@@ -74,47 +82,59 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    app:srcCompat="@drawable/ic_launcher_background" />
+                    app:srcCompat="@drawable/ic_launcher_foreground" />
             </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtExibiProduto_Produto"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:gravity="left|center_vertical"
-                android:text="TextView"
-                android:textAlignment="gravity"
-                android:textIsSelectable="false"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtExibiProduto_Produto2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Carregando produto..."
+                    android:textSize="16sp"
+                    android:textAlignment="gravity"
+                    android:textIsSelectable="false"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/txtExibiProduto_Produto2"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:gravity="left|center_vertical"
-                android:text="TextView"
-                android:textAlignment="gravity"
-                android:textIsSelectable="false"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtExibiProduto_Produto"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Carregando Valor..."
+                    android:textSize="16sp"
+                    android:textAlignment="gravity"
+                    android:textIsSelectable="false"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="258dp"
+            android:layout_height="282dp"
+            android:layout_marginTop="5dp"
+            android:minHeight="100dp"
             android:orientation="vertical">
 
             <TextView
@@ -125,8 +145,12 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="start|center_vertical"
                 android:paddingStart="10dp"
-                android:text="TextView" />
+                android:text="Descrição"
+                android:textColor="#EE3131"
+                android:textSize="18sp"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -135,79 +159,82 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="start"
                 android:padding="10dp"
-                android:text="TextView" />
+                android:text="Carregando Descrição..."
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="411dp"
-            android:layout_height="120dp"
-            android:layout_margin="5dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="5dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:orientation="vertical">
+                style="@style/CardProduto"
+                android:background="@drawable/bordacards">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="88dp"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                <androidx.cardview.widget.CardView
+                    style="@style/cardViewImg"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="10dp">
+                    <ImageView
+                        android:id="@+id/cardImg1"
+                        style="@style/CardImg">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="left"
-                    android:text="TextView" />
+                    android:id="@+id/cardtxt1"
+                    style="@style/CardTxt" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:orientation="vertical">
+                style="@style/CardProduto"
+                android:background="@drawable/bordacards">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="91dp"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                <androidx.cardview.widget.CardView
+                    style="@style/cardViewImg"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="10dp">
+                    <ImageView
+                        android:id="@+id/cardImg2"
+                        style="@style/CardImg">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="TextView" />
+                    android:id="@+id/cardtxt2"
+                    style="@style/CardTxt" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:orientation="vertical">
+                style="@style/CardProduto"
+                android:background="@drawable/bordacards">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="93dp"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                <androidx.cardview.widget.CardView
+                    style="@style/cardViewImg"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="10dp">
+                    <ImageView
+                        android:id="@+id/cardImg3"
+                        style="@style/CardImg">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:text="TextView" />
+                    android:id="@+id/cardtxt3"
+                    style="@style/CardTxt" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -215,12 +242,46 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            style="@style/BotaoIconeAcao"
+            android:background="?attr/actionModeCloseDrawable"
+            android:rotationY="180"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            style="@style/BotaoIconeAcao"
+            android:background="?android:attr/listChoiceIndicatorSingle"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintStart_toEndOf="@+id/imageButton3" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            style="@style/BotaoIconeAcao"
+            android:background="?android:attr/listChoiceIndicatorMultiple"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintStart_toEndOf="@+id/imageButton4" />
+        <ImageButton
+            android:id="@+id/imageButton4"
+            style="@style/BotaoIconeAcao"
+            android:background="?android:attr/listChoiceIndicatorSingle"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintStart_toEndOf="@+id/imageButton5"
+            />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            style="@style/BotaoIconeAcao"
+            android:background="?attr/homeAsUpIndicator"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
