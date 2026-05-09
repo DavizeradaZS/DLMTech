@@ -73,7 +73,7 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/BotaoIconeAcao"
+            style="@style/BtnNavegacao"
             android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +82,7 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/BotaoIconeAcao"
+            style="@style/BtnNavegacao"
             android:background="?android:attr/listChoiceIndicatorSingle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -91,7 +91,7 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/BotaoIconeAcao"
+            style="@style/BtnNavegacao"
             android:background="?android:attr/listChoiceIndicatorMultiple"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
@@ -100,7 +100,7 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/BotaoIconeAcao"
+            style="@style/BtnNavegacao"
             android:background="?android:attr/listChoiceIndicatorSingle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
@@ -109,7 +109,7 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/BotaoIconeAcao"
+            style="@style/BtnNavegacao"
             android:background="?attr/homeAsUpIndicator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
