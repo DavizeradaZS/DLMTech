@@ -25,6 +25,13 @@
         <item name="android:scaleType">center</item>
     </style>
 
+
+    <style name="BtnAcao">
+        <item name="backgroundTint">#B22222</item>
+        <item name="android:fontFamily">sans-serif-condensed-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
     <style name="CardProduto">
         <item name="android:layout_width">127dp</item>
         <item name="android:layout_height">190dp</item>
@@ -57,7 +64,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="BotaoIconeAcao">
+    <style name="BtnNavegacao">
         <item name="android:layout_width">82dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
