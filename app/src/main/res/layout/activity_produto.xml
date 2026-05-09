@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -18,22 +18,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextText3"
-            style="@style/EditTextPesquisa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ExibiProd_ImgBtnHome"
             style="@style/LogoStyle"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
+
+        <EditText
+            android:id="@+id/ExibiProd_TxtPesquisa"
+            style="@style/EditTextPesquisa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/ExibiProd_ImgBtnCarinho"
+            style="@style/BotaoIconeCarrinho"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="?attr/actionModeSelectAllDrawable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -56,11 +69,13 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:paddingStart="10dp"
+            android:hint="Sua Mensagem"
+            android:paddingLeft="10dp"
             android:text="Produto"
             android:textColor="#EE3131"
             android:textSize="26sp"
             android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="165dp"
@@ -91,7 +106,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtExibiProduto_Produto2"
+                    android:id="@+id/ExibiProduto_TxtProduto"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
@@ -102,14 +117,14 @@
                     android:gravity="left|center_vertical"
                     android:paddingLeft="10dp"
                     android:text="Carregando produto..."
-                    android:textSize="16sp"
                     android:textAlignment="gravity"
+                    android:textColor="@color/white"
                     android:textIsSelectable="false"
-                    android:textStyle="bold"
-                    android:textColor="@color/white" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtExibiProduto_Produto"
+                    android:id="@+id/ExibiProduto_TxtValor"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -120,11 +135,11 @@
                     android:gravity="left|center_vertical"
                     android:paddingLeft="10dp"
                     android:text="Carregando Valor..."
-                    android:textSize="16sp"
                     android:textAlignment="gravity"
+                    android:textColor="@color/white"
                     android:textIsSelectable="false"
-                    android:textStyle="bold"
-                    android:textColor="@color/white" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
@@ -153,7 +168,7 @@
                 android:textStyle="normal" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/ExibiProd_TxtDesc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -185,14 +200,14 @@
                     style="@style/cardViewImg"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="10dp">
+
                     <ImageView
-                        android:id="@+id/cardImg1"
-                        style="@style/CardImg">
-                    </ImageView>
+                        android:id="@+id/ExibiProd_Imgcard1"
+                        style="@style/CardImg"></ImageView>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/cardtxt1"
+                    android:id="@+id/ExibiProd_TxtCard1"
                     style="@style/CardTxt" />
 
             </LinearLayout>
@@ -205,14 +220,14 @@
                     style="@style/cardViewImg"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="10dp">
+
                     <ImageView
-                        android:id="@+id/cardImg2"
-                        style="@style/CardImg">
-                    </ImageView>
+                        android:id="@+id/ExibiProd_Imgcard2"
+                        style="@style/CardImg"></ImageView>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/cardtxt2"
+                    android:id="@+id/ExibiProd_TxtCard2"
                     style="@style/CardTxt" />
 
             </LinearLayout>
@@ -225,14 +240,14 @@
                     style="@style/cardViewImg"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="10dp">
+
                     <ImageView
-                        android:id="@+id/cardImg3"
-                        style="@style/CardImg">
-                    </ImageView>
+                        android:id="@+id/ExibiProd_Imgcard3"
+                        style="@style/CardImg"></ImageView>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/cardtxt3"
+                    android:id="@+id/ExibiProd_TxtCard3"
                     style="@style/CardTxt" />
 
             </LinearLayout>
@@ -254,34 +269,44 @@
             style="@style/BotaoIconeAcao"
             android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton2"
             style="@style/BotaoIconeAcao"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton3" />
+            app:layout_constraintStart_toEndOf="@+id/imageButton3"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton3"
             style="@style/BotaoIconeAcao"
             android:background="?android:attr/listChoiceIndicatorMultiple"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-            app:layout_constraintStart_toEndOf="@+id/imageButton4" />
+            app:layout_constraintStart_toEndOf="@+id/imageButton4"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/imageButton4"
             style="@style/BotaoIconeAcao"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton5"
             style="@style/BotaoIconeAcao"
             android:background="?attr/homeAsUpIndicator"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
