@@ -376,6 +376,7 @@
         android:ems="10"
         android:hint="Digite a rua"
         android:inputType="text"
+        android:paddingStart="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.38"
