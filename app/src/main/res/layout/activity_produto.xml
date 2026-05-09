@@ -83,7 +83,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="145dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
@@ -93,7 +93,7 @@
 
                 <ImageView
                     android:id="@+id/imgExibiProduto_Produto"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -101,18 +101,18 @@
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/ExibiProduto_TxtProduto"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:gravity="left|center_vertical"
                     android:paddingLeft="10dp"
@@ -125,11 +125,11 @@
 
                 <TextView
                     android:id="@+id/ExibiProduto_TxtValor"
-                    android:layout_width="match_parent"
+                    android:layout_width="168dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:gravity="left|center_vertical"
@@ -141,6 +141,8 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+
 
         </LinearLayout>
 
