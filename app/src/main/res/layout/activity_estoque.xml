@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Estoque"
+    android:id="@+id/Activity_estoque"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_Estoque"
@@ -14,9 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/Estoque_produtos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -44,12 +41,38 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/actionModeSelectAllDrawable"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="1dp"
+            android:background="#CC0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/estoque"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily=""
+        android:gravity="center"
+        android:hint="Sua Mensagem"
+        android:paddingLeft="10dp"
+        android:text="Estoque"
+        android:textColor="#EE3131"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:layout_editor_absoluteX="2dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Estoque_produtos"
@@ -60,30 +83,37 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/Activity_estoque">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Estoque_produtos">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -91,8 +121,9 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorMultiple"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintStart_toEndOf="@+id/imageButton4"
@@ -100,8 +131,10 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -109,12 +142,22 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?attr/homeAsUpIndicator"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#CC0000"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="142dp" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

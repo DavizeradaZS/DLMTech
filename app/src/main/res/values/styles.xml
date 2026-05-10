@@ -28,15 +28,17 @@
 
     <style name="BtnAcao">
         <item name="backgroundTint">#B22222</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-condensed-medium</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">15dp</item>
     </style>
     <style name="CardProduto">
-        <item name="android:layout_width">127dp</item>
-        <item name="android:layout_height">190dp</item>
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:layout_marginRight">3dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
         <item name="android:orientation">vertical</item>
     </style>
     <style name="cardViewImg">
@@ -49,13 +51,17 @@
     </style>
     <style name="CardImg">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:minHeight">120dp</item>
         <item name="android:scaleType">centerCrop</item>
+        <item name="android:adjustViewBounds">true</item>
         <item name="android:src">@drawable/dlmtech1</item>
     </style>
     <style name="CardTxt">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_gravity">left</item>
         <item name="android:gravity">center</item>
         <item name="android:text">Carregando Produto...</item>
@@ -64,10 +70,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="BtnNavegacao">
-        <item name="android:layout_width">82dp</item>
+    <style name="ImgBtnNavegacao">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">center</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 </resources>

@@ -40,17 +40,26 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/actionModeSelectAllDrawable"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="1dp"
+            android:background="#CC0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/Activity_estoque"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:fontFamily=""
@@ -66,32 +75,42 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="143dp"
-        android:layout_height="145dp"
+        android:layout_width="135dp"
+        android:layout_height="128dp"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:textAlignment="center"
         android:textDirection="firstStrong"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/Activity_estoque">
 
-        <ImageView
-            android:id="@+id/imgExibiProduto_Produto"
-            android:layout_width="129dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewProduto"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="12dp" />
+            tools:layout_editor_absoluteY="12dp">
+
+            <ImageView
+                android:id="@+id/imgExibiProduto_Produto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ImageView>
+
+        </androidx.cardview.widget.CardView>
 
     </FrameLayout>
 
     <TextView
         android:id="@+id/ExibiProduto_TxtProduto"
-        android:layout_width="230dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="left|center_vertical"
         android:paddingLeft="10dp"
@@ -103,11 +122,11 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_estoque" />
 
     <TextView
         android:id="@+id/ExibiProduto_TxtValor"
-        android:layout_width="230dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_weight="1"
@@ -126,19 +145,26 @@
     <Button
         android:id="@+id/ExibiProd_BtnAdicionar"
         style="@style/BtnAcao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Adicionar"
         app:layout_constraintEnd_toStartOf="@id/ExibiProd_BtnEditar"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <Button
         android:id="@+id/ExibiProd_BtnEditar"
         style="@style/BtnAcao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Editar"
         app:layout_constraintEnd_toStartOf="@id/ExibiProd_BtnDeletar"
         app:layout_constraintStart_toEndOf="@+id/ExibiProd_BtnAdicionar"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -146,9 +172,13 @@
     <Button
         android:id="@+id/ExibiProd_BtnDeletar"
         style="@style/BtnAcao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Deletar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toEndtOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ExibiProd_BtnEditar"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -166,67 +196,166 @@
         app:layout_constraintTop_toBottomOf="@+id/ExibiProd_BtnEditar"
         tools:layout_editor_absoluteX="21dp" />
 
-    <TextView
-        android:id="@+id/ExibiProd_TxtDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="Carregando Descrição..."
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/txtExibiProduto_Descricao"
-        tools:layout_editor_absoluteX="34dp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="413dp"
-        android:layout_height="199dp"
-        android:layout_marginBottom="199dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExibiProd_TxtDesc"
+        app:layout_constraintTop_toBottomOf="@+id/txtExibiProduto_Descricao">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ExibiProd_TxtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:minHeight="120dp"
+                android:padding="10dp"
+                android:text="Carregando Descrição..."
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
             style="@style/CardProduto"
-            android:layout_marginTop="3dp"
             android:background="@drawable/bordacards"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="1dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 style="@style/cardViewImg"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/ExibiProd_Imgcard1"
-                    style="@style/CardImg"></ImageView>
+                    style="@style/CardImg">
+
+                </ImageView>
 
             </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/ExibiProd_TxtCard1"
                 style="@style/CardTxt"
-                android:layout_height="79dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="120dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            style="@style/CardProduto"
+            android:background="@drawable/bordacards"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout6"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                style="@style/cardViewImg"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ExibiProd_Imgcard2"
+                    style="@style/CardImg"></ImageView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/ExibiProd_TxtCard2"
+                style="@style/CardTxt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            style="@style/CardProduto"
+            android:background="@drawable/bordacards"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                style="@style/cardViewImg"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ExibiProd_Imgcard3"
+                    style="@style/CardImg"></ImageView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/ExibiProd_TxtCard3"
+                style="@style/CardTxt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageButton2"
@@ -234,8 +363,10 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -243,8 +374,9 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorMultiple"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintStart_toEndOf="@+id/imageButton4"
@@ -252,8 +384,10 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?android:attr/listChoiceIndicatorSingle"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -261,12 +395,22 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/BtnNavegacao"
+            style="@style/ImgBtnNavegacao"
+            android:layout_width="0dp"
             android:background="?attr/homeAsUpIndicator"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#CC0000"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="142dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

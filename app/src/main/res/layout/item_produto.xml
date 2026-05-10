@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="135dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgExibiProduto_Produto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/ExibiProduto_TxtProduto"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="18dp"
+        android:gravity="start|center_vertical"
+        android:paddingLeft="10dp"
+        android:text="Carregando produto..."
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ExibiProduto_TxtValor"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:gravity="start|center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Carregando Valor..."
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtProduto" />
+
+    <Button
+        android:id="@+id/ExibiProd_BtnAdicionar"
+        style="@style/BtnAcao"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="Adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ExibiProd_BtnEditar"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+    <Button
+        android:id="@+id/ExibiProd_BtnEditar"
+        style="@style/BtnAcao"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_margin="4dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="4dp"
+        android:text="Editar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ExibiProd_BtnDeletar"
+        app:layout_constraintStart_toEndOf="@+id/ExibiProd_BtnAdicionar"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+    <Button
+        android:id="@+id/ExibiProd_BtnDeletar"
+        style="@style/BtnAcao"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_margin="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="Deletar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ExibiProd_BtnEditar"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
