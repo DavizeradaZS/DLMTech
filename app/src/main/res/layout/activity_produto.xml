@@ -37,13 +37,10 @@
         <ImageButton
             android:id="@+id/ExibiProd_ImgBtnCarinho"
             style="@style/BotaoIconeCarrinho"
-            android:layout_width="47dp"
-            android:layout_height="42dp"
+            android:layout_marginTop="24dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/carrinhocarrinho"
+            android:layout_marginBottom="24dp"
             android:contentDescription="CARRINHO DE ITENS"
-            android:foregroundGravity="center"
-            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
@@ -109,7 +106,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/ExibiProduto_TxtProduto"
+        android:id="@+id/txtCarrinho_Nome"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -128,7 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Activity_estoque" />
 
     <TextView
-        android:id="@+id/ExibiProduto_TxtValor"
+        android:id="@+id/txtCarrinho_Valor"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
@@ -143,10 +140,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarrinho_Nome" />
 
     <Button
-        android:id="@+id/ExibiProd_BtnAdicionar"
+        android:id="@+id/btnCarrinho_Remover"
         style="@style/BtnAcao"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
@@ -169,7 +166,7 @@
         android:layout_marginRight="10dp"
         android:text="Editar"
         app:layout_constraintEnd_toStartOf="@id/ExibiProd_BtnDeletar"
-        app:layout_constraintStart_toEndOf="@+id/ExibiProd_BtnAdicionar"
+        app:layout_constraintStart_toEndOf="@+id/btnCarrinho_Remover"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <Button
@@ -354,9 +351,8 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoFuncionarios"
             android:layout_width="0dp"
-            android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -366,9 +362,8 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoClientes"
             android:layout_width="0dp"
-            android:background="?android:attr/listChoiceIndicatorSingle"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -377,9 +372,8 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoHome"
             android:layout_width="0dp"
-            android:background="@drawable/botaodeinicio"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
@@ -388,10 +382,9 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoEstoque"
             android:layout_width="0dp"
-            android:background="?android:attr/listChoiceIndicatorSingle"
-            android:contentDescription="LEGENDA"
+            android:contentDescription="ATALHO ESTOQUE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -399,10 +392,9 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
-            android:background="?attr/homeAsUpIndicator"
-            android:contentDescription="LEGENDA"
+            android:contentDescription="ATALHO ANALISE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"

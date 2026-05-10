@@ -35,31 +35,45 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/logo_description"
+            android:id="@+id/ExibiProd_ImgBtnHome"
+            style="@style/LogoStyle"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
         <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="237dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/bordaredonda"
-            android:ems="10"
-            android:hint="Pesquisa"
-            android:inputType="text"
+            android:id="@+id/ExibiProd_TxtPesquisa"
+            style="@style/EditTextPesquisa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/ExibiProd_ImgBtnCarinho"
+            style="@style/BotaoIconeCarrinho"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="CARRINHO DE ITENS"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="1dp"
+            android:background="#CC0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -122,22 +136,24 @@
         android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/imageButton"
-            sstyle="@style/BtnNavegacao"
-            android:background="?attr/actionModeCloseDrawable"
+            style="@style/ImgBtnNavegacaoFuncionarios"
+            android:layout_width="0dp"
             android:rotationY="180"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorSingle"
+            style="@style/ImgBtnNavegacaoClientes"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -145,8 +161,9 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorMultiple"
+            style="@style/ImgBtnNavegacaoHome"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintStart_toEndOf="@+id/imageButton4"
@@ -154,8 +171,9 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorSingle"
+            style="@style/ImgBtnNavegacaoEstoque"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ESTOQUE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -163,12 +181,13 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/BtnNavegacao"
-            android:background="?attr/homeAsUpIndicator"
+            style="@style/ImgBtnNavegacaoAnalise"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ANALISE"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
     <HorizontalScrollView
         android:id="@+id/scrollCategorias"

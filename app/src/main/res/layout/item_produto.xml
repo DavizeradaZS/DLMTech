@@ -24,7 +24,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/ExibiProduto_TxtProduto"
+        android:id="@+id/txtCarrinho_Nome"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="18dp"
@@ -50,7 +50,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/frameLayout"
-            app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtProduto" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCarrinho_Nome" />
 
     <Button
         android:id="@+id/ExibiProd_BtnAdicionar"
