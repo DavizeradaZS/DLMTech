@@ -100,9 +100,8 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoFuncionarios"
             android:layout_width="0dp"
-            android:background="?attr/actionModeCloseDrawable"
             android:rotationY="180"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -112,9 +111,8 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoClientes"
             android:layout_width="0dp"
-            android:background="?android:attr/listChoiceIndicatorSingle"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -123,9 +121,8 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoHome"
             android:layout_width="0dp"
-            android:background="@drawable/botaodeinicio"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
@@ -134,10 +131,9 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoEstoque"
             android:layout_width="0dp"
-            android:background="?android:attr/listChoiceIndicatorSingle"
-            android:contentDescription="LEGENDA"
+            android:contentDescription="ATALHO ESTOQUE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -145,15 +141,13 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/ImgBtnNavegacao"
+            style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
-            android:background="?attr/homeAsUpIndicator"
-            android:contentDescription="LEGENDA"
+            android:contentDescription="ATALHO ANALISE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <View
             android:id="@+id/view7"
             android:layout_width="match_parent"
