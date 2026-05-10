@@ -28,4 +28,34 @@ interface ApiService {
 
     @GET("get_produtos.php")
     fun listarProdutos(): Call<List<Produto>>
+
+    @FormUrlEncoded
+    @POST("update_cliente.php")
+    fun updateCliente(
+        @Field("id") id: Int,
+        @Field("nome") nome: String,
+        @Field("dataNasc") dataNasc: String,
+        @Field("cpf") cpf: String,
+        @Field("cep") cep: String,
+        @Field("rua") rua: String,
+        @Field("bairro") bairro: String,
+        @Field("numero") numero: String
+    ): Call<Usuario>
+
+    @FormUrlEncoded
+    @POST("update_funcionario.php")
+    fun updateFuncionario(
+        @Field("id") id: Int,
+        @Field("nome") nome: String,
+        @Field("data_nasc") data_nasc: String,
+        @Field("cpf") cpf: String,
+        @Field("nivel_acesso") nivel_acesso: String,
+        @Field("data_admissao") data_admissao: String,
+        @Field("salario") salario: String,
+        @Field("cep") cep: String,
+        @Field("rua") rua: String,
+        @Field("bairro") bairro: String,
+        @Field("numero") numero: String
+    ): Call<Usuario>
 }
+
