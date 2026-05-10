@@ -57,5 +57,17 @@ interface ApiService {
         @Field("bairro") bairro: String,
         @Field("numero") numero: String
     ): Call<Usuario>
+
+    @FormUrlEncoded
+    @POST("add_carrinho.php")
+    fun addCarrinho(@Field("produto_id") produtoId: Int): Call<Usuario>
+
+    @GET("get_carrinho.php")
+    fun listarCarrinho(): Call<List<Carrinho>>
+
+    @FormUrlEncoded
+    @POST("remove_carrinho.php")
+    fun removerDoCarrinho(@Field("id") id: Int): Call<Usuario>
+
 }
 
