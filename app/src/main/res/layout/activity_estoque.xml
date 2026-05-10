@@ -61,8 +61,8 @@
 
     <TextView
         android:id="@+id/estoque"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:fontFamily=""
         android:gravity="center"
         android:hint="Sua Mensagem"
@@ -162,4 +162,16 @@
             tools:layout_editor_absoluteX="142dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/Estoque_ImgBtnAddProduto"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/Estoque_produtos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
