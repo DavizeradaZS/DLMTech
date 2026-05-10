@@ -60,7 +60,6 @@
         app:layout_constraintVertical_bias="0.002" />
 
 
-
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
@@ -78,10 +77,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -118,30 +117,31 @@
                 android:id="@+id/lblNome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Nome Cliente:"
                 android:textColor="#FFFFFF"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais" />
 
             <EditText
                 android:id="@+id/edtNome"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:background="@drawable/bordaredonda" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/lblNome"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bordaredonda"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/lblNome" />
 
             <TextView
                 android:id="@+id/lblDataNasc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Data Nascimento:"
                 android:textColor="#FFFFFF"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/edtNome"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtNome" />
 
             <EditText
                 android:id="@+id/edtDataNasc"
@@ -150,9 +150,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bordaredonda"
-                app:layout_constraintTop_toBottomOf="@+id/lblDataNasc"
+                app:layout_constraintEnd_toStartOf="@+id/edtCPF"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/edtCPF" />
+                app:layout_constraintTop_toBottomOf="@+id/lblDataNasc" />
 
 
             <TextView
@@ -161,8 +161,8 @@
                 android:layout_height="wrap_content"
                 android:text="CPF:"
                 android:textColor="#FFFFFF"
-                app:layout_constraintTop_toTopOf="@+id/lblDataNasc"
-                app:layout_constraintStart_toStartOf="@+id/edtCPF" />
+                app:layout_constraintStart_toStartOf="@+id/edtCPF"
+                app:layout_constraintTop_toTopOf="@+id/lblDataNasc" />
 
             <EditText
                 android:id="@+id/edtCPF"
@@ -170,9 +170,9 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bordaredonda"
-                app:layout_constraintTop_toTopOf="@+id/edtDataNasc"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edtDataNasc"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/edtDataNasc" />
 
 
             <TextView
@@ -323,17 +323,20 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            style="@style/BtnNavegacao"
-            android:background="?attr/actionModeCloseDrawable"
+            style="@style/ImgBtnNavegacaoFuncionarios"
+            android:layout_width="0dp"
             android:rotationY="180"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton2"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorSingle"
+            style="@style/ImgBtnNavegacaoClientes"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -341,8 +344,9 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorMultiple"
+            style="@style/ImgBtnNavegacaoHome"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintStart_toEndOf="@+id/imageButton4"
@@ -350,8 +354,9 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            style="@style/BtnNavegacao"
-            android:background="?android:attr/listChoiceIndicatorSingle"
+            style="@style/ImgBtnNavegacaoEstoque"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ESTOQUE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintStart_toEndOf="@+id/imageButton5"
@@ -359,9 +364,11 @@
 
         <ImageButton
             android:id="@+id/imageButton5"
-            style="@style/BtnNavegacao"
-            android:background="?attr/homeAsUpIndicator"
+            style="@style/ImgBtnNavegacaoAnalise"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ANALISE"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

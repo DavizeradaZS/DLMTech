@@ -55,6 +55,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
 
+        <GridView
+            android:layout_width="76dp"
+            android:layout_height="12dp"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="45dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
