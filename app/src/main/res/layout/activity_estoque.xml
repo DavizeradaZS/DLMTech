@@ -125,6 +125,7 @@
             android:id="@+id/imageButton3"
             style="@style/ImgBtnNavegacao"
             android:layout_width="0dp"
+            android:background="@drawable/botaodeinicio"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
