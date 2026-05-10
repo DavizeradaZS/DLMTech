@@ -71,8 +71,9 @@
         android:textColor="#EE3131"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        tools:layout_editor_absoluteX="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Estoque_produtos"
@@ -83,7 +84,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_estoque">
+        app:layout_constraintTop_toBottomOf="@+id/estoque">
 
 
     </androidx.recyclerview.widget.RecyclerView>
