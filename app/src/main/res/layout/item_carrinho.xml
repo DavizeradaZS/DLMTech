@@ -25,7 +25,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/ExibiProduto_TxtProduto"
+        android:id="@+id/txtCarrinho_Nome"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="18dp"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/ExibiProduto_TxtValor"
+        android:id="@+id/txtCarrinho_Valor"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:gravity="start|center_vertical"
@@ -51,10 +51,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarrinho_Nome" />
 
     <Button
-        android:id="@+id/ExibiProd_BtnAdicionar"
+        android:id="@+id/btnCarrinho_Remover"
         style="@style/BtnAcao"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -65,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
-        app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtValor" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarrinho_Valor" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout8"
@@ -77,9 +77,9 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/bordacards"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ExibiProd_BtnAdicionar"
+        app:layout_constraintEnd_toStartOf="@+id/btnCarrinho_Remover"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/ExibiProduto_TxtValor">
+        app:layout_constraintTop_toBottomOf="@+id/txtCarrinho_Valor">
 
         <TextView
             android:id="@+id/textView5"
