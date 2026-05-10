@@ -17,8 +17,15 @@ interface ApiService {
         @Field("rua") rua: String,
         @Field("bairro") bairro: String,
         @Field("numero") numero: String
+    ): Call<Usuario> // Note que aqui fechamos a função!
+
+    @FormUrlEncoded
+    @POST("login.php")
+    fun login(
+        @Field("email") email: String,
+        @Field("senha") senha: String
     ): Call<Usuario>
 
-    @GET("get_produtos.php") // Nome do arquivo que criaremos no XAMPP
+    @GET("get_produtos.php")
     fun listarProdutos(): Call<List<Produto>>
 }
