@@ -94,7 +94,7 @@
           android:id="@+id/txtTitulo"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="CADASTRO DE CLIENTE"
+          android:text="CADASTRO DE FUNCIONÁRIO"
           android:textColor="#FF0000"
           android:textSize="22sp"
           android:textStyle="bold"
@@ -180,7 +180,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="264dp"
-          android:text="Informações de funcionário"
+          android:text="Informações de Funcionário"
           android:textColor="#FF0000"
           android:textSize="18sp"
           android:textStyle="bold"
@@ -201,10 +201,187 @@
           android:id="@+id/edtAdm"
           android:layout_width="0dp"
           android:layout_height="48dp"
-          android:layout_marginTop="16dp"
+          android:layout_marginTop="8dp"
           android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblAdm" />
+
+      <TextView
+          android:id="@+id/lblDataAdm"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="64dp"
+          android:text="Data de Admissão:"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/edtAdm"
+          />
+
+      <TextView
+          android:id="@+id/lblSal"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Data de Admissão:"
+          android:textColor="#FFFFFF"
+
+          app:layout_constraintStart_toStartOf="@+id/edtSal"
+          app:layout_constraintTop_toTopOf="@+id/lblDataAdm" />
+
+      <EditText
+          android:id="@+id/edtSal"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+
+          android:layout_marginStart="8dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/edtDataAdm"
+          app:layout_constraintTop_toTopOf="@+id/edtDataAdm" />
+
+      <EditText
+          android:id="@+id/edtDataAdm"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toStartOf="@+id/edtSal"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/lblDataAdm" />
+
+      <TextView
+          android:id="@+id/txtInfoPessoais3"
+          android:layout_width="213dp"
+          android:layout_height="27dp"
+          android:layout_marginTop="496dp"
+          android:text="Informações de Endereço"
+          android:textColor="#FF0000"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+
+      <EditText
+          android:id="@+id/edtCep"
+          android:layout_width="163dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="4dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+      <ImageView
+          android:id="@+id/imageView3"
+          android:layout_width="41dp"
+          android:layout_height="44dp"
+          android:layout_marginTop="12dp"
+          app:layout_constraintStart_toEndOf="@+id/edtCep"
+          app:layout_constraintTop_toBottomOf="@+id/lblCep"
+          app:srcCompat="@android:drawable/ic_menu_search" />
+
+      <TextView
+          android:id="@+id/lblRua"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="Rua:"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/edtCep" />
+
+      <EditText
+          android:id="@+id/edtRua"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="16dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/lblRua" />
+
+      <TextView
+          android:id="@+id/lblBairro"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Bairro:"
+          android:textColor="#FFFFFF"
+          app:layout_constraintBottom_toTopOf="@+id/edtBairro"
+          app:layout_constraintStart_toStartOf="@+id/edtBairro"
+          app:layout_constraintTop_toTopOf="@+id/lblNum"
+          app:layout_constraintVertical_bias="0.09" />
+
+      <EditText
+          android:id="@+id/edtNum"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toStartOf="@+id/edtBairro"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/lblNum" />
+
+      <TextView
+          android:id="@+id/lblNum"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:text="Número:"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/edtRua" />
+
+      <EditText
+          android:id="@+id/edtBairro"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:background="@drawable/bordaredonda"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/edtNum"
+          app:layout_constraintTop_toTopOf="@+id/edtNum" />
+
+      <TextView
+          android:id="@+id/lblCep"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+
+          android:text="CEP:"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais3" />
+      <Button
+          android:id="@+id/button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="56dp"
+          android:layout_marginTop="28dp"
+          android:backgroundTint="#B22222"
+          android:text="Cancelar"
+          android:textStyle="bold"
+          app:cornerRadius="15px"
+          app:layout_constraintBottom_toBottomOf="@+id/button"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/edtNum"
+          app:layout_constraintVertical_bias="0.0" />
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="28dp"
+          android:backgroundTint="#B22222"
+          android:text="Salvar"
+          android:textStyle="bold"
+          app:cornerRadius="15px"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.763"
+          app:layout_constraintStart_toEndOf="@+id/button"
+          app:layout_constraintTop_toBottomOf="@+id/edtBairro" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.core.widget.NestedScrollView>
@@ -213,9 +390,11 @@
       android:id="@+id/constraintLayout3"
       android:layout_width="match_parent"
       android:layout_height="90dp"
+      android:visibility="invisible"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent">
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="invisible">
 
 
     <ImageButton
