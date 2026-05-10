@@ -13,37 +13,42 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/nestedScrollView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/logo_description"
+            android:id="@+id/ExibiProd_ImgBtnHome"
+            style="@style/LogoStyle"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
         <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="237dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/bordaredonda"
-            android:ems="10"
-            android:hint="Pesquisa"
-            android:inputType="text"
+            android:id="@+id/ExibiProd_TxtPesquisa"
+            style="@style/EditTextPesquisa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/ExibiProd_ImgBtnCarinho"
+            style="@style/BotaoIconeCarrinho"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="CARRINHO DE ITENS"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -74,6 +79,7 @@
 
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
