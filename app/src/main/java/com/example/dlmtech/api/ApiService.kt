@@ -4,6 +4,7 @@ import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import retrofit2.http.GET
 
 interface ApiService {
     @FormUrlEncoded
@@ -17,4 +18,7 @@ interface ApiService {
         @Field("bairro") bairro: String,
         @Field("numero") numero: String
     ): Call<Usuario>
+
+    @GET("get_produtos.php") // Nome do arquivo que criaremos no XAMPP
+    fun listarProdutos(): Call<List<Produto>>
 }
