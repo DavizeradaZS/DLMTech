@@ -127,11 +127,11 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/Carrinho_TxtValor"
+            app:layout_constraintEnd_toStartOf="@+id/txtCarrinho_Total"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/Carrinho_TxtValor"
+            android:id="@+id/txtCarrinho_Total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
