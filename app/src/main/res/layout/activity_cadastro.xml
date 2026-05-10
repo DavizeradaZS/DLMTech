@@ -280,7 +280,7 @@
                 app:layout_constraintTop_toTopOf="@+id/edtNum" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnCancelar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -289,13 +289,13 @@
                 android:text="Cancelar"
                 android:textStyle="bold"
                 app:cornerRadius="15px"
-                app:layout_constraintBottom_toBottomOf="@+id/button"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSalvar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtNum"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnSalvar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
@@ -305,7 +305,7 @@
                 app:cornerRadius="15px"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.763"
-                app:layout_constraintStart_toEndOf="@+id/button"
+                app:layout_constraintStart_toEndOf="@+id/btnCancelar"
                 app:layout_constraintTop_toBottomOf="@+id/edtBairro" />
 
 
