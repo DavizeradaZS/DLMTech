@@ -19,14 +19,14 @@ class activity_cadastro : AppCompatActivity() {
         setContentView(R.layout.activity_cadastro)
 
         // 1. Mapeando os componentes do XML
-        val editNome = findViewById<EditText>(R.id.cadNome)
-        val editDataNasc = findViewById<EditText>(R.id.cadDataNasc)
-        val editCpf = findViewById<EditText>(R.id.cadCpf)
-        val editCep = findViewById<EditText>(R.id.cadCep)
-        val editRua = findViewById<EditText>(R.id.cadRua)
-        val editBairro = findViewById<EditText>(R.id.cadBairro)
-        val editNum = findViewById<EditText>(R.id.cadNum)
-        val btnSalvar = findViewById<Button>(R.id.btnCadSalv)
+        val editNome = findViewById<EditText>(R.id.edtNome)
+        val editDataNasc = findViewById<EditText>(R.id.edtDataNasc)
+        val editCpf = findViewById<EditText>(R.id.edtCPF)
+        val editCep = findViewById<EditText>(R.id.edtCep)
+        val editRua = findViewById<EditText>(R.id.edtRua)
+        val editBairro = findViewById<EditText>(R.id.edtBairro)
+        val editNum = findViewById<EditText>(R.id.edtNum)
+        val btnSalvar = findViewById<Button>(R.id.btnSalvar)
 
         // 2. Ação do botão Salvar
         btnSalvar.setOnClickListener {
