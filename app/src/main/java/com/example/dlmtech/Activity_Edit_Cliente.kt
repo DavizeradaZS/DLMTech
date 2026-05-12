@@ -32,9 +32,10 @@ class Activity_Edit_Cliente : AppCompatActivity() {
         btnSalvar.setOnClickListener {
             val nome = edtNome.text.toString()
             val cpf = edtCpf.text.toString()
+            val cep = edtCep.text.toString()
             // ... pegar os outros campos do layout
 
-            RetrofitClient.instance.updateCliente(clienteId, nome, "", cpf, "", "", "", "")
+            RetrofitClient.instance.updateCliente(clienteId, nome, "", cpf, cep, "", "", "")
                 .enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                         if (response.isSuccessful) {
