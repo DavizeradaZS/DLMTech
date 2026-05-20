@@ -90,5 +90,13 @@ class Activity_Edit_Func : AppCompatActivity() {
         btnNavAnalise.setOnClickListener {
             Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
         }
+
+        // ==========================================
+        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
+        // ==========================================
+        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
+        btnCarrinho?.setOnClickListener {
+            startActivity(Intent(this, Activity_Carrinho::class.java))
+        }
     }
 }

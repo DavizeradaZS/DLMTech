@@ -56,6 +56,14 @@ class Activity_Carrinho : AppCompatActivity() {
         btnNavAnalise.setOnClickListener {
             Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
         }
+
+        // ==========================================
+        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
+        // ==========================================
+        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
+        btnCarrinho?.setOnClickListener {
+            Toast.makeText(this, "Você já está na tela de Carrinho", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun carregarCarrinho() {
