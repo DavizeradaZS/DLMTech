@@ -1,8 +1,10 @@
 package com.example.dlmtech
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dlmtech.api.RetrofitClient
@@ -47,6 +49,33 @@ class Activity_Edit_Cliente : AppCompatActivity() {
                         Toast.makeText(this@Activity_Edit_Cliente, "Erro na conexão", Toast.LENGTH_SHORT).show()
                     }
                 })
+        }
+
+        // ==========================================
+        // NAVEGAÇÃO DA BARRA INFERIOR
+        // ==========================================
+        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
+        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
+        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
+        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
+        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
+
+        btnNavFuncionarios.setOnClickListener {
+            Toast.makeText(this, "Você já está na tela de Cadastro de Funcionários", Toast.LENGTH_SHORT).show()
+        }
+        btnNavEstoque.setOnClickListener {
+            startActivity(Intent(this, Activity_Estoque::class.java))
+            finish()
+        }
+        btnNavHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+        btnNavClientes.setOnClickListener {
+            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+        }
+        btnNavAnalise.setOnClickListener {
+            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
         }
     }
 }
