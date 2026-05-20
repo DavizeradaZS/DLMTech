@@ -1,4 +1,40 @@
 <resources>
     <string name="app_name">DLMTech</string>
     <string name="logo_description">Logo do aplicativo DLM Tech</string>
+        <string name="hint_email">Email</string>
+        <string name="hint_senha">Password</string>
+        <string name="btn_entrar">Sign In</string>
+        <string name="txt_nao_tem_conta">Don\'t have an account? Sign Up</string>
+
+        <string name="title_cadastro">Sign Up</string>
+        <string name="hint_nome">Name</string>
+        <string name="hint_cpf">CPF</string>
+        <string name="hint_telefone">Phone</string>
+        <string name="btn_salvar">Save</string>
+        <string name="txt_ja_tem_conta">Already have an account? Sign In here</string>
+
+        <string name="title_menu">Main Menu</string>
+        <string name="menu_estoque">Stock</string>
+        <string name="menu_carrinho">Cart</string>
+        <string name="menu_funcionarios">Employees</string>
+        <string name="menu_clientes">Customers</string>
+
+        <string name="title_cadastro_func">Register Employee</string>
+        <string name="title_editar_func">Edit Employee</string>
+        <string name="hint_cargo">Role</string>
+        <string name="btn_excluir">Delete</string>
+
+        <string name="title_editar_cliente">Edit Customer</string>
+
+        <string name="title_estoque">Stock</string>
+        <string name="title_produto">Product</string>
+        <string name="hint_nome_produto">Product Name</string>
+        <string name="hint_preco">Price</string>
+        <string name="hint_quantidade">Quantity</string>
+
+        <string name="title_carrinho">Cart</string>
+        <string name="txt_total">Total: $ 0.00</string>
+        <string name="btn_finalizar_compra">Checkout</string>
+
+
 </resources>

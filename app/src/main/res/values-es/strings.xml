@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">DLMTech</string>
+
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_senha">Contraseña</string>
+    <string name="btn_entrar">Iniciar sesión</string>
+    <string name="txt_nao_tem_conta">¿No tienes una cuenta? Regístrate</string>
+
+    <string name="title_cadastro">Registro</string>
+    <string name="hint_nome">Nombre</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_telefone">Teléfono</string>
+    <string name="btn_salvar">Guardar</string>
+    <string name="txt_ja_tem_conta">¿Ya tienes una cuenta? Inicia sesión aquí</string>
+
+    <string name="title_menu">Menú Principal</string>
+    <string name="menu_estoque">Inventario</string>
+    <string name="menu_carrinho">Carrito</string>
+    <string name="menu_funcionarios">Empleados</string>
+    <string name="menu_clientes">Clientes</string>
+
+    <string name="title_cadastro_func">Registrar Empleado</string>
+    <string name="title_editar_func">Editar Empleado</string>
+    <string name="hint_cargo">Cargo</string>
+    <string name="btn_excluir">Eliminar</string>
+
+    <string name="title_editar_cliente">Editar Cliente</string>
+
+    <string name="title_estoque">Inventario</string>
+    <string name="title_produto">Producto</string>
+    <string name="hint_nome_produto">Nombre del Producto</string>
+    <string name="hint_preco">Precio</string>
+    <string name="hint_quantidade">Cantidad</string>
+
+    <string name="title_carrinho">Carrito</string>
+    <string name="txt_total">Total: $ 0,00</string>
+    <string name="btn_finalizar_compra">Finalizar Compra</string>
+</resources>
