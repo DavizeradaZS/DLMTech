@@ -92,70 +92,62 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/btnNavFuncionarios"
             style="@style/ImgBtnNavegacaoFuncionarios"
             android:layout_width="0dp"
             android:rotationY="180"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+            app:layout_constraintStart_toEndOf="@+id/btnNavClientes"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btnNavClientes"
             style="@style/ImgBtnNavegacaoClientes"
             android:layout_width="0dp"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton3"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavFuncionarios"
+            app:layout_constraintStart_toEndOf="@+id/btnNavHome"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btnNavHome"
             style="@style/ImgBtnNavegacaoHome"
             android:layout_width="0dp"
             android:contentDescription="LEGENDA"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-            app:layout_constraintStart_toEndOf="@+id/imageButton4"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavClientes"
+            app:layout_constraintStart_toEndOf="@+id/btnNavEstoque"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/btnNavEstoque"
             style="@style/ImgBtnNavegacaoEstoque"
             android:layout_width="0dp"
             android:contentDescription="ATALHO ESTOQUE"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintStart_toEndOf="@+id/imageButton5"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavHome"
+            app:layout_constraintStart_toEndOf="@+id/btnNavAnalise"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/btnNavAnalise"
             style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
             android:contentDescription="ATALHO ANALISE"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <View
-            android:id="@+id/view7"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#CC0000"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="142dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton

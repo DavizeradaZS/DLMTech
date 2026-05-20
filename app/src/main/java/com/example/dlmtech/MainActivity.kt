@@ -1,6 +1,9 @@
 package com.example.dlmtech
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +14,54 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        // Configuração das margens (Edge to Edge)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // ==========================================
+        // 1. MAPEAMENTO DOS BOTÕES DA BARRA INFERIOR
+        // ==========================================
+        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
+        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
+        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
+        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
+        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
+
+        // ==========================================
+        // 2. CONFIGURAÇÃO DOS CLIQUES (INTENTS)
+        // ==========================================
+
+        // Botão Funcionários -> Vai para a Activity de Cadastro de Funcionários
+        btnNavFuncionarios.setOnClickListener {
+            val intent = Intent(this, Activity_CadastroFunc::class.java)
+            startActivity(intent)
+        }
+
+        // Botão Estoque -> Vai para a Activity de Estoque
+        btnNavEstoque.setOnClickListener {
+            val intent = Intent(this, Activity_Estoque::class.java)
+            startActivity(intent)
+        }
+
+        // Botão Home -> Já estamos nela, então apenas exibe uma mensagem
+        btnNavHome.setOnClickListener {
+            Toast.makeText(this, "Você já está na Página Inicial", Toast.LENGTH_SHORT).show()
+        }
+
+        // Botão Clientes (Exemplo com Toast - Substitua o Intent quando a tela de Clientes estiver finalizada)
+        btnNavClientes.setOnClickListener {
+            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            // Exemplo de como ficará:
+            // startActivity(Intent(this, Activity_Edit_Cliente::class.java))
+        }
+
+        // Botão Análise (Exemplo com Toast)
+        btnNavAnalise.setOnClickListener {
+            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
         }
     }
 }
