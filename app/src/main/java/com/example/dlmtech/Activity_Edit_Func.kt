@@ -32,6 +32,13 @@ class Activity_Edit_Func : AppCompatActivity() {
         val edtBairro = findViewById<EditText>(R.id.edtBairro)
         val edtNum = findViewById<EditText>(R.id.edtNum)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Ação do botão Cancelar
+        btnCancelar.setOnClickListener {
+            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            finish() // Fecha a tela e volta para a anterior
+        }
 
         // 2. Receber dados da Intent
         funcId = intent.getIntExtra("ID", -1)

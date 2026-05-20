@@ -156,10 +156,10 @@
         android:text="SALVAR"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Carrinho_BtnCancelarCompra" />
+        app:layout_constraintStart_toEndOf="@+id/btnCancelar" />
 
     <Button
-        android:id="@+id/Carrinho_BtnCancelarCompra"
+        android:id="@+id/btnCancelar"
         style="@style/BtnAcao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

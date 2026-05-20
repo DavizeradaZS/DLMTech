@@ -25,6 +25,13 @@ class Activity_Edit_Cliente : AppCompatActivity() {
         val edtCpf = findViewById<EditText>(R.id.edtCPF)
         val edtCep = findViewById<EditText>(R.id.edtCep)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Ação do botão Cancelar
+        btnCancelar.setOnClickListener {
+            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            finish() // Fecha a tela e volta para a anterior
+        }
 
         // Recebendo dados da Intent (Simulando que vieram da lista)
         clienteId = intent.getIntExtra("ID", -1)

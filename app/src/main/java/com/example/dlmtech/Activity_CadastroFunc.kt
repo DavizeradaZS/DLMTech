@@ -2,6 +2,7 @@ package com.example.dlmtech
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,14 @@ class Activity_CadastroFunc : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Ação do botão Cancelar
+        btnCancelar.setOnClickListener {
+            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            finish() // Fecha a tela e volta para a anterior
         }
 
         // ==========================================

@@ -2,6 +2,7 @@ package com.example.dlmtech
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -29,6 +30,14 @@ class Activity_Carrinho : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this)
 
         carregarCarrinho()
+
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Ação do botão Cancelar
+        btnCancelar.setOnClickListener {
+            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            finish() // Fecha a tela e volta para a anterior
+        }
 
         // ==========================================
         // NAVEGAÇÃO DA BARRA INFERIOR

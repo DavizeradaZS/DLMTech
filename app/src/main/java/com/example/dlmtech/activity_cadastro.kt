@@ -29,6 +29,13 @@ class activity_cadastro : AppCompatActivity() {
         val editBairro = findViewById<EditText>(R.id.edtBairro)
         val editNum = findViewById<EditText>(R.id.edtNum)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Ação do botão Cancelar
+        btnCancelar.setOnClickListener {
+            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            finish() // Fecha a tela e volta para a anterior
+        }
 
         // 2. Ação do botão Salvar
         btnSalvar.setOnClickListener {
