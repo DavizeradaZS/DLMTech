@@ -30,6 +30,7 @@ class  Activity_produto : AppCompatActivity() {
         val txtDesc = findViewById<TextView>(R.id.ExibiProd_TxtDesc)
 
         // Recebendo dados passados pela lista do estoque
+        val idProduto = intent.getIntExtra("ID_PRODUTO", -1)
         val nome = intent.getStringExtra("NOME_PRODUTO") ?: "Produto"
         val valor = intent.getStringExtra("VALOR_PRODUTO") ?: "0.00"
         val desc = intent.getStringExtra("DESC_PRODUTO") ?: "Sem descrição."
@@ -37,6 +38,36 @@ class  Activity_produto : AppCompatActivity() {
         txtNome.text = nome
         txtValor.text = "R$ $valor"
         txtDesc.text = desc
+
+        // ==========================================
+        // AÇÕES INTERNAS DO PRODUTO
+        // ==========================================
+        val btnAdicionar = findViewById<android.widget.Button>(R.id.TxtAdicionarAoProduto)
+        val btnEditar = findViewById<android.widget.Button>(R.id.ExibiProd_BtnEditar)
+        val btnRemover = findViewById<android.widget.Button>(R.id.Remover)
+
+        btnAdicionar.setOnClickListener {
+            // Aqui entrará a requisição para a API do Carrinho
+            Toast.makeText(this, "Adicionando $nome ao carrinho...", Toast.LENGTH_SHORT).show()
+        }
+
+        btnEditar.setOnClickListener {
+            Toast.makeText(this, "Tela de edição em desenvolvimento", Toast.LENGTH_SHORT).show()
+            // Exemplo de como abrir a tela de edição passando o ID do produto:
+            // val intent = Intent(this, Activity_Edit_Produto::class.java)
+            // intent.putExtra("PRODUTO_ID", idDoProduto)
+            // startActivity(intent)
+        }
+
+        btnRemover.setOnClickListener {
+            if (idProduto != -1) {
+                // Aqui entrará a requisição DELETE para a API usando a variável 'idProduto'
+                Toast.makeText(this, "A deletar o produto com ID: $idProduto", Toast.LENGTH_SHORT).show()
+                finish() // Volta para o estoque após deletar
+            } else {
+                Toast.makeText(this, "Erro: Produto sem ID válido.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         // ==========================================
         // NAVEGAÇÃO DA BARRA INFERIOR
