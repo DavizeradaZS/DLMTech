@@ -25,7 +25,7 @@ class Activity_CadastroFunc : AppCompatActivity() {
 
         // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
             finish() // Fecha a tela e volta para a anterior
         }
 
@@ -39,7 +39,7 @@ class Activity_CadastroFunc : AppCompatActivity() {
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
 
         btnNavFuncionarios.setOnClickListener {
-            Toast.makeText(this, "Você já está na tela de Cadastro de Funcionários", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_already_on_employees), Toast.LENGTH_SHORT).show()
         }
         btnNavEstoque.setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
@@ -50,10 +50,10 @@ class Activity_CadastroFunc : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================

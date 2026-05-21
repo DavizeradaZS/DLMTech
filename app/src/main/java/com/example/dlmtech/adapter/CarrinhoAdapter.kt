@@ -28,7 +28,7 @@ class CarrinhoAdapter(
     override fun onBindViewHolder(holder: CarrinhoViewHolder, position: Int) {
         val item = lista[position]
         holder.nome.text = item.nome
-        holder.valor.text = "R$ ${item.valor}"
+        holder.valor.text = holder.itemView.context.getString(R.string.currency_symbol) + " " + item.valor
         holder.btnRemover.setOnClickListener { onRemoverClick(item) }
     }
 

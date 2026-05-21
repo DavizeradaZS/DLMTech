@@ -33,7 +33,7 @@ class activity_cadastro : AppCompatActivity() {
 
         // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
             finish() // Fecha a tela e volta para a anterior
         }
 
@@ -49,7 +49,7 @@ class activity_cadastro : AppCompatActivity() {
 
             // Validação simples
             if (nome.isEmpty() || cpf.isEmpty()) {
-                Toast.makeText(this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_fill_required), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -58,15 +58,15 @@ class activity_cadastro : AppCompatActivity() {
                 .enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(this@activity_cadastro, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@activity_cadastro, getString(R.string.msg_registration_success), Toast.LENGTH_LONG).show()
                             finish() // Fecha a tela após salvar
                         } else {
-                            Toast.makeText(this@activity_cadastro, "Erro no servidor: ${response.code()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@activity_cadastro, getString(R.string.msg_server_error, response.code()), Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                        Toast.makeText(this@activity_cadastro, "Falha de conexão: ${t.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@activity_cadastro, getString(R.string.msg_connection_failure, t.message), Toast.LENGTH_LONG).show()
                     }
                 })
         }
@@ -95,10 +95,10 @@ class activity_cadastro : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================

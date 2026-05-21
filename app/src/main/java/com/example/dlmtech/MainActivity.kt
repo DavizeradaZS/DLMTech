@@ -49,19 +49,19 @@ class MainActivity : AppCompatActivity() {
 
         // Botão Home -> Já estamos nela, então apenas exibe uma mensagem
         btnNavHome.setOnClickListener {
-            Toast.makeText(this, "Você já está na Página Inicial", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_already_on_home), Toast.LENGTH_SHORT).show()
         }
 
         // Botão Clientes (Exemplo com Toast - Substitua o Intent quando a tela de Clientes estiver finalizada)
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
             // Exemplo de como ficará:
             // startActivity(Intent(this, Activity_Edit_Cliente::class.java))
         }
 
         // Botão Análise (Exemplo com Toast)
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================

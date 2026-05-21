@@ -27,7 +27,7 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
         val produto = lista[position]
         holder.txtNome.text = produto.nome
-        holder.txtValor.text = "R$ ${produto.valor}"
+        holder.txtValor.text = holder.itemView.context.getString(R.string.currency_symbol) + " " + produto.valor
 
         holder.itemView.setOnClickListener {
             val contexto = holder.itemView.context

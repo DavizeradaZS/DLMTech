@@ -36,7 +36,7 @@ class Activity_Edit_Func : AppCompatActivity() {
 
         // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
             finish() // Fecha a tela e volta para a anterior
         }
 
@@ -61,12 +61,12 @@ class Activity_Edit_Func : AppCompatActivity() {
             ).enqueue(object : Callback<Usuario> {
                 override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@Activity_Edit_Func, "Sucesso!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Activity_Edit_Func, getString(R.string.msg_success), Toast.LENGTH_SHORT).show()
                         finish()
                     }
                 }
                 override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                    Toast.makeText(this@Activity_Edit_Func, "Falha: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Activity_Edit_Func, getString(R.string.msg_failure_with_reason, t.message), Toast.LENGTH_SHORT).show()
                 }
             })
         }
@@ -81,7 +81,7 @@ class Activity_Edit_Func : AppCompatActivity() {
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
 
         btnNavFuncionarios.setOnClickListener {
-            Toast.makeText(this, "Você já está na tela de Cadastro de Funcionários", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_already_on_employees), Toast.LENGTH_SHORT).show()
         }
         btnNavEstoque.setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
@@ -92,10 +92,10 @@ class Activity_Edit_Func : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================

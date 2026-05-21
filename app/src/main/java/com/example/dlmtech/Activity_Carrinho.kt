@@ -35,7 +35,7 @@ class Activity_Carrinho : AppCompatActivity() {
 
         // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, "Cadastro cancelado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
             finish() // Fecha a tela e volta para a anterior
         }
 
@@ -49,7 +49,7 @@ class Activity_Carrinho : AppCompatActivity() {
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
 
         btnNavFuncionarios.setOnClickListener {
-            Toast.makeText(this, "Você já está na tela de Cadastro de Funcionários", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.menu_funcionarios)), Toast.LENGTH_SHORT).show()
         }
         btnNavEstoque.setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
@@ -60,10 +60,10 @@ class Activity_Carrinho : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================
@@ -71,7 +71,7 @@ class Activity_Carrinho : AppCompatActivity() {
         // ==========================================
         val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
         btnCarrinho?.setOnClickListener {
-            Toast.makeText(this, "Você já está na tela de Carrinho", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_already_on_cart), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -88,7 +88,7 @@ class Activity_Carrinho : AppCompatActivity() {
 
                     // Calcula o total
                     val total = itens.sumOf { it.valor.toDouble() }
-                    txtTotal.text = "Total: R$ %.2f".format(total)
+                    txtTotal.text = getString(R.string.label_total).format(total)
                 }
             }
             override fun onFailure(call: Call<List<Carrinho>>, t: Throwable) { /* Erro */ }
@@ -98,7 +98,7 @@ class Activity_Carrinho : AppCompatActivity() {
     private fun removerItem(id: Int) {
         RetrofitClient.instance.removerDoCarrinho(id).enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                Toast.makeText(this@Activity_Carrinho, "Removido!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Activity_Carrinho, getString(R.string.msg_removed), Toast.LENGTH_SHORT).show()
                 carregarCarrinho() // Recarrega a lista
             }
             override fun onFailure(call: Call<Usuario>, t: Throwable) { /* Erro */ }

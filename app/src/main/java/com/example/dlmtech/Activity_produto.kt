@@ -31,12 +31,12 @@ class  Activity_produto : AppCompatActivity() {
 
         // Recebendo dados passados pela lista do estoque
         val idProduto = intent.getIntExtra("ID_PRODUTO", -1)
-        val nome = intent.getStringExtra("NOME_PRODUTO") ?: "Produto"
+        val nome = intent.getStringExtra("NOME_PRODUTO") ?: getString(R.string.title_produto)
         val valor = intent.getStringExtra("VALOR_PRODUTO") ?: "0.00"
-        val desc = intent.getStringExtra("DESC_PRODUTO") ?: "Sem descrição."
+        val desc = intent.getStringExtra("DESC_PRODUTO") ?: getString(R.string.label_no_description)
 
         txtNome.text = nome
-        txtValor.text = "R$ $valor"
+        txtValor.text = getString(R.string.currency_symbol) + " " + valor
         txtDesc.text = desc
 
         // ==========================================
@@ -48,11 +48,11 @@ class  Activity_produto : AppCompatActivity() {
 
         btnAdicionar.setOnClickListener {
             // Aqui entrará a requisição para a API do Carrinho
-            Toast.makeText(this, "Adicionando $nome ao carrinho...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_adding_to_cart, nome), Toast.LENGTH_SHORT).show()
         }
 
         btnEditar.setOnClickListener {
-            Toast.makeText(this, "Tela de edição em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_edit_screen)), Toast.LENGTH_SHORT).show()
             // Exemplo de como abrir a tela de edição passando o ID do produto:
             // val intent = Intent(this, Activity_Edit_Produto::class.java)
             // intent.putExtra("PRODUTO_ID", idDoProduto)
@@ -62,10 +62,10 @@ class  Activity_produto : AppCompatActivity() {
         btnRemover.setOnClickListener {
             if (idProduto != -1) {
                 // Aqui entrará a requisição DELETE para a API usando a variável 'idProduto'
-                Toast.makeText(this, "A deletar o produto com ID: $idProduto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_deleting_product, idProduto), Toast.LENGTH_SHORT).show()
                 finish() // Volta para o estoque após deletar
             } else {
-                Toast.makeText(this, "Erro: Produto sem ID válido.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_invalid_product_id), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -91,10 +91,10 @@ class  Activity_produto : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================
