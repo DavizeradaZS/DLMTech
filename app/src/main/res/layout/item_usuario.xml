@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/bordacards"
+    android:elevation="4dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome da Pessoa"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/txtInfoSecundaria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPF / Cargo"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnEditarUsuario"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_edit"
+        android:contentDescription="Editar"
+        android:tint="#4CAF50"/>
+
+    <ImageButton
+        android:id="@+id/btnDeletarUsuario"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_delete"
+        android:contentDescription="Excluir"
+        android:tint="#F44336"/>
+
+</LinearLayout>

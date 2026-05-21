@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvClientes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_VisualizarClientes"
+
+    android:background="@drawable/degrade">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#000000"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ExibiProd_ImgBtnHome"
+            style="@style/LogoStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
+
+        <EditText
+            android:id="@+id/ExibiProd_TxtPesquisa"
+            style="@style/EditTextPesquisa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/ExibiProd_ImgBtnCarinho"
+            style="@style/BotaoIconeCarrinho"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="CARRINHO DE ITENS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="1dp"
+            android:background="#CC0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/estoque"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:fontFamily=""
+        android:gravity="center"
+        android:hint="Sua Mensagem"
+        android:paddingLeft="10dp"
+        android:text="Estoque"
+        android:textColor="#EE3131"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Estoque_produtos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="top|center_vertical"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estoque">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnNavFuncionarios"
+            style="@style/ImgBtnNavegacaoFuncionarios"
+            android:layout_width="0dp"
+            android:rotationY="180"
+            android:contentDescription="LEGENDA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnNavClientes"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNavClientes"
+            style="@style/ImgBtnNavegacaoClientes"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavFuncionarios"
+            app:layout_constraintStart_toEndOf="@+id/btnNavHome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNavHome"
+            style="@style/ImgBtnNavegacaoHome"
+            android:layout_width="0dp"
+            android:contentDescription="LEGENDA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavClientes"
+            app:layout_constraintStart_toEndOf="@+id/btnNavEstoque"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNavEstoque"
+            style="@style/ImgBtnNavegacaoEstoque"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ESTOQUE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavHome"
+            app:layout_constraintStart_toEndOf="@+id/btnNavAnalise"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNavAnalise"
+            style="@style/ImgBtnNavegacaoAnalise"
+            android:layout_width="0dp"
+            android:contentDescription="ATALHO ANALISE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/Estoque_ImgBtnAddProduto"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/Estoque_produtos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

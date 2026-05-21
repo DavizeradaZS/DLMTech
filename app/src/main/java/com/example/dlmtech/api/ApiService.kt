@@ -69,5 +69,23 @@ interface ApiService {
     @POST("remove_carrinho.php")
     fun removerDoCarrinho(@Field("id") id: Int): Call<Usuario>
 
+    // ==========================================
+    // ROTAS PARA CLIENTES E FUNCIONÁRIOS
+    // ==========================================
+
+    @GET("get_clientes.php")
+    fun listarClientes(): Call<List<Usuario>>
+
+    @FormUrlEncoded
+    @POST("delete_cliente.php")
+    fun deletarCliente(@Field("id") id: Int): Call<Usuario>
+
+    @GET("get_funcionarios.php")
+    fun listarFuncionarios(): Call<List<Usuario>>
+
+    @FormUrlEncoded
+    @POST("delete_funcionario.php")
+    fun deletarFuncionario(@Field("id") id: Int): Call<Usuario>
+
 }
 
