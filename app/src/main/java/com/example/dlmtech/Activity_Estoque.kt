@@ -36,7 +36,7 @@ class Activity_Estoque : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
-                Toast.makeText(this@Activity_Estoque, "Erro ao carregar estoque", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Activity_Estoque, getString(R.string.msg_error_loading_stock), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -65,17 +65,17 @@ class Activity_Estoque : AppCompatActivity() {
             finish()
         }
         btnNavEstoque.setOnClickListener {
-            Toast.makeText(this, "Você já está na tela de Estoque", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_already_on_stock), Toast.LENGTH_SHORT).show()
         }
         btnNavHome.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, "Tela de Clientes em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Tela de Análise em desenvolvimento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
 
         // ==========================================
