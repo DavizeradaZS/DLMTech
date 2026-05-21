@@ -31,11 +31,11 @@ class activity_login : AppCompatActivity() {
                         startActivity(Intent(this@activity_login, MainActivity::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this@activity_login, "E-mail ou senha incorretos!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@activity_login, getString(R.string.msg_invalid_login), Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                    Toast.makeText(this@activity_login, "Erro de conexão", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@activity_login, getString(R.string.msg_connection_error), Toast.LENGTH_SHORT).show()
                 }
             })
         }
