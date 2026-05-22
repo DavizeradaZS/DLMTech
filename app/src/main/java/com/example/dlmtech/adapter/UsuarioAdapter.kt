@@ -31,15 +31,16 @@ class UsuarioAdapter(
         val usuario = lista[position]
 
         holder.txtNome.text = usuario.nome
+        holder.txtInfoSecundaria.text = usuario.cpf
 
-        // Como cliente usa CPF e funcionário pode usar CPF ou Nível de Acesso,
-        // colocamos o CPF aqui como padrão. Ajuste se sua classe Usuario tiver outro campo melhor!
-        //holder.txtInfoSecundaria.text = usuario.cpf ?: "Sem informação"
-
-        // Ações dos botões que serão definidas nas Activities depois
         holder.btnEditar.setOnClickListener { onEditClick(usuario) }
         holder.btnDeletar.setOnClickListener { onDeleteClick(usuario) }
     }
 
     override fun getItemCount() = lista.size
+
+    fun atualizarLista(novaLista: List<Usuario>) {
+        lista = novaLista
+        notifyDataSetChanged()
+    }
 }

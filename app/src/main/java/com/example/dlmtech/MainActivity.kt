@@ -15,60 +15,31 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Configuração das margens (Edge to Edge)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // ==========================================
-        // 1. MAPEAMENTO DOS BOTÕES DA BARRA INFERIOR
-        // ==========================================
-        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
-        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
-        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
-        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
-        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
-
-        // ==========================================
-        // 2. CONFIGURAÇÃO DOS CLIQUES (INTENTS)
-        // ==========================================
-
-        // Botão Funcionários -> Vai para a Activity de Cadastro de Funcionários
-        btnNavFuncionarios.setOnClickListener {
-            val intent = Intent(this, Activity_CadastroFunc::class.java)
-            startActivity(intent)
+        // Navegação Inferior
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
         }
 
-        // Botão Estoque -> Vai para a Activity de Estoque
-        btnNavEstoque.setOnClickListener {
-            val intent = Intent(this, Activity_Estoque::class.java)
-            startActivity(intent)
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
         }
 
-        // Botão Home -> Já estamos nela, então apenas exibe uma mensagem
-        btnNavHome.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_already_on_home), Toast.LENGTH_SHORT).show()
         }
 
-        // Botão Clientes (Exemplo com Toast - Substitua o Intent quando a tela de Clientes estiver finalizada)
-        btnNavClientes.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
-            // Exemplo de como ficará:
-            // startActivity(Intent(this, Activity_Edit_Cliente::class.java))
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
+            startActivity(Intent(this, Activity_Estoque::class.java))
         }
 
-        // Botão Análise (Exemplo com Toast)
-        btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
-        }
-
-        // ==========================================
-        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
-        // ==========================================
-        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
-        btnCarrinho?.setOnClickListener {
+        // Cabeçalho
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
     }

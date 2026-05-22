@@ -20,7 +20,6 @@ class activity_cadastro : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_cadastro)
 
-        // 1. Mapeando os componentes do XML
         val editNome = findViewById<EditText>(R.id.edtNome)
         val editDataNasc = findViewById<EditText>(R.id.edtDataNasc)
         val editCpf = findViewById<EditText>(R.id.edtCPF)
@@ -31,13 +30,10 @@ class activity_cadastro : AppCompatActivity() {
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
 
-        // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
-            finish() // Fecha a tela e volta para a anterior
+            finish()
         }
 
-        // 2. Ação do botão Salvar
         btnSalvar.setOnClickListener {
             val nome = editNome.text.toString()
             val dataNasc = editDataNasc.text.toString()
@@ -47,68 +43,44 @@ class activity_cadastro : AppCompatActivity() {
             val bairro = editBairro.text.toString()
             val numero = editNum.text.toString()
 
-            // Validação simples
             if (nome.isEmpty() || cpf.isEmpty()) {
                 Toast.makeText(this, getString(R.string.msg_fill_required), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 3. Chamando a API via Retrofit
             RetrofitClient.instance.cadastrarUsuario(nome, dataNasc, cpf, cep, rua, bairro, numero)
                 .enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                         if (response.isSuccessful) {
                             Toast.makeText(this@activity_cadastro, getString(R.string.msg_registration_success), Toast.LENGTH_LONG).show()
-                            finish() // Fecha a tela após salvar
-                        } else {
-                            Toast.makeText(this@activity_cadastro, getString(R.string.msg_server_error, response.code()), Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                     }
-
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                        Toast.makeText(this@activity_cadastro, getString(R.string.msg_connection_failure, t.message), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@activity_cadastro, "Erro de conexão", Toast.LENGTH_LONG).show()
                     }
                 })
         }
 
-
-
-        // ==========================================
-        // NAVEGAÇÃO DA BARRA INFERIOR
-        // ==========================================
-        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
-        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
-        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
-        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
-        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
-
-        btnNavFuncionarios.setOnClickListener {
-            startActivity(Intent(this, Activity_CadastroFunc::class.java))
+        // NAVEGAÇÃO
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
         }
-        btnNavEstoque.setOnClickListener {
-            startActivity(Intent(this, Activity_Estoque::class.java))
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
             finish()
         }
-        btnNavHome.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-        btnNavClientes.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
+            startActivity(Intent(this, Activity_Estoque::class.java))
+            finish()
         }
-        btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
-        }
-
-        // ==========================================
-        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
-        // ==========================================
-        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
-        btnCarrinho?.setOnClickListener {
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
-
-
     }
 }

@@ -68,7 +68,8 @@ class Activity_Edit_Cliente : AppCompatActivity() {
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
 
         btnNavFuncionarios.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_already_on_employees), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
+            finish()
         }
         btnNavEstoque.setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
@@ -79,7 +80,8 @@ class Activity_Edit_Cliente : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
+            finish()
         }
         btnNavAnalise.setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()

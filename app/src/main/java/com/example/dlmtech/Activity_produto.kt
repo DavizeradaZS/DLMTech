@@ -53,10 +53,6 @@ class  Activity_produto : AppCompatActivity() {
 
         btnEditar.setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_edit_screen)), Toast.LENGTH_SHORT).show()
-            // Exemplo de como abrir a tela de edição passando o ID do produto:
-            // val intent = Intent(this, Activity_Edit_Produto::class.java)
-            // intent.putExtra("PRODUTO_ID", idDoProduto)
-            // startActivity(intent)
         }
 
         btnRemover.setOnClickListener {
@@ -79,7 +75,7 @@ class  Activity_produto : AppCompatActivity() {
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
 
         btnNavFuncionarios.setOnClickListener {
-            startActivity(Intent(this, Activity_CadastroFunc::class.java))
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
         }
         btnNavEstoque.setOnClickListener {
@@ -91,7 +87,8 @@ class  Activity_produto : AppCompatActivity() {
             finish()
         }
         btnNavClientes.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
+            finish()
         }
         btnNavAnalise.setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()

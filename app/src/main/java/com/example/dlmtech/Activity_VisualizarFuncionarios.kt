@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Activity_VisualizarClientes : AppCompatActivity() {
+class Activity_VisualizarFuncionarios : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnAdicionar: ImageButton
@@ -29,40 +29,39 @@ class Activity_VisualizarClientes : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_visualizar_clientes)
+        setContentView(R.layout.activity_visualizar_funcionarios)
 
-        // 1. Inicialização de componentes
-        recyclerView = findViewById(R.id.Estoque_produtos)
+        // Inicialização
+        recyclerView = findViewById(R.id.rvListaFuncionarios)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        
-        btnAdicionar = findViewById(R.id.btnAdicionarCliente)
+        btnAdicionar = findViewById(R.id.btnAdicionarFuncionario)
         editPesquisa = findViewById(R.id.ExibiProd_TxtPesquisa)
 
-        // 2. Configuração de Pesquisa (Filtro)
+        // Lógica de Pesquisa
         editPesquisa.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filtrarClientes(s.toString())
+                filtrarFuncionarios(s.toString())
             }
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // 3. Botão (+) Adicionar Cliente
+        // Ir para Cadastro de Funcionário
         btnAdicionar.setOnClickListener {
-            startActivity(Intent(this, activity_cadastro::class.java))
+            startActivity(Intent(this, Activity_CadastroFunc::class.java))
         }
 
         configurarNavegacao()
-        buscarClientes()
+        buscarFuncionarios()
     }
 
     override fun onResume() {
         super.onResume()
-        buscarClientes()
+        buscarFuncionarios()
     }
 
-    private fun buscarClientes() {
-        RetrofitClient.instance.listarClientes().enqueue(object : Callback<List<Usuario>> {
+    private fun buscarFuncionarios() {
+        RetrofitClient.instance.listarFuncionarios().enqueue(object : Callback<List<Usuario>> {
             override fun onResponse(call: Call<List<Usuario>>, response: Response<List<Usuario>>) {
                 if (response.isSuccessful) {
                     listaCompleta = response.body() ?: emptyList()
@@ -70,37 +69,37 @@ class Activity_VisualizarClientes : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<List<Usuario>>, t: Throwable) {
-                Toast.makeText(this@Activity_VisualizarClientes, "Erro de conexão", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Activity_VisualizarFuncionarios, "Erro de conexão", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun filtrarClientes(texto: String) {
+    private fun filtrarFuncionarios(texto: String) {
         val listaFiltrada = listaCompleta.filter {
             it.nome.contains(texto, ignoreCase = true) || it.cpf.contains(texto)
         }
         adapter?.atualizarLista(listaFiltrada)
     }
 
-    private fun configurarAdapter(clientes: List<Usuario>) {
+    private fun configurarAdapter(funcionarios: List<Usuario>) {
         adapter = UsuarioAdapter(
-            lista = clientes,
-            onEditClick = { cliente ->
-                val intent = Intent(this, Activity_Edit_Cliente::class.java)
-                intent.putExtra("ID", cliente.id)
-                intent.putExtra("NOME", cliente.nome)
-                intent.putExtra("CPF", cliente.cpf)
+            lista = funcionarios,
+            onEditClick = { func ->
+                val intent = Intent(this, Activity_Edit_Func::class.java)
+                intent.putExtra("ID", func.id)
+                intent.putExtra("NOME", func.nome)
+                intent.putExtra("CPF", func.cpf)
                 startActivity(intent)
             },
-            onDeleteClick = { cliente ->
-                confirmarExclusao(cliente.id)
+            onDeleteClick = { func ->
+                confirmarExclusao(func.id)
             }
         )
         recyclerView.adapter = adapter
     }
 
     private fun configurarNavegacao() {
-        // --- Cabeçalho ---
+        // Cliques no Cabeçalho
         findViewById<ImageView>(R.id.ExibiProd_ImgBtnHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -109,7 +108,7 @@ class Activity_VisualizarClientes : AppCompatActivity() {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
 
-        // --- Barra Inferior ---
+        // Barra Inferior
         findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -119,34 +118,33 @@ class Activity_VisualizarClientes : AppCompatActivity() {
             finish()
         }
         findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
-            Toast.makeText(this, "Você já está em Clientes", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
+            finish()
         }
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
-            // NAVEGAÇÃO ATUALIZADA: Agora abre a tela de funcionários
-            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
-            finish()
+            Toast.makeText(this, "Você já está em Funcionários", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun confirmarExclusao(id: Int) {
         AlertDialog.Builder(this)
-            .setTitle("Excluir Cliente")
-            .setMessage("Tem certeza que deseja excluir este cliente?")
-            .setPositiveButton("Sim") { _, _ -> deletarCliente(id) }
+            .setTitle("Excluir Funcionário")
+            .setMessage("Deseja realmente excluir este funcionário?")
+            .setPositiveButton("Sim") { _, _ -> deletarFuncionario(id) }
             .setNegativeButton("Não", null)
             .show()
     }
 
-    private fun deletarCliente(id: Int) {
-        RetrofitClient.instance.deletarCliente(id).enqueue(object : Callback<Usuario> {
+    private fun deletarFuncionario(id: Int) {
+        RetrofitClient.instance.deletarFuncionario(id).enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Activity_VisualizarClientes, "Excluído com sucesso!", Toast.LENGTH_SHORT).show()
-                    buscarClientes()
+                    Toast.makeText(this@Activity_VisualizarFuncionarios, "Funcionário excluído!", Toast.LENGTH_SHORT).show()
+                    buscarFuncionarios()
                 }
             }
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                Toast.makeText(this@Activity_VisualizarClientes, "Erro ao excluir", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Activity_VisualizarFuncionarios, "Erro ao excluir", Toast.LENGTH_SHORT).show()
             }
         })
     }

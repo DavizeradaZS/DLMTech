@@ -22,48 +22,33 @@ class Activity_CadastroFunc : AppCompatActivity() {
         }
 
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
-
-        // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
-            finish() // Fecha a tela e volta para a anterior
+            finish()
         }
 
         // ==========================================
         // NAVEGAÇÃO DA BARRA INFERIOR
         // ==========================================
-        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
-        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
-        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
-        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
-        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
-
-        btnNavFuncionarios.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_already_on_employees), Toast.LENGTH_SHORT).show()
-        }
-        btnNavEstoque.setOnClickListener {
-            startActivity(Intent(this, Activity_Estoque::class.java))
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
         }
-        btnNavHome.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
+            finish()
+        }
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-        btnNavClientes.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_clients)), Toast.LENGTH_SHORT).show()
-        }
-        btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
+            startActivity(Intent(this, Activity_Estoque::class.java))
+            finish()
         }
 
-        // ==========================================
-        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
-        // ==========================================
-        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
-        btnCarrinho?.setOnClickListener {
+        // CABEÇALHO
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
-
-
     }
 }
