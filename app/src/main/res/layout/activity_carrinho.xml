@@ -18,6 +18,7 @@
         <ImageView
             android:id="@+id/ExibiProd_ImgBtnHome"
             style="@style/LogoStyle"
+            android:contentDescription="@string/logo_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="Autofill,MissingConstraints" />
 
         <ImageButton
             android:id="@+id/ExibiProd_ImgBtnCarinho"
