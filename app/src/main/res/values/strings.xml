@@ -84,6 +84,11 @@
     <string name="label_analysis">Tela de Análise</string>
     <string name="label_clients">Tela de Clientes</string>
     <string name="label_edit_screen">Tela de edição</string>
+    <string name="label_person_name">Nome da Pessoa</string>
+    <string name="label_cpf_role">CPF / Cargo</string>
+    <string name="title_visualize_clients">Clientes</string>
+    <string name="hint_search_employee">Pesquisar funcionário</string>
+    <string name="title_visualize_employees">Funcionários</string>
     <string name="msg_already_on_home">Você já está na Página Inicial</string>
     <string name="msg_error_loading_stock">Erro ao carregar estoque</string>
     <string name="msg_already_on_stock">Você já está na tela de Estoque</string>
