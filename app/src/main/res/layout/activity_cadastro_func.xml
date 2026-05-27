@@ -23,6 +23,7 @@
     <ImageView
         android:id="@+id/ExibiProd_ImgBtnHome"
         style="@style/LogoStyle"
+        android:contentDescription="@string/logo_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +38,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
         app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="Autofill,MissingConstraints" />
 
     <ImageButton
         android:id="@+id/ExibiProd_ImgBtnCarinho"
@@ -137,6 +138,7 @@
           android:layout_height="48dp"
           android:layout_marginTop="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblNome" />
@@ -158,6 +160,7 @@
           android:layout_marginTop="8dp"
           android:layout_marginEnd="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toStartOf="@+id/edtCPF"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblDataNasc" />
@@ -178,6 +181,7 @@
           android:layout_height="48dp"
           android:layout_marginStart="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/edtDataNasc"
           app:layout_constraintTop_toTopOf="@+id/edtDataNasc" />
@@ -210,6 +214,7 @@
           android:layout_height="48dp"
           android:layout_marginTop="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblAdm" />
@@ -238,9 +243,9 @@
           android:id="@+id/edtSal"
           android:layout_width="0dp"
           android:layout_height="48dp"
-
           android:layout_marginStart="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/edtDataAdm"
           app:layout_constraintTop_toTopOf="@+id/edtDataAdm" />
@@ -252,6 +257,7 @@
           android:layout_marginTop="8dp"
           android:layout_marginEnd="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toStartOf="@+id/edtSal"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblDataAdm" />
@@ -274,6 +280,7 @@
           android:layout_height="48dp"
           android:layout_marginTop="4dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -282,6 +289,7 @@
           android:layout_width="41dp"
           android:layout_height="44dp"
           android:layout_marginTop="12dp"
+          android:contentDescription="@null"
           app:layout_constraintStart_toEndOf="@+id/edtCep"
           app:layout_constraintTop_toBottomOf="@+id/lblCep"
           app:srcCompat="@android:drawable/ic_menu_search" />
@@ -302,6 +310,7 @@
           android:layout_height="48dp"
           android:layout_marginTop="16dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintStart_toStartOf="parent"
@@ -325,6 +334,7 @@
           android:layout_marginTop="20dp"
           android:layout_marginEnd="8dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toStartOf="@+id/edtBairro"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblNum" />
@@ -344,6 +354,7 @@
           android:layout_width="0dp"
           android:layout_height="48dp"
           android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/edtNum"
           app:layout_constraintTop_toTopOf="@+id/edtNum" />

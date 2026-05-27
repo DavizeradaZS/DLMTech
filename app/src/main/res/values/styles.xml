@@ -9,6 +9,7 @@
         <item name="android:background">@drawable/bordaredonda</item>
         <item name="android:ems">10</item>
         <item name="android:hint">@string/hint_search</item>
+        <item name="android:importantForAutofill">no</item>
         <item name="android:inputType">text</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
@@ -21,6 +22,8 @@
     <style name="BotaoIconeCarrinho">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:background"></item>
@@ -33,6 +36,7 @@
         <item name="backgroundTint">#B22222</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:fontFamily">sans-serif-condensed-medium</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">15dp</item>
@@ -76,6 +80,8 @@
     <style name="ImgBtnNavegacaoAnalise">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_margin">10dp</item>
@@ -86,6 +92,8 @@
     <style name="ImgBtnNavegacaoEstoque">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_margin">10dp</item>
@@ -96,6 +104,8 @@
     <style name="ImgBtnNavegacaoHome">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_margin">10dp</item>
@@ -107,6 +117,8 @@
     <style name="ImgBtnNavegacaoClientes">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_margin">10dp</item>
@@ -117,6 +129,8 @@
     <style name="ImgBtnNavegacaoFuncionarios">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_margin">10dp</item>

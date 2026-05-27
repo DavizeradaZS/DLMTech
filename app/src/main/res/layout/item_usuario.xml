@@ -19,7 +19,7 @@
             android:id="@+id/txtNomeUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome da Pessoa"
+            android:text="@string/label_person_name"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
@@ -28,7 +28,7 @@
             android:id="@+id/txtInfoSecundaria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CPF / Cargo"
+            android:text="@string/label_cpf_role"
             android:textSize="14sp"/>
     </LinearLayout>
 
@@ -39,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@android:drawable/ic_menu_edit"
-        android:contentDescription="Editar"
+        android:contentDescription="@string/btn_edit"
         android:tint="#4CAF50"/>
 
     <ImageButton
@@ -48,7 +48,7 @@
         android:layout_height="48dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@android:drawable/ic_menu_delete"
-        android:contentDescription="Excluir"
+        android:contentDescription="@string/btn_excluir"
         android:tint="#F44336"/>
 
 </LinearLayout>

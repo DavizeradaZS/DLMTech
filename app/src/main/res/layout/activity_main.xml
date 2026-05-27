@@ -37,6 +37,7 @@
         <ImageView
             android:id="@+id/ExibiProd_ImgBtnHome"
             style="@style/LogoStyle"
+            android:contentDescription="@string/logo_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="Autofill,MissingConstraints" />
 
         <ImageButton
             android:id="@+id/ExibiProd_ImgBtnCarinho"
@@ -221,6 +222,7 @@
                     android:id="@+id/imgCat1"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview" />
 
                 <TextView
@@ -246,6 +248,7 @@
                     android:id="@+id/imgCat2"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview" />
 
                 <TextView
@@ -270,6 +273,7 @@
                     android:id="@+id/imgCat3"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview" />
 
                 <TextView
@@ -293,6 +297,7 @@
                     android:id="@+id/imgCat4"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview" />
 
                 <TextView
@@ -317,6 +322,7 @@
                     android:id="@+id/imgCat5"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview"
                     />
 
@@ -342,6 +348,7 @@
                     android:id="@+id/imgCat6"
                     android:layout_width="74dp"
                     android:layout_height="77dp"
+                    android:contentDescription="@null"
                     android:src="@drawable/dlmtech2_removebg_preview" />
 
                 <TextView
@@ -388,6 +395,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@null"
                     android:src="@drawable/ic_launcher_background" />
 
             </androidx.cardview.widget.CardView>
@@ -417,6 +425,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@null"
                     android:src="@drawable/ic_launcher_background" />
 
             </androidx.cardview.widget.CardView>
@@ -444,6 +453,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@null"
                     android:src="@drawable/ic_launcher_background" />
 
             </androidx.cardview.widget.CardView>
