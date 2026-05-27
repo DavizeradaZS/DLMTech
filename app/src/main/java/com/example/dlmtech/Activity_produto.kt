@@ -8,21 +8,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dlmtech.api.RetrofitClient
+import com.example.dlmtech.api.ApiResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class  Activity_produto : AppCompatActivity() {
+class Activity_produto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produto)
-
-        // Evita erro se a view principal não tiver o id "main"
-        val mainView = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.main)
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
-        }
 
         // Mapeando os campos do layout
         val txtNome = findViewById<TextView>(R.id.ExibiProduto_TxtProduto)
@@ -47,8 +42,27 @@ class  Activity_produto : AppCompatActivity() {
         val btnRemover = findViewById<android.widget.Button>(R.id.Remover)
 
         btnAdicionar.setOnClickListener {
-            // Aqui entrará a requisição para a API do Carrinho
-            Toast.makeText(this, getString(R.string.msg_adding_to_cart, nome), Toast.LENGTH_SHORT).show()
+            if (idProduto != -1) {
+                // Requisição Real para a API usando ApiResponse
+                RetrofitClient.instance.addCarrinho(idProduto).enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                        if (response.isSuccessful) {
+                            val resposta = response.body()
+                            if (resposta != null && resposta.sucesso) {
+                                Toast.makeText(this@Activity_produto, resposta.mensagem, Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this@Activity_produto, resposta?.mensagem ?: "Erro ao adicionar", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@Activity_produto, "Erro de conexão", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                Toast.makeText(this, "Produto inválido!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnEditar.setOnClickListener {

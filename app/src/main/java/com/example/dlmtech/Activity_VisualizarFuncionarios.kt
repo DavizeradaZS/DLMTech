@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dlmtech.adapter.UsuarioAdapter
+import com.example.dlmtech.api.ApiResponse
 import com.example.dlmtech.api.RetrofitClient
 import com.example.dlmtech.api.Usuario
 import retrofit2.Call
@@ -136,14 +137,15 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
     }
 
     private fun deletarFuncionario(id: Int) {
-        RetrofitClient.instance.deletarFuncionario(id).enqueue(object : Callback<Usuario> {
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+        // Alterado aqui de <Usuario> para <ApiResponse>
+        RetrofitClient.instance.deletarFuncionario(id).enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@Activity_VisualizarFuncionarios, "Funcionário excluído!", Toast.LENGTH_SHORT).show()
                     buscarFuncionarios()
                 }
             }
-            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 Toast.makeText(this@Activity_VisualizarFuncionarios, "Erro ao excluir", Toast.LENGTH_SHORT).show()
             }
         })

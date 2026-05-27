@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dlmtech.api.RetrofitClient
-import com.example.dlmtech.api.Usuario
+import com.example.dlmtech.api.ApiResponse // Adicionado importação
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,20 +20,17 @@ class Activity_Edit_Cliente : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_cliente)
 
-        // Mapeando os campos
         val edtNome = findViewById<EditText>(R.id.edtNome)
         val edtCpf = findViewById<EditText>(R.id.edtCPF)
         val edtCep = findViewById<EditText>(R.id.edtCep)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
 
-        // Ação do botão Cancelar
         btnCancelar.setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_registration_cancelled), Toast.LENGTH_SHORT).show()
-            finish() // Fecha a tela e volta para a anterior
+            finish()
         }
 
-        // Recebendo dados da Intent (Simulando que vieram da lista)
         clienteId = intent.getIntExtra("ID", -1)
         edtNome.setText(intent.getStringExtra("NOME"))
         edtCpf.setText(intent.getStringExtra("CPF"))
@@ -42,56 +39,48 @@ class Activity_Edit_Cliente : AppCompatActivity() {
             val nome = edtNome.text.toString()
             val cpf = edtCpf.text.toString()
             val cep = edtCep.text.toString()
-            // ... pegar os outros campos do layout
 
+            // Alterado para ApiResponse
             RetrofitClient.instance.updateCliente(clienteId, nome, "", cpf, cep, "", "", "")
-                .enqueue(object : Callback<Usuario> {
-                    override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+                .enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(this@Activity_Edit_Cliente, getString(R.string.msg_client_updated), Toast.LENGTH_SHORT).show()
-                            finish()
+                            val resposta = response.body()
+                            if (resposta != null && resposta.sucesso) {
+                                Toast.makeText(this@Activity_Edit_Cliente, resposta.mensagem, Toast.LENGTH_SHORT).show()
+                                finish()
+                            } else {
+                                Toast.makeText(this@Activity_Edit_Cliente, resposta?.mensagem ?: "Erro ao atualizar", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-                    override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                         Toast.makeText(this@Activity_Edit_Cliente, getString(R.string.msg_connection_error), Toast.LENGTH_SHORT).show()
                     }
                 })
         }
 
-        // ==========================================
-        // NAVEGAÇÃO DA BARRA INFERIOR
-        // ==========================================
-        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
-        val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
-        val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
-        val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
-        val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
-
-        btnNavFuncionarios.setOnClickListener {
+        // NAVEGAÇÃO
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
         }
-        btnNavEstoque.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
             finish()
         }
-        btnNavHome.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-        btnNavClientes.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarClientes::class.java))
             finish()
         }
-        btnNavAnalise.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
             Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
         }
-
-        // ==========================================
-        // NAVEGAÇÃO DO CABEÇALHO (HEADER)
-        // ==========================================
-        val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
-        btnCarrinho?.setOnClickListener {
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)?.setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
     }

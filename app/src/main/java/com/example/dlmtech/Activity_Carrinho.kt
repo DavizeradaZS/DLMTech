@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dlmtech.adapter.CarrinhoAdapter
+import com.example.dlmtech.api.ApiResponse
 import com.example.dlmtech.api.Carrinho
 import com.example.dlmtech.api.RetrofitClient
 import com.example.dlmtech.api.Usuario
@@ -98,12 +99,13 @@ class Activity_Carrinho : AppCompatActivity() {
     }
 
     private fun removerItem(id: Int) {
-        RetrofitClient.instance.removerDoCarrinho(id).enqueue(object : Callback<Usuario> {
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+        // Alterado de Callback<Usuario> para Callback<ApiResponse>
+        RetrofitClient.instance.removerDoCarrinho(id).enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 Toast.makeText(this@Activity_Carrinho, getString(R.string.msg_removed), Toast.LENGTH_SHORT).show()
                 carregarCarrinho() // Recarrega a lista
             }
-            override fun onFailure(call: Call<Usuario>, t: Throwable) { /* Erro */ }
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) { /* Erro */ }
         })
     }
 }

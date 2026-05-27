@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dlmtech.api.RetrofitClient
-import com.example.dlmtech.api.Usuario
+import com.example.dlmtech.api.ApiResponse // Importação atualizada para ApiResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,24 +22,49 @@ class activity_login : AppCompatActivity() {
         val btnEntrar = findViewById<Button>(R.id.button)
 
         btnEntrar.setOnClickListener {
-            val email = edtEmail.text.toString()
-            val senha = edtSenha.text.toString()
+            // O .trim() remove espaços vazios no começo ou final que o usuário possa ter digitado sem querer
+            val email = edtEmail.text.toString().trim()
+            val senha = edtSenha.text.toString().trim()
 
-            RetrofitClient.instance.login(email, senha).enqueue(object : Callback<Usuario> {
-                override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                    if (response.isSuccessful && response.body()?.sucesso == true) {
-                        startActivity(Intent(this@activity_login, MainActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(this@activity_login, getString(R.string.msg_invalid_login), Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty() && senha.isNotEmpty()) {
+                // Trocamos Callback<Usuario> por Callback<ApiResponse>
+                RetrofitClient.instance.login(email, senha).enqueue(object : Callback<ApiResponse> {
+
+                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                        if (response.isSuccessful) {
+                            val resposta = response.body()
+
+                            // Verifica se o PHP retornou "sucesso" como true
+                            if (resposta != null && resposta.sucesso) {
+                                // Exibe a mensagem "Bem-vindo, Nome" vinda do banco
+                                Toast.makeText(this@activity_login, resposta.mensagem, Toast.LENGTH_SHORT).show()
+
+                                // Lógica de roteamento baseada no tipo de usuário
+                                val intent = when (resposta.tipo) {
+                                    "funcionario" -> Intent(this@activity_login, Activity_Estoque::class.java)
+                                    "cliente" -> Intent(this@activity_login, MainActivity::class.java)
+                                    else -> Intent(this@activity_login, MainActivity::class.java) // Fallback seguro
+                                }
+
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                // Exibe a mensagem de erro ("Email ou senha incorretos") ou o fallback do strings.xml
+                                val errorMsg = resposta?.mensagem ?: getString(R.string.msg_invalid_login)
+                                Toast.makeText(this@activity_login, errorMsg, Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(this@activity_login, "Erro no servidor da API", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
-                override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                    Toast.makeText(this@activity_login, getString(R.string.msg_connection_error), Toast.LENGTH_SHORT).show()
-                }
-            })
+
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@activity_login, getString(R.string.msg_connection_error), Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                Toast.makeText(this@activity_login, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 }

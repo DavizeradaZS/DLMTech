@@ -1,23 +1,21 @@
 <?php
 include 'config.php';
 
-$id        = $_POST['id'];
-$nome      = $_POST['nome'];
-$data_nasc = $_POST['data_nasc'];
-$cpf       = $_POST['cpf'];
-$cep       = $_POST['cep'];
-$rua       = $_POST['rua'];
-$bairro    = $_POST['bairro'];
-$numero    = $_POST['numero'];
+$id        = $_POST['id']       ?? '';
+$nome      = $_POST['nome']     ?? '';
+$dataNasc  = $_POST['dataNasc'] ?? ''; // Nomenclatura igual a do Android!
+$cpf       = $_POST['cpf']      ?? '';
+$cep       = $_POST['cep']      ?? '';
+$rua       = $_POST['rua']      ?? '';
+$bairro    = $_POST['bairro']   ?? '';
+$numero    = $_POST['numero']   ?? '';
 
-$sql = "UPDATE clientes SET 
-        nome='$nome', data_nasc='$data_nasc', cpf='$cpf', 
-        cep='$cep', rua='$rua', bairro='$bairro', numero='$numero' 
-        WHERE id='$id'";
+$stmt = $conn->prepare("UPDATE clientes SET nome=?, data_nasc=?, cpf=?, cep=?, rua=?, bairro=?, numero=? WHERE id=?");
+$stmt->bind_param("sssssssi", $nome, $dataNasc, $cpf, $cep, $rua, $bairro, $numero, $id);
 
-if ($conn->query($sql) === TRUE) {
+if ($stmt->execute()) {
     echo json_encode(["sucesso" => true, "mensagem" => "Cliente atualizado!"]);
 } else {
-    echo json_encode(["sucesso" => false, "mensagem" => $conn->error]);
+    echo json_encode(["sucesso" => false, "mensagem" => "Erro: " . $stmt->error]);
 }
 ?>
