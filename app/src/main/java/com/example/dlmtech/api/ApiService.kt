@@ -92,4 +92,19 @@ interface ApiService {
 
     @GET
     fun buscarCep(@Url url: String): Call<Endereco>
+
+    @FormUrlEncoded
+    @POST("cadastro_funcionario.php")
+    fun cadastrarFuncionario(
+        @Field("nome") nome: String,
+        @Field("data_nasc") data_nasc: String,
+        @Field("cpf") cpf: String,
+        @Field("nivel_acesso") nivel_acesso: String,
+        @Field("data_admissao") data_admissao: String,
+        @Field("salario") salario: String,
+        @Field("cep") cep: String,
+        @Field("rua") rua: String,
+        @Field("bairro") bairro: String,
+        @Field("numero") numero: String
+    ): Call<ApiResponse>
 }

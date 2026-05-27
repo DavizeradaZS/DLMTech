@@ -2,15 +2,31 @@ package com.example.dlmtech
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dlmtech.api.ApiService
+import com.example.dlmtech.api.ApiResponse
+import com.example.dlmtech.api.Endereco
+import com.example.dlmtech.api.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class Activity_CadastroFunc : AppCompatActivity() {
+
+    private lateinit var editRua: EditText
+    private lateinit var editBairro: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,13 +37,83 @@ class Activity_CadastroFunc : AppCompatActivity() {
             insets
         }
 
+        // Mapeando todos os campos usando os IDs do seu XML
+        val editNome = findViewById<EditText>(R.id.edtNome)
+        val editDataNasc = findViewById<EditText>(R.id.edtDataNasc)
+        val editCPF = findViewById<EditText>(R.id.edtCPF)
+        val editAdm = findViewById<EditText>(R.id.edtAdm) // Nível de Acesso
+        val editDataAdm = findViewById<EditText>(R.id.edtDataAdm)
+        val editSal = findViewById<EditText>(R.id.edtSal) // Salário
+        val editCep = findViewById<EditText>(R.id.edtCep)
+        val editNum = findViewById<EditText>(R.id.edtNum)
+
+        editRua = findViewById(R.id.edtRua)
+        editBairro = findViewById(R.id.edtBairro)
+
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+        val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+
         btnCancelar.setOnClickListener {
             finish()
         }
 
         // ==========================================
-        // NAVEGAÇÃO DA BARRA INFERIOR
+        // LÓGICA DE SALVAR O FUNCIONÁRIO
+        // ==========================================
+        btnSalvar.setOnClickListener {
+            val nome = editNome.text.toString()
+            val dataNasc = editDataNasc.text.toString()
+            val cpf = editCPF.text.toString()
+            val nivelAcesso = editAdm.text.toString()
+            val dataAdmissao = editDataAdm.text.toString()
+            val salario = editSal.text.toString()
+            val cep = editCep.text.toString()
+            val rua = editRua.text.toString()
+            val bairro = editBairro.text.toString()
+            val numero = editNum.text.toString()
+
+            if (nome.isEmpty() || cpf.isEmpty()) {
+                Toast.makeText(this, "Preencha pelo menos Nome e CPF!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            RetrofitClient.instance.cadastrarFuncionario(
+                nome, dataNasc, cpf, nivelAcesso, dataAdmissao, salario, cep, rua, bairro, numero
+            ).enqueue(object : Callback<ApiResponse> {
+                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                    if (response.isSuccessful) {
+                        val resposta = response.body()
+                        if (resposta != null && resposta.sucesso) {
+                            Toast.makeText(this@Activity_CadastroFunc, resposta.mensagem, Toast.LENGTH_LONG).show()
+                            finish() // Volta para a tela anterior
+                        } else {
+                            Toast.makeText(this@Activity_CadastroFunc, resposta?.mensagem ?: "Erro ao cadastrar", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                    Toast.makeText(this@Activity_CadastroFunc, "Erro de conexão com a API", Toast.LENGTH_LONG).show()
+                }
+            })
+        }
+
+        // ==========================================
+        // LÓGICA DO CEP (AUTO-PREENCHIMENTO)
+        // ==========================================
+        editCep.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val cepLimpo = s.toString().replace("-", "").replace(" ", "")
+                if (cepLimpo.length == 8) {
+                    buscarCep(cepLimpo)
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        // ==========================================
+        // NAVEGAÇÃO DA BARRA INFERIOR E CABEÇALHO
         // ==========================================
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
@@ -45,10 +131,36 @@ class Activity_CadastroFunc : AppCompatActivity() {
             startActivity(Intent(this, Activity_Estoque::class.java))
             finish()
         }
-
-        // CABEÇALHO
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
+    }
+
+    // ==========================================
+    // FUNÇÃO DE REQUISIÇÃO À API (VIACEP)
+    // ==========================================
+    private fun buscarCep(cep: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://viacep.com.br/ws/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api = retrofit.create(ApiService::class.java)
+        api.buscarCep("$cep/json/").enqueue(object : Callback<Endereco> {
+            override fun onResponse(call: Call<Endereco>, response: Response<Endereco>) {
+                if (response.isSuccessful) {
+                    val end = response.body()
+                    if (end != null && end.logradouro != null) {
+                        editRua.setText(end.logradouro)
+                        editBairro.setText(end.bairro)
+                    } else {
+                        Toast.makeText(this@Activity_CadastroFunc, "CEP não encontrado", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<Endereco>, t: Throwable) {
+                Toast.makeText(this@Activity_CadastroFunc, "Erro ao buscar CEP", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
