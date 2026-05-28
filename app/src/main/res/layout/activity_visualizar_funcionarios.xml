@@ -8,6 +8,18 @@
     android:background="@drawable/degrade">
 
     <!-- CABEÇALHO -->
+    <View
+        android:id="@+id/view9"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#CC0000"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
