@@ -24,6 +24,18 @@
     <string name="hint_preco">Price</string>
     <string name="hint_quantidade">Quantity</string>
 
+
+    <string name="title_cadastro_prod">REGISTER PRODUCT</string>
+    <string name="label_prod_name">Product Name</string>
+    <string name="label_prod_info">Product Information</string>
+    <string name="label_prod_img">Product Image</string>
+    <string name="label_valor">Price</string>
+    <string name="label_prod_desc">Product Description</string>
+
+    <string name="title_edit_prod">EDIT PRODUCT</string>
+
+
+
     <string name="title_carrinho">Cart</string>
     <string name="txt_total">Total: $ 0.00</string>
     <string name="btn_finalizar_compra">Checkout</string>

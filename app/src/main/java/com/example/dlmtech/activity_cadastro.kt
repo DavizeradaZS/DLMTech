@@ -26,6 +26,7 @@ class activity_cadastro : AppCompatActivity() {
     private lateinit var editRua: EditText
     private lateinit var editBairro: EditText
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,6 +46,27 @@ class activity_cadastro : AppCompatActivity() {
 
         btnCancelar.setOnClickListener { finish() }
 
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
+            finish()
+        }
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
+            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
+            finish()
+        }
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
+            startActivity(Intent(this, Activity_Estoque::class.java))
+            finish()
+        }
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
+            startActivity(Intent(this, Activity_Carrinho::class.java))
+        }
+
+
         btnSalvar.setOnClickListener {
             val nome = editNome.text.toString()
             val dataNasc = editDataNasc.text.toString()
@@ -58,6 +80,7 @@ class activity_cadastro : AppCompatActivity() {
                 Toast.makeText(this, "Preencha os campos obrigatórios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
 
             RetrofitClient.instance.cadastrarUsuario(nome, dataNasc, cpf, cep, rua, bairro, numero)
                 .enqueue(object : Callback<ApiResponse> {
@@ -92,6 +115,7 @@ class activity_cadastro : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+
     } // Fim do onCreate
 
 
@@ -116,5 +140,6 @@ class activity_cadastro : AppCompatActivity() {
                 Toast.makeText(this@activity_cadastro, "Erro ao buscar CEP", Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 }

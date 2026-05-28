@@ -24,6 +24,17 @@
     <string name="hint_preco">Precio</string>
     <string name="hint_quantidade">Cantidad</string>
 
+    <string name="title_cadastro_prod">REGISTRO DE PRODUCTO</string>
+    <string name="label_prod_name">Nombre del Producto</string>
+    <string name="label_prod_info">Información del Producto</string>
+    <string name="label_prod_img">Imagen del Producto</string>
+    <string name="label_valor">Precio</string>
+    <string name="label_prod_desc">Descripción del Producto</string>
+
+    <string name="title_edit_prod">EDICIÓN DE PRODUCTO</string>
+
+
+
     <string name="title_carrinho">Carrito</string>
     <string name="txt_total">Total: $ 0,00</string>
     <string name="btn_finalizar_compra">Finalizar Compra</string>
