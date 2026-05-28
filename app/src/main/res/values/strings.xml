@@ -31,6 +31,8 @@
     <string name="label_valor">Valor</string>
     <string name="label_prod_desc">Descrição do Produto</string>
 
+    <string name="title_edit_prod">EDIÇÃO DE PRODUTO</string>
+
     <string name="title_carrinho">Carrinho</string>
     <string name="txt_total">Total: R$ 0,00</string>
     <string name="btn_finalizar_compra">Finalizar Compra</string>
