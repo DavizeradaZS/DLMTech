@@ -8,14 +8,12 @@
     android:layout_height="match_parent"
     tools:context=".Activity_CadastroFunc"
     android:background="@drawable/degrade"
-    android:fontFamily="@font/roboto_condensed_regular"
-    >
+    android:fontFamily="@font/roboto_condensed_regular">
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/constraintLayout"
       android:layout_width="0dp"
       android:layout_height="65dp"
-      app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
@@ -52,35 +50,16 @@
         app:layout_constraintStart_toEndOf="@+id/ExibiProd_TxtPesquisa"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
-
   </androidx.constraintlayout.widget.ConstraintLayout>
 
   <View
       android:id="@+id/view5"
       android:layout_width="match_parent"
       android:layout_height="3dp"
-      android:layout_marginTop="64dp"
       android:background="#CC0000"
-      app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-      app:layout_constraintVertical_bias="0.002" />
-
-
-  <View
-      android:id="@+id/view4"
-      android:layout_width="match_parent"
-      android:layout_height="3dp"
-      android:background="#CC0000"
-      app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.895" />
-
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
   <androidx.core.widget.NestedScrollView
       android:id="@+id/nestedScrollView"
@@ -90,7 +69,7 @@
       app:layout_constraintBottom_toTopOf="@+id/view4"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+      app:layout_constraintTop_toBottomOf="@+id/view5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -165,7 +144,6 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblDataNasc" />
 
-
       <TextView
           android:id="@+id/lblCPF"
           android:layout_width="wrap_content"
@@ -190,23 +168,67 @@
           android:id="@+id/txtInfoPessoais2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="264dp"
+          android:layout_marginTop="32dp"
           android:text="@string/label_employee_info"
           android:textColor="#FF0000"
           android:textSize="18sp"
           android:textStyle="bold"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+          app:layout_constraintTop_toBottomOf="@+id/edtCPF" />
+
+      <TextView
+          android:id="@+id/lblEmail"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:text="Email de Acesso"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais2" />
+
+      <EditText
+          android:id="@+id/edtEmail"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/bordaredonda"
+          android:inputType="textEmailAddress"
+          tools:ignore="Autofill"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+
+      <TextView
+          android:id="@+id/lblSenha"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:text="Senha de Acesso"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+      <EditText
+          android:id="@+id/edtSenha"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/bordaredonda"
+          android:inputType="textPassword"
+          tools:ignore="Autofill"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/lblSenha" />
 
       <TextView
           android:id="@+id/lblAdm"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="24dp"
+          android:layout_marginTop="16dp"
           android:text="@string/label_access_level"
           android:textColor="#FFFFFF"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais2" />
+          app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
 
       <EditText
           android:id="@+id/edtAdm"
@@ -223,32 +245,20 @@
           android:id="@+id/lblDataAdm"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="64dp"
+          android:layout_marginTop="16dp"
           android:text="@string/label_admission_date"
           android:textColor="#FFFFFF"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="@+id/edtAdm" />
+          app:layout_constraintTop_toBottomOf="@+id/edtAdm" />
 
       <TextView
           android:id="@+id/lblSal"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/label_admission_date"
+          android:text="Salário"
           android:textColor="#FFFFFF"
-
           app:layout_constraintStart_toStartOf="@+id/edtSal"
           app:layout_constraintTop_toTopOf="@+id/lblDataAdm" />
-
-      <EditText
-          android:id="@+id/edtSal"
-          android:layout_width="0dp"
-          android:layout_height="48dp"
-          android:layout_marginStart="8dp"
-          android:background="@drawable/bordaredonda"
-          tools:ignore="Autofill"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toEndOf="@+id/edtDataAdm"
-          app:layout_constraintTop_toTopOf="@+id/edtDataAdm" />
 
       <EditText
           android:id="@+id/edtDataAdm"
@@ -262,43 +272,64 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblDataAdm" />
 
+      <EditText
+          android:id="@+id/edtSal"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginStart="8dp"
+          android:background="@drawable/bordaredonda"
+          tools:ignore="Autofill"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/edtDataAdm"
+          app:layout_constraintTop_toTopOf="@+id/edtDataAdm" />
+
       <TextView
           android:id="@+id/txtInfoPessoais3"
-          android:layout_width="213dp"
-          android:layout_height="27dp"
-          android:layout_marginTop="496dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="32dp"
           android:text="@string/label_address_info"
           android:textColor="#FF0000"
           android:textSize="18sp"
           android:textStyle="bold"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+          app:layout_constraintTop_toBottomOf="@+id/edtDataAdm" />
+
+      <TextView
+          android:id="@+id/lblCep"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:text="@string/label_cep"
+          android:textColor="#FFFFFF"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais3" />
 
       <EditText
           android:id="@+id/edtCep"
           android:layout_width="163dp"
           android:layout_height="48dp"
-          android:layout_marginTop="4dp"
+          android:layout_marginTop="8dp"
           android:background="@drawable/bordaredonda"
           tools:ignore="Autofill"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="@+id/imageView3" />
+          app:layout_constraintTop_toBottomOf="@+id/lblCep" />
 
       <ImageView
           android:id="@+id/imageView3"
           android:layout_width="41dp"
           android:layout_height="44dp"
-          android:layout_marginTop="12dp"
           android:contentDescription="@null"
+          app:layout_constraintBottom_toBottomOf="@+id/edtCep"
           app:layout_constraintStart_toEndOf="@+id/edtCep"
-          app:layout_constraintTop_toBottomOf="@+id/lblCep"
+          app:layout_constraintTop_toTopOf="@+id/edtCep"
           app:srcCompat="@android:drawable/ic_menu_search" />
 
       <TextView
           android:id="@+id/lblRua"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="16dp"
           android:text="@string/label_street"
           android:textColor="#FFFFFF"
           app:layout_constraintStart_toStartOf="parent"
@@ -308,30 +339,28 @@
           android:id="@+id/edtRua"
           android:layout_width="0dp"
           android:layout_height="48dp"
-          android:layout_marginTop="16dp"
+          android:layout_marginTop="8dp"
           android:background="@drawable/bordaredonda"
           tools:ignore="Autofill"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/lblRua" />
 
       <TextView
-          android:id="@+id/lblBairro"
+          android:id="@+id/lblNum"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/label_neighborhood"
+          android:layout_marginTop="16dp"
+          android:text="@string/label_number"
           android:textColor="#FFFFFF"
-          app:layout_constraintBottom_toTopOf="@+id/edtBairro"
-          app:layout_constraintStart_toStartOf="@+id/edtBairro"
-          app:layout_constraintTop_toTopOf="@+id/lblNum"
-          app:layout_constraintVertical_bias="0.09" />
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/edtRua" />
 
       <EditText
           android:id="@+id/edtNum"
           android:layout_width="0dp"
           android:layout_height="48dp"
-          android:layout_marginTop="20dp"
+          android:layout_marginTop="8dp"
           android:layout_marginEnd="8dp"
           android:background="@drawable/bordaredonda"
           tools:ignore="Autofill"
@@ -340,14 +369,13 @@
           app:layout_constraintTop_toBottomOf="@+id/lblNum" />
 
       <TextView
-          android:id="@+id/lblNum"
+          android:id="@+id/lblBairro"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="20dp"
-          android:text="@string/label_number"
+          android:text="@string/label_neighborhood"
           android:textColor="#FFFFFF"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/edtRua" />
+          app:layout_constraintStart_toStartOf="@+id/edtBairro"
+          app:layout_constraintTop_toTopOf="@+id/lblNum" />
 
       <EditText
           android:id="@+id/edtBairro"
@@ -359,49 +387,44 @@
           app:layout_constraintStart_toEndOf="@+id/edtNum"
           app:layout_constraintTop_toTopOf="@+id/edtNum" />
 
-      <TextView
-          android:id="@+id/lblCep"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="20dp"
-
-          android:text="@string/label_cep"
-          android:textColor="#FFFFFF"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txtInfoPessoais3" />
-
       <Button
           android:id="@+id/btnCancelar"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="56dp"
-          android:layout_marginTop="28dp"
+          android:layout_marginTop="32dp"
+          android:layout_marginBottom="32dp"
           android:backgroundTint="#B22222"
           android:text="@string/btn_cancel"
           android:textStyle="bold"
           app:cornerRadius="15px"
-          app:layout_constraintBottom_toBottomOf="@+id/btnSalvar"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/edtNum"
-          app:layout_constraintVertical_bias="0.0" />
+          app:layout_constraintTop_toBottomOf="@+id/edtNum" />
 
       <Button
           android:id="@+id/btnSalvar"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="28dp"
           android:backgroundTint="#B22222"
           android:text="@string/btn_salvar"
           android:textStyle="bold"
           app:cornerRadius="15px"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.763"
           app:layout_constraintStart_toEndOf="@+id/btnCancelar"
-          app:layout_constraintTop_toBottomOf="@+id/edtBairro" />
-
+          app:layout_constraintTop_toTopOf="@+id/btnCancelar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.core.widget.NestedScrollView>
+
+  <View
+      android:id="@+id/view4"
+      android:layout_width="match_parent"
+      android:layout_height="3dp"
+      android:background="#CC0000"
+      app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/constraintLayout3"

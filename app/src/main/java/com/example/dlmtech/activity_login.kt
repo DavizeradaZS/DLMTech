@@ -39,9 +39,20 @@ class activity_login : AppCompatActivity() {
                                 // Exibe a mensagem "Bem-vindo, Nome" vinda do banco
                                 Toast.makeText(this@activity_login, resposta.mensagem, Toast.LENGTH_SHORT).show()
 
-                                // Lógica de roteamento baseada no tipo de usuário
+                                // ==========================================
+                                // LÓGICA DE ROTEAMENTO (COM NÍVEL DE ACESSO)
+                                // ==========================================
                                 val intent = when (resposta.tipo) {
-                                    "funcionario" -> Intent(this@activity_login, Activity_Estoque::class.java)
+                                    "funcionario" -> {
+                                        // Verifica se a palavra Admin foi digitada (ignorando maiúsculas e minúsculas)
+                                        if (resposta.nivel_acesso.equals("Admin", ignoreCase = true)) {
+                                            // Se for Admin, vai para a visualização de funcionários
+                                            Intent(this@activity_login, Activity_VisualizarFuncionarios::class.java)
+                                        } else {
+                                            // Se for outro cargo (Estoquista, etc), vai para o Estoque
+                                            Intent(this@activity_login, Activity_Estoque::class.java)
+                                        }
+                                    }
                                     "cliente" -> Intent(this@activity_login, MainActivity::class.java)
                                     else -> Intent(this@activity_login, MainActivity::class.java) // Fallback seguro
                                 }
@@ -56,6 +67,8 @@ class activity_login : AppCompatActivity() {
                         } else {
                             Toast.makeText(this@activity_login, "Erro no servidor da API", Toast.LENGTH_SHORT).show()
                         }
+
+
                     }
 
                     override fun onFailure(call: Call<ApiResponse>, t: Throwable) {

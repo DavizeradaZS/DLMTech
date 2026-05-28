@@ -1,11 +1,13 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require 'config.php'; // Usa o seu arquivo de conexão atual
+require 'config.php';
 
 $response = array();
 
 // Recebendo os dados do aplicativo
 $nome = $_POST['nome'] ?? '';
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
 $data_nasc = $_POST['data_nasc'] ?? '';
 $cpf = $_POST['cpf'] ?? '';
 $nivel_acesso = $_POST['nivel_acesso'] ?? '';
@@ -16,9 +18,9 @@ $rua = $_POST['rua'] ?? '';
 $bairro = $_POST['bairro'] ?? '';
 $numero = $_POST['numero'] ?? '';
 
-// Montando a inserção no banco de dados (Atenção: verifique se a sua tabela se chama 'funcionarios' mesmo)
-$sql = "INSERT INTO funcionarios (nome, data_nasc, cpf, nivel_acesso, data_admissao, salario, cep, rua, bairro, numero) 
-        VALUES ('$nome', '$data_nasc', '$cpf', '$nivel_acesso', '$data_admissao', '$salario', '$cep', '$rua', '$bairro', '$numero')";
+// Montando a inserção no banco de dados com Email e Senha
+$sql = "INSERT INTO funcionarios (nome, email, senha, data_nasc, cpf, nivel_acesso, data_admissao, salario, cep, rua, bairro, numero)
+        VALUES ('$nome', '$email', '$senha', '$data_nasc', '$cpf', '$nivel_acesso', '$data_admissao', '$salario', '$cep', '$rua', '$bairro', '$numero')";
 
 if (mysqli_query($conn, $sql)) {
     $response['sucesso'] = true;

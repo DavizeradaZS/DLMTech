@@ -97,6 +97,8 @@ interface ApiService {
     @POST("cadastro_funcionario.php")
     fun cadastrarFuncionario(
         @Field("nome") nome: String,
+        @Field("email") email: String,
+        @Field("senha") senha: String,
         @Field("data_nasc") data_nasc: String,
         @Field("cpf") cpf: String,
         @Field("nivel_acesso") nivel_acesso: String,

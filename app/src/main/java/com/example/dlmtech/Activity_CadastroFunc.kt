@@ -37,13 +37,14 @@ class Activity_CadastroFunc : AppCompatActivity() {
             insets
         }
 
-        // Mapeando todos os campos usando os IDs do seu XML
         val editNome = findViewById<EditText>(R.id.edtNome)
         val editDataNasc = findViewById<EditText>(R.id.edtDataNasc)
         val editCPF = findViewById<EditText>(R.id.edtCPF)
-        val editAdm = findViewById<EditText>(R.id.edtAdm) // Nível de Acesso
+        val editEmail = findViewById<EditText>(R.id.edtEmail) // Novo campo!
+        val editSenha = findViewById<EditText>(R.id.edtSenha) // Novo campo!
+        val editAdm = findViewById<EditText>(R.id.edtAdm)
         val editDataAdm = findViewById<EditText>(R.id.edtDataAdm)
-        val editSal = findViewById<EditText>(R.id.edtSal) // Salário
+        val editSal = findViewById<EditText>(R.id.edtSal)
         val editCep = findViewById<EditText>(R.id.edtCep)
         val editNum = findViewById<EditText>(R.id.edtNum)
 
@@ -53,15 +54,12 @@ class Activity_CadastroFunc : AppCompatActivity() {
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
 
-        btnCancelar.setOnClickListener {
-            finish()
-        }
+        btnCancelar.setOnClickListener { finish() }
 
-        // ==========================================
-        // LÓGICA DE SALVAR O FUNCIONÁRIO
-        // ==========================================
         btnSalvar.setOnClickListener {
             val nome = editNome.text.toString()
+            val email = editEmail.text.toString().trim()
+            val senha = editSenha.text.toString().trim()
             val dataNasc = editDataNasc.text.toString()
             val cpf = editCPF.text.toString()
             val nivelAcesso = editAdm.text.toString()
@@ -72,20 +70,20 @@ class Activity_CadastroFunc : AppCompatActivity() {
             val bairro = editBairro.text.toString()
             val numero = editNum.text.toString()
 
-            if (nome.isEmpty() || cpf.isEmpty()) {
-                Toast.makeText(this, "Preencha pelo menos Nome e CPF!", Toast.LENGTH_SHORT).show()
+            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
+                Toast.makeText(this, "Preencha pelo menos Nome, Email e Senha!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             RetrofitClient.instance.cadastrarFuncionario(
-                nome, dataNasc, cpf, nivelAcesso, dataAdmissao, salario, cep, rua, bairro, numero
+                nome, email, senha, dataNasc, cpf, nivelAcesso, dataAdmissao, salario, cep, rua, bairro, numero
             ).enqueue(object : Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {
                         val resposta = response.body()
                         if (resposta != null && resposta.sucesso) {
                             Toast.makeText(this@Activity_CadastroFunc, resposta.mensagem, Toast.LENGTH_LONG).show()
-                            finish() // Volta para a tela anterior
+                            finish()
                         } else {
                             Toast.makeText(this@Activity_CadastroFunc, resposta?.mensagem ?: "Erro ao cadastrar", Toast.LENGTH_LONG).show()
                         }
@@ -98,9 +96,6 @@ class Activity_CadastroFunc : AppCompatActivity() {
             })
         }
 
-        // ==========================================
-        // LÓGICA DO CEP (AUTO-PREENCHIMENTO)
-        // ==========================================
         editCep.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val cepLimpo = s.toString().replace("-", "").replace(" ", "")
@@ -112,9 +107,7 @@ class Activity_CadastroFunc : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        // ==========================================
-        // NAVEGAÇÃO DA BARRA INFERIOR E CABEÇALHO
-        // ==========================================
+        // NAVEGAÇÃO
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
@@ -136,9 +129,6 @@ class Activity_CadastroFunc : AppCompatActivity() {
         }
     }
 
-    // ==========================================
-    // FUNÇÃO DE REQUISIÇÃO À API (VIACEP)
-    // ==========================================
     private fun buscarCep(cep: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://viacep.com.br/ws/")
@@ -153,8 +143,6 @@ class Activity_CadastroFunc : AppCompatActivity() {
                     if (end != null && end.logradouro != null) {
                         editRua.setText(end.logradouro)
                         editBairro.setText(end.bairro)
-                    } else {
-                        Toast.makeText(this@Activity_CadastroFunc, "CEP não encontrado", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
