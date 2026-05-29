@@ -7,6 +7,10 @@ import retrofit2.http.POST
 import retrofit2.http.GET
 import retrofit2.http.Url
 import retrofit2.http.Path
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import retrofit2.http.Part
 
 
 interface ApiService {
@@ -108,5 +112,17 @@ interface ApiService {
         @Field("rua") rua: String,
         @Field("bairro") bairro: String,
         @Field("numero") numero: String
+    ): Call<ApiResponse>
+
+    // ==========================================
+    // PRODUTOS (COM UPLOAD DE IMAGEM)
+    // ==========================================
+    @Multipart
+    @POST("cadastro_produto.php")
+    fun cadastrarProduto(
+        @Part("nome") nome: RequestBody,
+        @Part("descricao") descricao: RequestBody,
+        @Part("valor") valor: RequestBody,
+        @Part imagem: MultipartBody.Part? // O "?" significa que a imagem é opcional
     ): Call<ApiResponse>
 }

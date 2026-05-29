@@ -1,9 +1,9 @@
 package com.example.dlmtech.api
 
 data class Produto(
-    val id: Int,
-    val nome: String,
-    val valor: String,
-    val descricao: String, // Novo campo para o layout activity_produto.xml
-    val imagem_url: String? = null
+    val id: Int = 0,
+    val nome: String? = "Produto sem nome",
+    val descricao: String? = "Sem descrição",
+    val valor: String? = "0.00",
+    val imagem: String? = null
 )

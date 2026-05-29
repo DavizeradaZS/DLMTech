@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View // Importação necessária para o View.GONE
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -35,7 +36,7 @@ class Activity_VisualizarClientes : AppCompatActivity() {
         // 1. Inicialização de componentes
         recyclerView = findViewById(R.id.Estoque_produtos)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        
+
         btnAdicionar = findViewById(R.id.btnAdicionarCliente)
         editPesquisa = findViewById(R.id.ExibiProd_TxtPesquisa)
 
@@ -122,7 +123,21 @@ class Activity_VisualizarClientes : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
             Toast.makeText(this, "Você já está em Clientes", Toast.LENGTH_SHORT).show()
         }
-        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
+
+        // =======================================================
+        // CONTROLE DE ACESSO CENTRALIZADO PARA O BOTÃO FUNCIONÁRIOS
+        // =======================================================
+        val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
+
+        val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
+        val tipoUsuario = preferences.getString("TIPO_USUARIO", "cliente") ?: "cliente"
+        val nivelAcesso = preferences.getString("NIVEL_ACESSO", "") ?: ""
+
+        if (tipoUsuario.equals("cliente", ignoreCase = true) || nivelAcesso.equals("User", ignoreCase = true)) {
+            btnNavFuncionarios.visibility = View.GONE
+        }
+
+        btnNavFuncionarios.setOnClickListener {
             // NAVEGAÇÃO ATUALIZADA: Agora abre a tela de funcionários
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()

@@ -14,7 +14,10 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
     class ProdutoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val txtNome: TextView = view.findViewById(R.id.ExibiProduto_TxtProduto)
+        // =======================================================
+        // O ERRO ESTAVA AQUI! Atualizado para o ID real do seu XML
+        // =======================================================
+        val txtNome: TextView = view.findViewById(R.id.txtCarrinho_Nome)
         val txtValor: TextView = view.findViewById(R.id.ExibiProduto_TxtValor)
     }
 
@@ -25,30 +28,34 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        val produto = lista[position]
-        holder.txtNome.text = produto.nome
-        holder.txtValor.text = holder.itemView.context.getString(R.string.currency_symbol) + " " + produto.valor
+        try {
+            val produto = lista[position]
 
-        holder.itemView.setOnClickListener {
-            val contexto = holder.itemView.context
-            val intent = Intent(contexto, Activity_produto::class.java)
+            val nomeSeguro = produto.nome ?: "Produto sem nome"
+            val valorSeguro = produto.valor?.toString() ?: "0.00"
+            val descSegura = produto.descricao ?: "Sem descrição"
 
-            // Passando os dados com os nomes exatos que a Activity_produto está esperando
-            intent.putExtra("NOME_PRODUTO", produto.nome)
-            intent.putExtra("VALOR_PRODUTO", produto.valor.toString()) // usando 'valor'
+            holder.txtNome.text = nomeSeguro
+            holder.txtValor.text = holder.itemView.context.getString(R.string.currency_symbol) + " " + valorSeguro
 
-            // Se a sua classe Produto tiver um campo de descrição, passe-o também:
-            // intent.putExtra("DESC_PRODUTO", produto.descricao)
+            // Ação de clicar no quadrado do produto para ver os detalhes
+            holder.itemView.setOnClickListener {
+                val contexto = holder.itemView.context
+                val intent = Intent(contexto, Activity_produto::class.java)
 
-            // Passar o ID é ótimo para quando formos fazer o Editar/Deletar funcionarem de verdade
-            intent.putExtra("ID_PRODUTO", produto.id)
+                intent.putExtra("ID_PRODUTO", produto.id)
+                intent.putExtra("NOME_PRODUTO", nomeSeguro)
+                intent.putExtra("VALOR_PRODUTO", valorSeguro)
+                intent.putExtra("DESC_PRODUTO", descSegura)
+                intent.putExtra("IMG_PRODUTO", produto.imagem)
 
-            contexto.startActivity(intent)
+                contexto.startActivity(intent)
+            }
+        } catch (e: Exception) {
+            holder.txtNome.text = "Erro ao carregar"
+            holder.txtValor.text = "R$ 0.00"
         }
     }
 
     override fun getItemCount() = lista.size
-
-
 }
-

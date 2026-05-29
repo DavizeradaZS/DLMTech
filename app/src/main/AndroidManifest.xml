@@ -13,50 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DLMTech"
+
         android:usesCleartextTraffic="true"
+
         tools:targetApi="31">
-        <activity
-            android:name=".activity_edit_produto"
-            android:exported="false" />
-        <activity
-            android:name=".activity_cadastro_produto"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_VisualizarFuncionarios"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_VisualizarClientes"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_Edit_Func"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_Edit_Cliente"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_Carrinho"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_CadastroFunc"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_Estoque"
-            android:exported="false" />
-        <activity
-            android:name=".activity_cadastro"
-            android:exported="false" />
-        <activity
-            android:name=".Activity_produto"
-            android:exported="false" />
-        <activity
-            android:name=".activity_login"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+
+        <activity android:name=".Activity_CadastroFunc" android:exported="false" />
+        <activity android:name=".Activity_Estoque" android:exported="false" />
+        <activity android:name=".activity_cadastro" android:exported="false" />
+        <activity android:name=".Activity_produto" android:exported="false" />
+        <activity android:name=".Activity_Carrinho" android:exported="false" />
+        <activity android:name=".Activity_VisualizarClientes" android:exported="false" />
+        <activity android:name=".Activity_VisualizarFuncionarios" android:exported="false" />
+        <activity android:name=".Activity_Edit_Cliente" android:exported="false" />
+        <activity android:name=".activity_cadastro_produto" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+
+        <activity android:name=".activity_login" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

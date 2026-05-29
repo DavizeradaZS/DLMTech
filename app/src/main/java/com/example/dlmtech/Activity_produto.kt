@@ -2,6 +2,7 @@ package com.example.dlmtech
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View // Importação necessária para o View.GONE
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -80,13 +81,21 @@ class Activity_produto : AppCompatActivity() {
         }
 
         // ==========================================
-        // NAVEGAÇÃO DA BARRA INFERIOR
+        // NAVEGAÇÃO DA BARRA INFERIOR E CONTROLE DE ACESSO
         // ==========================================
         val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
         val btnNavClientes = findViewById<ImageButton>(R.id.btnNavClientes)
         val btnNavHome = findViewById<ImageButton>(R.id.btnNavHome)
         val btnNavEstoque = findViewById<ImageButton>(R.id.btnNavEstoque)
         val btnNavAnalise = findViewById<ImageButton>(R.id.btnNavAnalise)
+
+        val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
+        val tipoUsuario = preferences.getString("TIPO_USUARIO", "cliente") ?: "cliente"
+        val nivelAcesso = preferences.getString("NIVEL_ACESSO", "") ?: ""
+
+        if (tipoUsuario.equals("cliente", ignoreCase = true) || nivelAcesso.equals("User", ignoreCase = true)) {
+            btnNavFuncionarios.visibility = View.GONE
+        }
 
         btnNavFuncionarios.setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))

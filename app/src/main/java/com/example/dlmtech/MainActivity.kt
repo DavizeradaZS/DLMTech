@@ -42,5 +42,19 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
+
+        // =======================================================
+        // CONTROLE DE ACESSO CENTRALIZADO (SHAREDPREFERENCES)
+        // =======================================================
+        val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
+        val tipoUsuario = preferences.getString("TIPO_USUARIO", "cliente")
+        val nivelAcesso = preferences.getString("NIVEL_ACESSO", "")
+
+        val btnNavFuncionarios = findViewById<android.widget.ImageButton>(R.id.btnNavFuncionarios)
+
+        // Se for cliente OU se for funcionário comum (User), o botão desaparece por completo
+        if (tipoUsuario.equals("cliente", ignoreCase = true) || nivelAcesso.equals("User", ignoreCase = true)) {
+            btnNavFuncionarios.visibility = android.view.View.GONE
+        }
     }
 }
