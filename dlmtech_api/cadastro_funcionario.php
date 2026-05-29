@@ -19,7 +19,7 @@ $bairro = $_POST['bairro'] ?? '';
 $numero = $_POST['numero'] ?? '';
 
 // Montando a inserção no banco de dados com Email e Senha
-$sql = "INSERT INTO funcionarios (nome, email, senha, data_nasc, cpf, nivel_acesso, data_admissao, salario, cep, rua, bairro, numero)
+$sql = "INSERT INTO funcionarios (nome, email, senha, data_nasc, cpf, nivel_acesso, data_admissao, salario, cep, rua, bairro, numero) 
         VALUES ('$nome', '$email', '$senha', '$data_nasc', '$cpf', '$nivel_acesso', '$data_admissao', '$salario', '$cep', '$rua', '$bairro', '$numero')";
 
 if (mysqli_query($conn, $sql)) {

@@ -19,8 +19,8 @@ if ($resultFunc->num_rows > 0) {
     $row = $resultFunc->fetch_assoc();
     // Agora enviamos também o nível de acesso no JSON
     echo json_encode([
-        "sucesso" => true,
-        "mensagem" => "Bem-vindo, " . $row['nome'],
+        "sucesso" => true, 
+        "mensagem" => "Bem-vindo, " . $row['nome'], 
         "tipo" => "funcionario",
         "nivel_acesso" => $row['nivel_acesso']
     ]);
