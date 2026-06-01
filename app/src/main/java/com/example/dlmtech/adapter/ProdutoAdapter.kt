@@ -4,8 +4,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.dlmtech.Activity_produto
 import com.example.dlmtech.R
 import com.example.dlmtech.api.Produto
@@ -14,11 +16,9 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
     class ProdutoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        // =======================================================
-        // O ERRO ESTAVA AQUI! Atualizado para o ID real do seu XML
-        // =======================================================
         val txtNome: TextView = view.findViewById(R.id.txtCarrinho_Nome)
         val txtValor: TextView = view.findViewById(R.id.ExibiProduto_TxtValor)
+        val imgProduto: ImageView = view.findViewById(R.id.imgExibiProduto_Produto)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
@@ -28,32 +28,34 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        try {
-            val produto = lista[position]
+        val produto = lista[position]
 
-            val nomeSeguro = produto.nome ?: "Produto sem nome"
-            val valorSeguro = produto.valor?.toString() ?: "0.00"
-            val descSegura = produto.descricao ?: "Sem descrição"
+        holder.txtNome.text = produto.nome ?: "Sem nome"
+        holder.txtValor.text = "R$ " + (produto.valor ?: "0.00")
 
-            holder.txtNome.text = nomeSeguro
-            holder.txtValor.text = holder.itemView.context.getString(R.string.currency_symbol) + " " + valorSeguro
+        // 1. MONTA A URL COMPLETA (Corrigido para dlmtech_api conforme RetrofitClient)
+        val urlBase = "http://192.168.15.5/dlmtech_api/uploads/"
+        val urlFinal = if (!produto.imagem.isNullOrEmpty()) {
+            urlBase + produto.imagem
+        } else {
+            null
+        }
 
-            // Ação de clicar no quadrado do produto para ver os detalhes
-            holder.itemView.setOnClickListener {
-                val contexto = holder.itemView.context
-                val intent = Intent(contexto, Activity_produto::class.java)
+        // 2. CARREGAR IMAGEM COM GLIDE
+        Glide.with(holder.itemView.context)
+            .load(urlFinal)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.ic_launcher_foreground)
+            .into(holder.imgProduto)
 
-                intent.putExtra("ID_PRODUTO", produto.id)
-                intent.putExtra("NOME_PRODUTO", nomeSeguro)
-                intent.putExtra("VALOR_PRODUTO", valorSeguro)
-                intent.putExtra("DESC_PRODUTO", descSegura)
-                intent.putExtra("IMG_PRODUTO", produto.imagem)
-
-                contexto.startActivity(intent)
-            }
-        } catch (e: Exception) {
-            holder.txtNome.text = "Erro ao carregar"
-            holder.txtValor.text = "R$ 0.00"
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Activity_produto::class.java)
+            intent.putExtra("ID_PRODUTO", produto.id)
+            intent.putExtra("NOME_PRODUTO", produto.nome)
+            intent.putExtra("VALOR_PRODUTO", produto.valor)
+            intent.putExtra("DESC_PRODUTO", produto.descricao)
+            intent.putExtra("IMG_PRODUTO", urlFinal)
+            holder.itemView.context.startActivity(intent)
         }
     }
 
