@@ -72,6 +72,8 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+
+
             <TextView
                 android:id="@+id/txtTitulo"
                 android:layout_width="wrap_content"
@@ -162,6 +164,29 @@
                 app:layout_constraintEnd_toStartOf="@+id/edtImg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lblValor"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/lblQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_valor"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtValor" />
+
+            <EditText
+                android:id="@+id/edtQuantidade"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bordaredonda"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toStartOf="@+id/edtImg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblQuantidade"
                 tools:ignore="Autofill" />
 
             <TextView

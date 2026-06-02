@@ -30,6 +30,7 @@
     <string name="label_prod_img">Imagem do Produto</string>
     <string name="label_valor">Valor</string>
     <string name="label_prod_desc">Descrição do Produto</string>
+    <string name="label_quantidade">Quantidade</string>
 
     <string name="title_edit_prod">EDIÇÃO DE PRODUTO</string>
 

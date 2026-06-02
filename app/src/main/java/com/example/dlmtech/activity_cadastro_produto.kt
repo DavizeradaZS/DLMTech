@@ -90,6 +90,7 @@ class activity_cadastro_produto : AppCompatActivity() {
             val file = uriToFile(imageUri!!)
             if (file != null) {
                 // Nova sintaxe para ficheiros: file.asRequestBody()
+
                 val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
                 imagemPart = MultipartBody.Part.createFormData("imagem", file.name, requestFile)
             }
