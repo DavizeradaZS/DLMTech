@@ -9,15 +9,19 @@ $nome = $_POST['nome'] ?? '';
 $descricao = $_POST['descricao'] ?? '';
 $valor = $_POST['valor'] ?? '';
 
+// 1. RECEBENDO O NOVO CAMPO (quantidade_estoque)
+// Se não vier nada, define como 0 por padrão
+$quantidade_estoque = $_POST['quantidade_estoque'] ?? 0;
+
 $caminhoImagem = null;
 
 // LÓGICA DE UPLOAD DA IMAGEM
 // Verifica se uma imagem foi enviada pelo aplicativo
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-    
+
     // Pasta onde as fotos serão salvas
     $diretorioUpload = 'uploads/';
-    
+
     // Cria a pasta se você esquecer de criar no Passo A
     if (!is_dir($diretorioUpload)) {
         mkdir($diretorioUpload, 0777, true);
@@ -25,7 +29,7 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
 
     // Pega a extensão do arquivo (ex: .jpg, .png)
     $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-    
+
     // Cria um nome único e criptografado para a foto não sobrescrever outra
     $nomeArquivoUnico = uniqid('prod_') . '.' . $extensao;
     $caminhoCompleto = $diretorioUpload . $nomeArquivoUnico;
@@ -40,10 +44,17 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     }
 }
 
-// Inserindo no Banco de Dados (Usando Prepared Statement para evitar erros se a descrição tiver aspas)
-$sql = "INSERT INTO produtos (nome, descricao, valor, imagem) VALUES (?, ?, ?, ?)";
+// 2. ATUALIZANDO O SQL (Adicionado 'imagem_url' corrigido e 'quantidade_estoque')
+$sql = "INSERT INTO produtos (nome, descricao, valor, imagem_url, quantidade_estoque) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssds", $nome, $descricao, $valor, $caminhoImagem);
+
+// 3. ATUALIZANDO O BIND_PARAM
+// s = string (nome)
+// s = string (descricao)
+// d = double (valor)
+// s = string (caminhoImagem)
+// i = integer (quantidade_estoque) -> Essa é a letra nova!
+$stmt->bind_param("ssdsi", $nome, $descricao, $valor, $caminhoImagem, $quantidade_estoque);
 
 if ($stmt->execute()) {
     $response['sucesso'] = true;
