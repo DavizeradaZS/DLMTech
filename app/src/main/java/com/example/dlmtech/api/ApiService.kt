@@ -125,4 +125,21 @@ interface ApiService {
         @Part("valor") valor: RequestBody,
         @Part imagem: MultipartBody.Part? // O "?" significa que a imagem é opcional
     ): Call<ApiResponse>
+
+    // Requisição para deletar produto
+    @FormUrlEncoded
+    @POST("delete_produto.php")
+    fun deletarProduto(
+        @Field("id") id: Int
+    ): Call<ApiResponse>
+
+    // Requisição para atualizar produto
+    @FormUrlEncoded
+    @POST("update_produto.php")
+    fun updateProduto(
+        @Field("id") id: Int,
+        @Field("nome") nome: String,
+        @Field("valor") valor: String,
+        @Field("descricao") descricao: String
+    ): Call<ApiResponse>
 }

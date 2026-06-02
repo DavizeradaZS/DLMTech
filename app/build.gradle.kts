@@ -58,4 +58,5 @@ dependencies {
     
     // Glide para carregar imagens (usando string direta para evitar erro de catálogo)
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

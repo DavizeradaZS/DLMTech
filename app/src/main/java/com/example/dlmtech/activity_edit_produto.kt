@@ -1,20 +1,61 @@
 package com.example.dlmtech
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.dlmtech.api.RetrofitClient
+import com.example.dlmtech.api.ApiResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class activity_edit_produto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_edit_produto)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val edtNome = findViewById<EditText>(R.id.edtNome)
+        val edtValor = findViewById<EditText>(R.id.edtValor)
+        val edtDesc = findViewById<EditText>(R.id.edtDesc)
+        val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+
+        // Preenche os campos com os dados atuais do produto
+        val idProduto = intent.getIntExtra("ID_PRODUTO", -1)
+        edtNome.setText(intent.getStringExtra("NOME_PRODUTO"))
+        edtValor.setText(intent.getStringExtra("VALOR_PRODUTO"))
+        edtDesc.setText(intent.getStringExtra("DESC_PRODUTO"))
+
+        // O botão cancelar apenas fecha a tela
+        btnCancelar.setOnClickListener {
+            finish()
+        }
+
+        // O botão salvar envia os dados novos para o XAMPP
+        btnSalvar.setOnClickListener {
+            if (idProduto != -1) {
+                val nomeAtualizado = edtNome.text.toString()
+                val valorAtualizado = edtValor.text.toString()
+                val descAtualizada = edtDesc.text.toString()
+
+                RetrofitClient.instance.updateProduto(idProduto, nomeAtualizado, valorAtualizado, descAtualizada)
+                    .enqueue(object : Callback<ApiResponse> {
+                        override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                            if (response.isSuccessful && response.body()?.sucesso == true) {
+                                Toast.makeText(this@activity_edit_produto, "Produto atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+                                finish() // Volta para a tela anterior
+                            } else {
+                                Toast.makeText(this@activity_edit_produto, "Erro ao atualizar", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                            Toast.makeText(this@activity_edit_produto, "Erro de conexão com servidor", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+            }
         }
     }
 }

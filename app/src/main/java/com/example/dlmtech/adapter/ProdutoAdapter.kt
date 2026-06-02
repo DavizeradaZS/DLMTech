@@ -4,13 +4,22 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dlmtech.Activity_produto
 import com.example.dlmtech.R
+import com.example.dlmtech.activity_edit_produto
+import com.example.dlmtech.api.ApiResponse
 import com.example.dlmtech.api.Produto
+import com.example.dlmtech.api.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProdutoAdapter(private val lista: List<Produto>) :
     RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
@@ -19,6 +28,11 @@ class ProdutoAdapter(private val lista: List<Produto>) :
         val txtNome: TextView = view.findViewById(R.id.txtCarrinho_Nome)
         val txtValor: TextView = view.findViewById(R.id.ExibiProduto_TxtValor)
         val imgProduto: ImageView = view.findViewById(R.id.imgExibiProduto_Produto)
+
+        // Mapeando os 3 botões do seu item_produto.xml
+        val btnAdd: Button = view.findViewById(R.id.ExibiProd_BtnAdicionar)
+        val btnEdit: Button = view.findViewById(R.id.ExibiProd_BtnEditar)
+        val btnRemove: Button = view.findViewById(R.id.Remover)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
@@ -28,34 +42,85 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        val produto = lista[position]
+        try {
+            val produto = lista[position]
+            val contexto = holder.itemView.context
 
-        holder.txtNome.text = produto.nome ?: "Sem nome"
-        holder.txtValor.text = "R$ " + (produto.valor ?: "0.00")
+            val nomeSeguro = produto.nome ?: "Produto sem nome"
+            val valorSeguro = produto.valor?.toString() ?: "0.00"
+            val descSegura = produto.descricao ?: "Sem descrição"
 
-        // 1. MONTA A URL COMPLETA (Corrigido para dlmtech_api conforme RetrofitClient)
-        val urlBase = "http://192.168.15.5/dlmtech_api/uploads/"
-        val urlFinal = if (!produto.imagem.isNullOrEmpty()) {
-            urlBase + produto.imagem
-        } else {
-            null
-        }
+            holder.txtNome.text = nomeSeguro
+            holder.txtValor.text = contexto.getString(R.string.currency_symbol) + " " + valorSeguro
 
-        // 2. CARREGAR IMAGEM COM GLIDE
-        Glide.with(holder.itemView.context)
-            .load(urlFinal)
-            .placeholder(R.drawable.ic_launcher_foreground)
-            .error(R.drawable.ic_launcher_foreground)
-            .into(holder.imgProduto)
+            val baseUrl = "http://192.168.15.5/dlmtech_api/" // Confirme se o IP continua o mesmo!
+            val imageUrl = if (!produto.imagem.isNullOrEmpty()) baseUrl + produto.imagem else ""
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, Activity_produto::class.java)
-            intent.putExtra("ID_PRODUTO", produto.id)
-            intent.putExtra("NOME_PRODUTO", produto.nome)
-            intent.putExtra("VALOR_PRODUTO", produto.valor)
-            intent.putExtra("DESC_PRODUTO", produto.descricao)
-            intent.putExtra("IMG_PRODUTO", urlFinal)
-            holder.itemView.context.startActivity(intent)
+            Glide.with(contexto)
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+                .centerCrop()
+                .into(holder.imgProduto)
+
+            // 1. CLICAR NO FUNDO (Vai para detalhes)
+            holder.itemView.setOnClickListener {
+                val intent = Intent(contexto, Activity_produto::class.java)
+                intent.putExtra("ID_PRODUTO", produto.id)
+                intent.putExtra("NOME_PRODUTO", nomeSeguro)
+                intent.putExtra("VALOR_PRODUTO", valorSeguro)
+                intent.putExtra("DESC_PRODUTO", descSegura)
+                intent.putExtra("IMG_PRODUTO", imageUrl)
+                contexto.startActivity(intent)
+            }
+
+            // 2. BOTÃO ADICIONAR (Carrinho)
+            holder.btnAdd.setOnClickListener {
+                RetrofitClient.instance.addCarrinho(produto.id).enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                        if (response.isSuccessful && response.body()?.sucesso == true) {
+                            Toast.makeText(contexto, "Adicionado ao carrinho!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {}
+                })
+            }
+
+            // 3. BOTÃO EDITAR
+            holder.btnEdit.setOnClickListener {
+                val intent = Intent(contexto, activity_edit_produto::class.java)
+                intent.putExtra("ID_PRODUTO", produto.id)
+                intent.putExtra("NOME_PRODUTO", nomeSeguro)
+                intent.putExtra("VALOR_PRODUTO", valorSeguro)
+                intent.putExtra("DESC_PRODUTO", descSegura)
+                contexto.startActivity(intent)
+            }
+
+            // 4. BOTÃO REMOVER
+            holder.btnRemove.setOnClickListener {
+                AlertDialog.Builder(contexto)
+                    .setTitle("Excluir Produto")
+                    .setMessage("Tem certeza que deseja excluir $nomeSeguro da lista?")
+                    .setPositiveButton("Sim") { _, _ ->
+                        RetrofitClient.instance.deletarProduto(produto.id).enqueue(object : Callback<ApiResponse> {
+                            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                                if (response.isSuccessful && response.body()?.sucesso == true) {
+                                    Toast.makeText(contexto, "Produto excluído!", Toast.LENGTH_SHORT).show()
+                                    // Truque ninja para recarregar a tela de Estoque instantaneamente
+                                    if (contexto is android.app.Activity) {
+                                        contexto.recreate()
+                                    }
+                                }
+                            }
+                            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {}
+                        })
+                    }
+                    .setNegativeButton("Não", null)
+                    .show()
+            }
+
+        } catch (e: Exception) {
+            holder.txtNome.text = "Erro"
         }
     }
 
