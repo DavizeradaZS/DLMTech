@@ -22,7 +22,7 @@ class Activity_Sobre : AppCompatActivity() {
 
         // Navegação Inferior
         findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
-            startActivity(Intent(this, Activity_Sobre::class.java))
+            Toast.makeText(this, getString(R.string.msg_already_on_about), Toast.LENGTH_SHORT).show()
         }
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))

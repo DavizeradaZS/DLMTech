@@ -108,6 +108,7 @@
     <string name="hint_search_employee">Buscar empleado</string>
     <string name="title_visualize_employees">Empleados</string>
     <string name="msg_already_on_home">Ya estás en la página de inicio</string>
+    <string name="msg_already_on_about">Ya estás en la página de Sobre Nosotros</string>
     <string name="msg_error_loading_stock">Error al cargar el inventario</string>
     <string name="msg_already_on_stock">Ya estás en la pantalla de inventario</string>
     <string name="msg_registration_cancelled">Registro cancelado</string>
