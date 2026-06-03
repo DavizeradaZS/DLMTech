@@ -22,14 +22,16 @@
             android:text="@string/label_person_name"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/txtInfoSecundaria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_cpf_role"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:textColor="@android:color/white"/>
+
     </LinearLayout>
 
     <ImageButton
