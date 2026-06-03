@@ -19,6 +19,7 @@ class activity_edit_produto : AppCompatActivity() {
         val edtNome = findViewById<EditText>(R.id.edtNome)
         val edtValor = findViewById<EditText>(R.id.edtValor)
         val edtDesc = findViewById<EditText>(R.id.edtDesc)
+        val edtQuantidade = findViewById<EditText>(R.id.edtQuantidade)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
 
@@ -27,6 +28,7 @@ class activity_edit_produto : AppCompatActivity() {
         edtNome.setText(intent.getStringExtra("NOME_PRODUTO"))
         edtValor.setText(intent.getStringExtra("VALOR_PRODUTO"))
         edtDesc.setText(intent.getStringExtra("DESC_PRODUTO"))
+        edtQuantidade.setText(intent.getIntExtra("QUANTIDADE_PRODUTO", 0).toString())
 
         // O botão cancelar apenas fecha a tela
         btnCancelar.setOnClickListener {
@@ -39,8 +41,9 @@ class activity_edit_produto : AppCompatActivity() {
                 val nomeAtualizado = edtNome.text.toString()
                 val valorAtualizado = edtValor.text.toString()
                 val descAtualizada = edtDesc.text.toString()
+                val quantidadeAtualizada = edtQuantidade.text.toString().toIntOrNull() ?: 0
 
-                RetrofitClient.instance.updateProduto(idProduto, nomeAtualizado, valorAtualizado, descAtualizada)
+                RetrofitClient.instance.updateProduto(idProduto, nomeAtualizado, valorAtualizado, descAtualizada, quantidadeAtualizada)
                     .enqueue(object : Callback<ApiResponse> {
                         override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                             if (response.isSuccessful && response.body()?.sucesso == true) {

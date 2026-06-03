@@ -123,6 +123,7 @@ interface ApiService {
         @Part("nome") nome: RequestBody,
         @Part("descricao") descricao: RequestBody,
         @Part("valor") valor: RequestBody,
+        @Part("quantidade_estoque") quantidade_estoque: RequestBody,
         @Part imagem: MultipartBody.Part? // O "?" significa que a imagem é opcional
     ): Call<ApiResponse>
 
@@ -140,6 +141,7 @@ interface ApiService {
         @Field("id") id: Int,
         @Field("nome") nome: String,
         @Field("valor") valor: String,
-        @Field("descricao") descricao: String
+        @Field("descricao") descricao: String,
+        @Field("quantidade_estoque") quantidade_estoque: Int
     ): Call<ApiResponse>
 }

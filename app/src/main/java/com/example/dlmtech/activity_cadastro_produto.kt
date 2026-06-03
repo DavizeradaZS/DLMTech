@@ -45,6 +45,7 @@ class activity_cadastro_produto : AppCompatActivity() {
         val edtNome = findViewById<EditText>(R.id.edtNome)
         val edtDesc = findViewById<EditText>(R.id.edtDesc)
         val edtValor = findViewById<EditText>(R.id.edtValor)
+        val edtQuantidade = findViewById<EditText>(R.id.edtQuantidade)
         edtImg = findViewById(R.id.edtImg)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
@@ -62,13 +63,14 @@ class activity_cadastro_produto : AppCompatActivity() {
             val nome = edtNome.text.toString().trim()
             val desc = edtDesc.text.toString().trim()
             val valor = edtValor.text.toString().trim()
+            val quantidade = edtQuantidade.text.toString().trim()
 
-            if (nome.isEmpty() || valor.isEmpty()) {
-                Toast.makeText(this, "Preencha pelo menos o Nome e o Valor!", Toast.LENGTH_SHORT).show()
+            if (nome.isEmpty() || valor.isEmpty() || quantidade.isEmpty()) {
+                Toast.makeText(this, "Preencha o Nome, Valor e Quantidade!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            enviarProdutoParaApi(nome, desc, valor)
+            enviarProdutoParaApi(nome, desc, valor, quantidade)
         }
 
         configurarNavegacao()
@@ -77,11 +79,12 @@ class activity_cadastro_produto : AppCompatActivity() {
     // =======================================================
     // PREPARAÇÃO E ENVIO MULTIPART PARA O SERVIDOR
     // =======================================================
-    private fun enviarProdutoParaApi(nome: String, desc: String, valor: String) {
+    private fun enviarProdutoParaApi(nome: String, desc: String, valor: String, quantidade: String) {
         // Converte os textos simples num formato RequestBody usando a sintaxe atualizada
         val nomePart = nome.toRequestBody("text/plain".toMediaTypeOrNull())
         val descPart = desc.toRequestBody("text/plain".toMediaTypeOrNull())
         val valorPart = valor.toRequestBody("text/plain".toMediaTypeOrNull())
+        val quantidadePart = quantidade.toRequestBody("text/plain".toMediaTypeOrNull())
 
         var imagemPart: MultipartBody.Part? = null
 
@@ -90,13 +93,12 @@ class activity_cadastro_produto : AppCompatActivity() {
             val file = uriToFile(imageUri!!)
             if (file != null) {
                 // Nova sintaxe para ficheiros: file.asRequestBody()
-
                 val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
                 imagemPart = MultipartBody.Part.createFormData("imagem", file.name, requestFile)
             }
         }
 
-        RetrofitClient.instance.cadastrarProduto(nomePart, descPart, valorPart, imagemPart)
+        RetrofitClient.instance.cadastrarProduto(nomePart, descPart, valorPart, quantidadePart, imagemPart)
             .enqueue(object : Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful && response.body()?.sucesso == true) {

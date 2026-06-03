@@ -24,6 +24,7 @@ class Activity_produto : AppCompatActivity() {
         // Mapeando os campos do layout
         val txtNome = findViewById<TextView>(R.id.ExibiProduto_TxtProduto)
         val txtValor = findViewById<TextView>(R.id.ExibiProduto_TxtValor)
+        val txtQuantidade = findViewById<TextView>(R.id.txt_quantidade)
         val txtDesc = findViewById<TextView>(R.id.ExibiProd_TxtDesc)
         val imgProdutoDetalhe = findViewById<ImageView>(R.id.imgExibiProduto_Produto)
 
@@ -32,10 +33,12 @@ class Activity_produto : AppCompatActivity() {
         val nome = intent.getStringExtra("NOME_PRODUTO") ?: getString(R.string.title_produto)
         val valor = intent.getStringExtra("VALOR_PRODUTO") ?: "0.00"
         val desc = intent.getStringExtra("DESC_PRODUTO") ?: getString(R.string.label_no_description)
+        val quantidade = intent.getIntExtra("QUANTIDADE_PRODUTO", 0)
         val imageUrl = intent.getStringExtra("IMG_PRODUTO") ?: ""
 
         txtNome.text = nome
         txtValor.text = getString(R.string.currency_symbol) + " " + valor
+        txtQuantidade.text = "Estoque: $quantidade"
         txtDesc.text = desc
 
         Glide.with(this)
@@ -82,6 +85,7 @@ class Activity_produto : AppCompatActivity() {
             intentEdit.putExtra("NOME_PRODUTO", nome)
             intentEdit.putExtra("VALOR_PRODUTO", valor)
             intentEdit.putExtra("DESC_PRODUTO", desc)
+            intentEdit.putExtra("QUANTIDADE_PRODUTO", quantidade)
             startActivity(intentEdit)
         }
 

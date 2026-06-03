@@ -27,6 +27,7 @@ class ProdutoAdapter(private val lista: List<Produto>) :
     class ProdutoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val txtNome: TextView = view.findViewById(R.id.txtCarrinho_Nome)
         val txtValor: TextView = view.findViewById(R.id.ExibiProduto_TxtValor)
+        val txtQuantidade: TextView = view.findViewById(R.id.txt_quantidade)
         val imgProduto: ImageView = view.findViewById(R.id.imgExibiProduto_Produto)
 
         // Mapeando os 3 botões do seu item_produto.xml
@@ -49,9 +50,11 @@ class ProdutoAdapter(private val lista: List<Produto>) :
             val nomeSeguro = produto.nome ?: "Produto sem nome"
             val valorSeguro = produto.valor?.toString() ?: "0.00"
             val descSegura = produto.descricao ?: "Sem descrição"
+            val quantidadeSegura = produto.quantidade_estoque
 
             holder.txtNome.text = nomeSeguro
             holder.txtValor.text = contexto.getString(R.string.currency_symbol) + " " + valorSeguro
+            holder.txtQuantidade.text = "Estoque: $quantidadeSegura"
 
             val baseUrl = "http://192.168.15.5/dlmtech_api/" // Confirme se o IP continua o mesmo!
             val imageUrl = if (!produto.imagem.isNullOrEmpty()) baseUrl + produto.imagem else ""
@@ -70,6 +73,7 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 intent.putExtra("NOME_PRODUTO", nomeSeguro)
                 intent.putExtra("VALOR_PRODUTO", valorSeguro)
                 intent.putExtra("DESC_PRODUTO", descSegura)
+                intent.putExtra("QUANTIDADE_PRODUTO", quantidadeSegura)
                 intent.putExtra("IMG_PRODUTO", imageUrl)
                 contexto.startActivity(intent)
             }
@@ -93,6 +97,7 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 intent.putExtra("NOME_PRODUTO", nomeSeguro)
                 intent.putExtra("VALOR_PRODUTO", valorSeguro)
                 intent.putExtra("DESC_PRODUTO", descSegura)
+                intent.putExtra("QUANTIDADE_PRODUTO", quantidadeSegura)
                 contexto.startActivity(intent)
             }
 
