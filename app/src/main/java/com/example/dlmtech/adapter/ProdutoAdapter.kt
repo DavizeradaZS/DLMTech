@@ -1,5 +1,6 @@
 package com.example.dlmtech.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -80,14 +81,25 @@ class ProdutoAdapter(private val lista: List<Produto>) :
 
             // 2. BOTÃO ADICIONAR (Carrinho)
             holder.btnAdd.setOnClickListener {
-                RetrofitClient.instance.addCarrinho(produto.id).enqueue(object : Callback<ApiResponse> {
-                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-                        if (response.isSuccessful && response.body()?.sucesso == true) {
-                            Toast.makeText(contexto, "Adicionado ao carrinho!", Toast.LENGTH_SHORT).show()
+                val preferences = contexto.getSharedPreferences("DLMTechPrefs", Context.MODE_PRIVATE)
+                val clienteId = preferences.getInt("USER_ID", -1)
+
+                if (clienteId != -1) {
+                    RetrofitClient.instance.addCarrinho(produto.id, clienteId).enqueue(object : Callback<ApiResponse> {
+                        override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                            if (response.isSuccessful && response.body()?.sucesso == true) {
+                                Toast.makeText(contexto, "Adicionado ao carrinho!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(contexto, response.body()?.mensagem ?: "Erro ao adicionar", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                    }
-                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {}
-                })
+                        override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                            Toast.makeText(contexto, "Erro de conexão", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else {
+                    Toast.makeText(contexto, "Erro: Usuário não logado.", Toast.LENGTH_SHORT).show()
+                }
             }
 
             // 3. BOTÃO EDITAR

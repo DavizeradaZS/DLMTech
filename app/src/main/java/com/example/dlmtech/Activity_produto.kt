@@ -57,21 +57,28 @@ class Activity_produto : AppCompatActivity() {
 
         btnAdicionar.setOnClickListener {
             if (idProduto != -1) {
-                RetrofitClient.instance.addCarrinho(idProduto).enqueue(object : Callback<ApiResponse> {
-                    override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-                        if (response.isSuccessful) {
-                            val resposta = response.body()
-                            if (resposta != null && resposta.sucesso) {
-                                Toast.makeText(this@Activity_produto, resposta.mensagem, Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(this@Activity_produto, resposta?.mensagem ?: "Erro ao adicionar", Toast.LENGTH_SHORT).show()
+                val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
+                val clienteId = preferences.getInt("USER_ID", -1)
+
+                if (clienteId != -1) {
+                    RetrofitClient.instance.addCarrinho(idProduto, clienteId).enqueue(object : Callback<ApiResponse> {
+                        override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                            if (response.isSuccessful) {
+                                val resposta = response.body()
+                                if (resposta != null && resposta.sucesso) {
+                                    Toast.makeText(this@Activity_produto, resposta.mensagem, Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(this@Activity_produto, resposta?.mensagem ?: "Erro ao adicionar", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
-                    }
-                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                        Toast.makeText(this@Activity_produto, "Erro de conexão", Toast.LENGTH_SHORT).show()
-                    }
-                })
+                        override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                            Toast.makeText(this@Activity_produto, "Erro de conexão", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else {
+                    Toast.makeText(this, "Erro: Usuário não logado.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

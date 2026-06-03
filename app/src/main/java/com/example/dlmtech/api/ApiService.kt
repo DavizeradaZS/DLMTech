@@ -67,7 +67,10 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("add_carrinho.php")
-    fun addCarrinho(@Field("produto_id") produtoId: Int): Call<ApiResponse>
+    fun addCarrinho(
+        @Field("produto_id") produtoId: Int,
+        @Field("cliente_id") clienteId: Int
+    ): Call<ApiResponse>
 
     @GET("get_carrinho.php")
     fun listarCarrinho(): Call<List<Carrinho>>
