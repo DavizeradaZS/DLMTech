@@ -223,7 +223,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview" />
+                    android:src="@drawable/image_1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -249,7 +249,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview" />
+                    android:src="@drawable/image_2" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -274,7 +274,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview" />
+                    android:src="@drawable/image_3" />
 
                 <TextView
                     android:fontFamily="@font/roboto_condensed_regular"
@@ -298,7 +298,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview" />
+                    android:src="@drawable/image_4" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -323,8 +323,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview"
-                    />
+                    android:src="@drawable/image_23" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -349,7 +348,7 @@
                     android:layout_width="74dp"
                     android:layout_height="77dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/dlmtech2_removebg_preview" />
+                    android:src="@drawable/image_23_1_" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -394,9 +393,9 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_10" />
 
             </androidx.cardview.widget.CardView>
 
@@ -424,9 +423,9 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_9" />
 
             </androidx.cardview.widget.CardView>
 
@@ -452,9 +451,9 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_6" />
 
             </androidx.cardview.widget.CardView>
 
