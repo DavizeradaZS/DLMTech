@@ -74,6 +74,11 @@
     <string name="label_dashboard">Dashboard</string>
     <string name="label_categories">Categories</string>
     <string name="label_cables">Cables</string>
+    <string name="label_carregador">Chargers</string>
+    <string name="label_som">Soundbox</string>
+    <string name="label_fones">Earphones</string>
+    <string name="label_relogio">Watches</string>
+    <string name="label_capinha">Cases</string>
     <string name="title_register_client">CUSTOMER REGISTRATION</string>
     <string name="title_edit_employee">EDIT EMPLOYEE</string>
     <string name="title_edit_client">EDIT CUSTOMER</string>
