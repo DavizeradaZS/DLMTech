@@ -32,6 +32,8 @@
     <string name="label_prod_desc">Descrição do Produto</string>
     <string name="label_quantidade">Quantidade</string>
 
+
+
     <string name="title_edit_prod">EDIÇÃO DE PRODUTO</string>
 
     <string name="title_carrinho">Carrinho</string>
@@ -115,4 +117,15 @@
     <string name="msg_client_updated">Cliente atualizado!</string>
     <string name="msg_success">Sucesso!</string>
     <string name="msg_failure_with_reason">Falha: %s</string>
+
+    <string name="title_sobre">SOBRE NÓS</string>
+    <string name="texto_titulo_sobre1">Sobre nós</string>
+    <string name="texto_sobre">Na DLM Tech, sabemos que o seu celular é muito mais do que um simples aparelho: é a sua ferramenta de trabalho, sua central de entretenimento e a sua conexão com quem você ama. Por isso, nascemos com a missão de oferecer uma assistência técnica de excelência, devolvendo a vida ao seu dispositivo com rapidez e segurança.
+Contamos com uma equipe de técnicos especializados e apaixonados por tecnologia, preparados para solucionar os mais diversos problemas — desde a troca de uma tela ou bateria até reparos avançados em placas.
+</string>
+    <string name="texto_titulo_sobre2">Nossos Pilares:</string>
+    <string name="texto_sobre2">Transparência: Diagnósticos precisos e honestos, sem surpresas no orçamento.
+        Agilidade: Entendemos a sua urgência e trabalhamos para entregar seu aparelho no menor tempo possível.
+        Qualidade: Utilizamos apenas peças de alta confiabilidade para garantir a durabilidade do conserto.</string>
+
 </resources>
