@@ -86,8 +86,8 @@ class Activity_Estoque : AppCompatActivity() {
             startActivity(Intent(this, Activity_VisualizarClientes::class.java))
             finish()
         }
-        btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
+            startActivity(Intent(this, Activity_Sobre::class.java))
         }
 
         // ==========================================

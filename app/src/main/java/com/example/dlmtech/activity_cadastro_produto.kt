@@ -169,7 +169,7 @@ class activity_cadastro_produto : AppCompatActivity() {
             finish()
         }
         btnNavAnalise.setOnClickListener {
-            Toast.makeText(this, "Em desenvolvimento", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_Sobre::class.java))
         }
 
         // Cabeçalho

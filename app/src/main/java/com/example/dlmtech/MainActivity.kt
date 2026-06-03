@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Navegação Inferior
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
+            startActivity(Intent(this, Activity_Sobre::class.java))
+        }
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
         }
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
             startActivity(Intent(this, Activity_Estoque::class.java))
         }
+
+
 
         // Cabeçalho
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {

@@ -127,6 +127,10 @@ class Activity_CadastroFunc : AppCompatActivity() {
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
+            startActivity(Intent(this, Activity_Sobre::class.java))
+            finish()
+        }
     }
 
     private fun buscarCep(cep: String) {

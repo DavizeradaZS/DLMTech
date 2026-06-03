@@ -166,7 +166,7 @@ class Activity_produto : AppCompatActivity() {
             finish()
         }
         findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_in_development, getString(R.string.label_analysis)), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Activity_Sobre::class.java))
         }
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)?.setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))

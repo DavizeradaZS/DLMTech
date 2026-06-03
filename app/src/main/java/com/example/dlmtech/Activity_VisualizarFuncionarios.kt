@@ -125,6 +125,9 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
             Toast.makeText(this, "Você já está em Funcionários", Toast.LENGTH_SHORT).show()
         }
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
+            startActivity(Intent(this, Activity_Sobre::class.java))
+        }
     }
 
     private fun confirmarExclusao(id: Int) {

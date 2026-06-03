@@ -26,6 +26,7 @@
         <activity android:name=".Activity_Edit_Cliente" android:exported="false" />
         <activity android:name=".activity_cadastro_produto" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".Activity_Sobre" android:exported="false" />
 
         <activity android:name=".activity_edit_produto" android:exported="false" />
         <activity android:name=".Activity_Edit_Func" android:exported="false" />

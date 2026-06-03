@@ -123,6 +123,9 @@ class Activity_VisualizarClientes : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
             Toast.makeText(this, "Você já está em Clientes", Toast.LENGTH_SHORT).show()
         }
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
+            startActivity(Intent(this, Activity_Sobre::class.java))
+        }
 
         // =======================================================
         // CONTROLE DE ACESSO CENTRALIZADO PARA O BOTÃO FUNCIONÁRIOS
