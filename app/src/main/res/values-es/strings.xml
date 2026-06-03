@@ -43,6 +43,7 @@
     <string name="hint_your_message">Tu Mensaje</string>
     <string name="msg_loading_product">Cargando producto...</string>
     <string name="msg_loading_value">Cargando Valor...</string>
+    <string name="msg_loading_quantidade">Cargando stock...</string>
     <string name="btn_add">Añadir</string>
     <string name="btn_edit">Editar</string>
     <string name="btn_delete">Eliminar</string>

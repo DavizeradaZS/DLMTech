@@ -10,9 +10,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
-        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -23,6 +24,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
@@ -57,9 +59,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView4"
         android:layout_width="0dp"
@@ -153,7 +154,7 @@
                 android:id="@+id/lblValor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/label_valor"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +164,7 @@
                 android:id="@+id/edtValor"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bordaredonda"
                 app:layout_constraintEnd_toStartOf="@+id/edtImg"
@@ -172,23 +173,49 @@
                 tools:ignore="Autofill" />
 
             <TextView
+                android:id="@+id/lblQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_quantidade"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtValor" />
+
+            <EditText
+                android:id="@+id/edtQuantidade"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bordaredonda"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toStartOf="@+id/edtImg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblQuantidade"
+                tools:ignore="Autofill" />
+
+            <TextView
                 android:id="@+id/lblImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/label_prod_img"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="@+id/edtImg"
-                app:layout_constraintTop_toTopOf="@+id/lblValor" />
+                app:layout_constraintTop_toBottomOf="@+id/edtDesc" />
 
             <ImageButton
                 android:id="@+id/edtImg"
-                android:layout_width="161dp"
-                android:layout_height="129dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="166dp"
+                android:layout_height="149dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
                 android:src="@android:drawable/ic_menu_gallery"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edtValor"
-                app:layout_constraintTop_toTopOf="@+id/edtValor"
+                app:layout_constraintTop_toBottomOf="@+id/lblImg"
                 tools:ignore="Autofill" />
 
             <Button

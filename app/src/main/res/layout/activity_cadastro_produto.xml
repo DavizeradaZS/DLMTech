@@ -31,7 +31,6 @@
         <EditText
             android:id="@+id/ExibiProd_TxtPesquisa"
             style="@style/EditTextPesquisa"
-            android:layout_width="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_ImgBtnCarinho"
             app:layout_constraintStart_toEndOf="@+id/ExibiProd_ImgBtnHome"
