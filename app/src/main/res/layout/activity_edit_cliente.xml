@@ -24,7 +24,6 @@
             app:layout_constraintEnd_toStartOf="@+id/ExibiProd_TxtPesquisa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground"
             tools:srcCompat="@drawable/dlmtech2_removebg_preview" />
 
         <EditText
