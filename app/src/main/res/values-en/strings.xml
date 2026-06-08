@@ -112,6 +112,7 @@
     <string name="msg_error_loading_stock">Error loading stock</string>
     <string name="msg_already_on_stock">You are already on the Stock screen</string>
     <string name="msg_registration_cancelled">Registration cancelled</string>
+    <string name="label_categoria">Category</string>
     <string name="msg_already_on_cart">You are already on the Cart screen</string>
     <string name="msg_already_on_about">You are already on the About us screen</string>
     <string name="msg_removed">Removed!</string>

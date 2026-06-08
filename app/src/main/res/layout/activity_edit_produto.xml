@@ -10,8 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_width="411dp"
+        android:layout_height="69dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -56,8 +56,10 @@
             android:background="#CC0000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome" />
+            app:layout_constraintTop_toBottomOf="@+id/ExibiProd_ImgBtnHome"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -77,10 +79,11 @@
 
             <TextView
                 android:id="@+id/txtTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="277dp"
+                android:layout_height="36dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/title_edit_prod"
+                android:textAlignment="center"
                 android:textColor="#FF0000"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -92,14 +95,15 @@
 
             <TextView
                 android:id="@+id/txtInfoPessoais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
+                android:layout_width="212dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/label_prod_info"
                 android:textColor="#FF0000"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
@@ -107,7 +111,7 @@
                 android:id="@+id/lblNome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/label_prod_name"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +121,7 @@
                 android:id="@+id/edtNome"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bordaredonda"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -129,17 +133,18 @@
                 android:id="@+id/lblDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/label_prod_desc"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtNome" />
 
+
             <EditText
                 android:id="@+id/edtDesc"
                 android:layout_width="379dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bordaredonda"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +152,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lblDesc"
                 tools:ignore="Autofill" />
-
 
             <TextView
                 android:id="@+id/lblValor"
@@ -217,34 +221,61 @@
                 app:layout_constraintTop_toBottomOf="@+id/lblImg"
                 tools:ignore="Autofill" />
 
+            <TextView
+                android:id="@+id/lblCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_categoria"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtQuantidade" />
+
+            <EditText
+                android:id="@+id/edtDesc2"
+                android:layout_width="379dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bordaredonda"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCategoria"
+                tools:ignore="Autofill" />
+
             <Button
                 android:id="@+id/btnCancelar"
-                android:layout_width="105dp"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="32dp"
                 android:backgroundTint="#B22222"
                 android:text="@string/btn_cancel"
                 android:textStyle="bold"
                 app:cornerRadius="15px"
-                app:layout_constraintBottom_toBottomOf="@+id/btnSalvar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtValor"
+                app:layout_constraintTop_toBottomOf="@+id/edtImg"
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btnSalvar"
-                android:layout_width="105dp"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginStart="8dp"
                 android:backgroundTint="#B22222"
                 android:text="@string/btn_salvar"
                 android:textStyle="bold"
                 app:cornerRadius="15px"
+                app:layout_constraintBottom_toBottomOf="@+id/btnCancelar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.729"
                 app:layout_constraintStart_toEndOf="@+id/btnCancelar"
-                app:layout_constraintTop_toBottomOf="@+id/edtImg" />
+                app:layout_constraintTop_toTopOf="@+id/btnCancelar"
+                app:layout_constraintVertical_bias="1.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -317,6 +348,7 @@
             style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
             android:contentDescription="@string/desc_shortcut_analysis"
+            android:src="@drawable/info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
             app:layout_constraintStart_toStartOf="parent"

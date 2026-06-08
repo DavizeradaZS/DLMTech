@@ -139,6 +139,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/lblDesc"
                 tools:ignore="Autofill" />
 
+
             <TextView
                 android:id="@+id/lblValor"
                 android:layout_width="wrap_content"
@@ -171,6 +172,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtValor" />
 
+
+
             <EditText
                 android:id="@+id/edtQuantidade"
                 android:layout_width="0dp"
@@ -192,6 +195,30 @@
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="@+id/edtImg"
                 app:layout_constraintTop_toTopOf="@+id/lblValor" />
+
+            <TextView
+                android:id="@+id/lblCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/label_categoria"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtQuantidade" />
+
+            <EditText
+                android:id="@+id/edtDesc2"
+                android:layout_width="379dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bordaredonda"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCategoria"
+                tools:ignore="Autofill" />
 
             <ImageButton
                 android:id="@+id/edtImg"
@@ -220,7 +247,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtImg" />
+                app:layout_constraintTop_toBottomOf="@+id/edtImg"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btnSalvar"
@@ -234,7 +262,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/btnCancelar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnCancelar"
-                app:layout_constraintTop_toTopOf="@+id/btnCancelar" />
+                app:layout_constraintTop_toTopOf="@+id/btnCancelar"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -300,6 +329,7 @@
             style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
             android:contentDescription="@string/desc_shortcut_analysis"
+            android:src="@drawable/info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
             app:layout_constraintStart_toStartOf="parent"
