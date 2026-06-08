@@ -11,6 +11,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Multipart
 import retrofit2.http.Part
+import retrofit2.http.Query
 
 
 interface ApiService {
@@ -147,4 +148,13 @@ interface ApiService {
         @Field("descricao") descricao: String,
         @Field("quantidade_estoque") quantidade_estoque: Int
     ): Call<ApiResponse>
+
+    // Chamada para buscar os dados consolidados do Dashboard
+    @GET("get_dashboard.php")
+    fun getDashboardData(): Call<DashboardResponse>
+
+    @GET("get_produtos.php")
+    fun listarProdutos(
+        @Query("categoria") categoria: String? = null // <- Certifique-se de que isso está aqui!
+    ): Call<List<Produto>>
 }

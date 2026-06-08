@@ -2,8 +2,10 @@ package com.example.dlmtech
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View // Importação necessária para o View.GONE
+import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView // Importação do TextView adicionada
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,12 +31,25 @@ class Activity_Estoque : AppCompatActivity() {
         val nivelAcesso = preferences.getString("NIVEL_ACESSO", "") ?: ""
 
         // ==========================================
+        // FILTRO DE CATEGORIAS
+        // ==========================================
+        // 1. Recebe a categoria que o usuário clicou lá na tela Home (MainActivity)
+        val categoriaFiltro = intent.getStringExtra("CATEGORIA_FILTRO")
+
+        // 2. Altera o título da tela se existir um filtro ativo
+        val txtTituloEstoque = findViewById<TextView>(R.id.estoque)
+        if (categoriaFiltro != null) {
+            txtTituloEstoque.text = "Estoque: $categoriaFiltro"
+        }
+
+        // ==========================================
         // CONFIGURAÇÃO DO RECYCLERVIEW (PRODUTOS)
         // ==========================================
         val recyclerView = findViewById<RecyclerView>(R.id.Estoque_produtos)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        RetrofitClient.instance.listarProdutos().enqueue(object : Callback<List<Produto>> {
+        // 3. Passa o filtro como parâmetro para a API buscar apenas o que queremos
+        RetrofitClient.instance.listarProdutos(categoriaFiltro).enqueue(object : Callback<List<Produto>> {
             override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
                 if (response.isSuccessful) {
                     val produtos = response.body() ?: emptyList()
@@ -96,6 +111,12 @@ class Activity_Estoque : AppCompatActivity() {
         val btnCarrinho = findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho)
         btnCarrinho?.setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
+        }
+
+        // Botão da Logo para voltar para a Home
+        findViewById<ImageView>(R.id.ExibiProd_ImgBtnHome)?.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
