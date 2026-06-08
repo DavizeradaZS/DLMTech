@@ -164,6 +164,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
+        findViewById<ImageButton>(R.id.btnLogout).setOnClickListener {
+            startActivity(Intent(this, activity_login::class.java))
+        }
     }
 
     private fun verificarAcesso() {

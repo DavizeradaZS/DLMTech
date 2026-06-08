@@ -81,6 +81,7 @@
             style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
             android:contentDescription="@string/desc_shortcut_analysis"
+            android:src="@drawable/info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -151,6 +152,14 @@
             android:padding="16dp">
 
             <!-- Dashboard Section -->
+
+            <!-- Improved Chart: Top Products -->
+            <ImageButton
+                android:id="@+id/btnLogout"
+                style="@style/btnLogout"
+                android:layout_width="34dp"
+                android:layout_height="35dp" />
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
@@ -162,7 +171,6 @@
                 android:textColor="#FF0000"
                 android:textStyle="bold" />
 
-            <!-- Improved Chart: Top Products -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -598,6 +606,7 @@
                         android:textSize="11sp" />
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
