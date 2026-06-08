@@ -185,6 +185,7 @@
             style="@style/ImgBtnNavegacaoAnalise"
             android:layout_width="0dp"
             android:contentDescription="@string/desc_shortcut_analysis"
+            android:src="@drawable/info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnNavEstoque"
             app:layout_constraintStart_toStartOf="parent"
