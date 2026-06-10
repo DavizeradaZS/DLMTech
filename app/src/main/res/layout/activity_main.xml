@@ -244,9 +244,6 @@
                             </LinearLayout>
                         </TableRow>
 
-                        <!-- Ranking 2 -->
-
-                        <!-- Ranking 3 -->
                     </TableLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -300,14 +297,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvTopVendasCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0 vendas"
-                        android:textColor="#FF0000"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

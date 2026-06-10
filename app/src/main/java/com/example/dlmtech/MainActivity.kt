@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
     // SISTEMA DE FILTRO DE CATEGORIAS
     // ==========================================
     private fun configurarCategorias() {
-
         // 1. Cabos
         findViewById<View>(R.id.cardCat1)?.setOnClickListener {
             abrirEstoqueComFiltro("Cabos")
@@ -96,43 +95,34 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DashboardResponse>, response: Response<DashboardResponse>) {
                 if (response.isSuccessful && response.body()?.sucesso == true) {
                     val data = response.body()!!
-                    val topProdutos = data.maisVendidos
 
-                    // PRODUTO 1 (Ouro)
-                    val prod1 = topProdutos.getOrNull(0)
+                    // 1. DADOS DO PRODUTO (Pegamos apenas o primeiro da lista)
+                    val prod1 = data.maisVendidos.firstOrNull()
+
                     if (prod1 != null) {
+                        // Preenche a imagem e o cardzinho inferior
                         findViewById<TextView>(R.id.tvBottomProd1Name).text = prod1.nome ?: "Produto 1"
                         findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ ${prod1.valor}"
-                        carregarImagem(prod1.imagem, findViewById(R.id.ivBottomProd1))
 
+                        // Preenche a barra de progresso no topo
                         findViewById<TextView>(R.id.tvProd1Name).text = prod1.nome
+                        // O PHP enviou o total de vendas camuflado de 'quantidade_estoque', então usamos ele!
+                        findViewById<TextView>(R.id.tvProd1Count).text = "${prod1.quantidade_estoque} un."
                         findViewById<ProgressBar>(R.id.pbProd1).progress = 100
-                    }
-
-                    // PRODUTO 2 (Prata)
-                    val prod2 = topProdutos.getOrNull(1)
-                    if (prod2 != null) {
-                        findViewById<TextView>(R.id.tvBottomProd2Name).text = prod2.nome ?: "Produto 2"
-                        findViewById<TextView>(R.id.tvBottomProd2Price).text = "R$ ${prod2.valor}"
-                        carregarImagem(prod2.imagem, findViewById(R.id.ivBottomProd2))
                     } else {
-                        findViewById<TextView>(R.id.tvBottomProd2Name).text = ""
-                        findViewById<TextView>(R.id.tvBottomProd2Price).text = ""
+                        // Tratamento caso o banco ainda não tenha vendas registradas
+                        findViewById<TextView>(R.id.tvBottomProd1Name).text = "Sem vendas"
+                        findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ 0,00"
+                        findViewById<TextView>(R.id.tvProd1Name).text = "Sem vendas"
+                        findViewById<TextView>(R.id.tvProd1Count).text = "0 un."
+                        findViewById<ProgressBar>(R.id.pbProd1).progress = 0
                     }
 
-                    // PRODUTO 3 (Bronze)
-                    val prod3 = topProdutos.getOrNull(2)
-                    if (prod3 != null) {
-                        findViewById<TextView>(R.id.tvBottomProd3Name).text = prod3.nome ?: "Produto 3"
-                        findViewById<TextView>(R.id.tvBottomProd3Price).text = "R$ ${prod3.valor}"
-                        carregarImagem(prod3.imagem, findViewById(R.id.ivBottomProd3))
-                    } else {
-                        findViewById<TextView>(R.id.tvBottomProd3Name).text = ""
-                        findViewById<TextView>(R.id.tvBottomProd3Price).text = ""
-                    }
+                    // 2. DADOS DO FUNCIONÁRIO E TOTAL DE PRODUTOS GERAIS
+                    val nomeVendedor = data.topVendedorNome ?: "Nenhum"
+                    val vendasVendedor = data.topVendedorVendas ?: 0
 
-                    findViewById<TextView>(R.id.tvTopFuncionario).text = "Admin"
-                    findViewById<TextView>(R.id.tvTopVendasCount).text = "${data.totalProdutos} produtos no sistema"
+                    findViewById<TextView>(R.id.tvTopFuncionario).text = nomeVendedor
 
                 } else {
                     Toast.makeText(this@MainActivity, "Erro ao carregar Dashboard", Toast.LENGTH_SHORT).show()
