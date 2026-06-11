@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View // Importação necessária para o View.GONE
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -26,21 +26,34 @@ class Activity_VisualizarClientes : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnAdicionar: ImageButton
     private lateinit var editPesquisa: EditText
-    private var adapter: UsuarioAdapter? = null
+    private lateinit var adapter: UsuarioAdapter
     private var listaCompleta: List<Usuario> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visualizar_clientes)
 
-        // 1. Inicialização de componentes
         recyclerView = findViewById(R.id.Estoque_produtos)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        
+        adapter = UsuarioAdapter(
+            lista = emptyList(),
+            onEditClick = { cliente ->
+                val intent = Intent(this, Activity_Edit_Cliente::class.java)
+                intent.putExtra("ID", cliente.id)
+                intent.putExtra("NOME", cliente.nome)
+                intent.putExtra("CPF", cliente.cpf)
+                startActivity(intent)
+            },
+            onDeleteClick = { cliente ->
+                confirmarExclusao(cliente.id)
+            }
+        )
+        recyclerView.adapter = adapter
 
         btnAdicionar = findViewById(R.id.btnAdicionarCliente)
         editPesquisa = findViewById(R.id.ExibiProd_TxtPesquisa)
 
-        // 2. Configuração de Pesquisa (Filtro)
         editPesquisa.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -49,7 +62,6 @@ class Activity_VisualizarClientes : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // 3. Botão (+) Adicionar Cliente
         btnAdicionar.setOnClickListener {
             startActivity(Intent(this, activity_cadastro::class.java))
         }
@@ -68,7 +80,7 @@ class Activity_VisualizarClientes : AppCompatActivity() {
             override fun onResponse(call: Call<List<Usuario>>, response: Response<List<Usuario>>) {
                 if (response.isSuccessful) {
                     listaCompleta = response.body() ?: emptyList()
-                    configurarAdapter(listaCompleta)
+                    filtrarClientes(editPesquisa.text.toString())
                 }
             }
             override fun onFailure(call: Call<List<Usuario>>, t: Throwable) {
@@ -78,31 +90,17 @@ class Activity_VisualizarClientes : AppCompatActivity() {
     }
 
     private fun filtrarClientes(texto: String) {
-        val listaFiltrada = listaCompleta.filter {
-            it.nome.contains(texto, ignoreCase = true) || it.cpf.contains(texto)
-        }
-        adapter?.atualizarLista(listaFiltrada)
-    }
-
-    private fun configurarAdapter(clientes: List<Usuario>) {
-        adapter = UsuarioAdapter(
-            lista = clientes,
-            onEditClick = { cliente ->
-                val intent = Intent(this, Activity_Edit_Cliente::class.java)
-                intent.putExtra("ID", cliente.id)
-                intent.putExtra("NOME", cliente.nome)
-                intent.putExtra("CPF", cliente.cpf)
-                startActivity(intent)
-            },
-            onDeleteClick = { cliente ->
-                confirmarExclusao(cliente.id)
+        val listaFiltrada = if (texto.isEmpty()) {
+            listaCompleta
+        } else {
+            listaCompleta.filter {
+                it.nome.contains(texto, ignoreCase = true) || it.cpf.contains(texto)
             }
-        )
-        recyclerView.adapter = adapter
+        }
+        adapter.atualizarLista(listaFiltrada)
     }
 
     private fun configurarNavegacao() {
-        // --- Cabeçalho ---
         findViewById<ImageView>(R.id.ExibiProd_ImgBtnHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -110,8 +108,6 @@ class Activity_VisualizarClientes : AppCompatActivity() {
         findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
             startActivity(Intent(this, Activity_Carrinho::class.java))
         }
-
-        // --- Barra Inferior ---
         findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -127,11 +123,7 @@ class Activity_VisualizarClientes : AppCompatActivity() {
             startActivity(Intent(this, Activity_Sobre::class.java))
         }
 
-        // =======================================================
-        // CONTROLE DE ACESSO CENTRALIZADO PARA O BOTÃO FUNCIONÁRIOS
-        // =======================================================
         val btnNavFuncionarios = findViewById<ImageButton>(R.id.btnNavFuncionarios)
-
         val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
         val tipoUsuario = preferences.getString("TIPO_USUARIO", "cliente") ?: "cliente"
         val nivelAcesso = preferences.getString("NIVEL_ACESSO", "") ?: ""
@@ -141,7 +133,6 @@ class Activity_VisualizarClientes : AppCompatActivity() {
         }
 
         btnNavFuncionarios.setOnClickListener {
-            // NAVEGAÇÃO ATUALIZADA: Agora abre a tela de funcionários
             startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
             finish()
         }
@@ -157,7 +148,6 @@ class Activity_VisualizarClientes : AppCompatActivity() {
     }
 
     private fun deletarCliente(id: Int) {
-        // Alterado de Callback<Usuario> para Callback<ApiResponse>
         RetrofitClient.instance.deletarCliente(id).enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {

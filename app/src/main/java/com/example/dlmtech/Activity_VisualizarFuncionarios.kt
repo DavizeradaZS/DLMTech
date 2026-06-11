@@ -25,7 +25,7 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnAdicionar: ImageButton
     private lateinit var editPesquisa: EditText
-    private var adapter: UsuarioAdapter? = null
+    private lateinit var adapter: UsuarioAdapter
     private var listaCompleta: List<Usuario> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +35,23 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
         // Inicialização
         recyclerView = findViewById(R.id.rvListaFuncionarios)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        
+        // Inicializa o adapter uma única vez
+        adapter = UsuarioAdapter(
+            lista = emptyList(),
+            onEditClick = { func ->
+                val intent = Intent(this, Activity_Edit_Func::class.java)
+                intent.putExtra("ID", func.id)
+                intent.putExtra("NOME", func.nome)
+                intent.putExtra("CPF", func.cpf)
+                startActivity(intent)
+            },
+            onDeleteClick = { func ->
+                confirmarExclusao(func.id)
+            }
+        )
+        recyclerView.adapter = adapter
+
         btnAdicionar = findViewById(R.id.btnAdicionarFuncionario)
         editPesquisa = findViewById(R.id.ExibiProd_TxtPesquisa)
 
@@ -66,7 +83,8 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
             override fun onResponse(call: Call<List<Usuario>>, response: Response<List<Usuario>>) {
                 if (response.isSuccessful) {
                     listaCompleta = response.body() ?: emptyList()
-                    configurarAdapter(listaCompleta)
+                    // Aplica o filtro atual (caso haja algo digitado)
+                    filtrarFuncionarios(editPesquisa.text.toString())
                 }
             }
             override fun onFailure(call: Call<List<Usuario>>, t: Throwable) {
@@ -76,27 +94,14 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
     }
 
     private fun filtrarFuncionarios(texto: String) {
-        val listaFiltrada = listaCompleta.filter {
-            it.nome.contains(texto, ignoreCase = true) || it.cpf.contains(texto)
-        }
-        adapter?.atualizarLista(listaFiltrada)
-    }
-
-    private fun configurarAdapter(funcionarios: List<Usuario>) {
-        adapter = UsuarioAdapter(
-            lista = funcionarios,
-            onEditClick = { func ->
-                val intent = Intent(this, Activity_Edit_Func::class.java)
-                intent.putExtra("ID", func.id)
-                intent.putExtra("NOME", func.nome)
-                intent.putExtra("CPF", func.cpf)
-                startActivity(intent)
-            },
-            onDeleteClick = { func ->
-                confirmarExclusao(func.id)
+        val listaFiltrada = if (texto.isEmpty()) {
+            listaCompleta
+        } else {
+            listaCompleta.filter {
+                it.nome.contains(texto, ignoreCase = true) || it.cpf.contains(texto)
             }
-        )
-        recyclerView.adapter = adapter
+        }
+        adapter.atualizarLista(listaFiltrada)
     }
 
     private fun configurarNavegacao() {
@@ -140,7 +145,6 @@ class Activity_VisualizarFuncionarios : AppCompatActivity() {
     }
 
     private fun deletarFuncionario(id: Int) {
-        // Alterado aqui de <Usuario> para <ApiResponse>
         RetrofitClient.instance.deletarFuncionario(id).enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {

@@ -45,6 +45,7 @@ class activity_login : AppCompatActivity() {
                                 val preferences = getSharedPreferences("DLMTechPrefs", MODE_PRIVATE)
                                 val editor = preferences.edit()
                                 editor.putInt("USER_ID", resposta.id ?: -1)
+                                editor.putString("USER_NAME", resposta.nome)           // Salvando o Nome
                                 editor.putString("TIPO_USUARIO", resposta.tipo)         // "funcionario" ou "cliente"
                                 editor.putString("NIVEL_ACESSO", resposta.nivel_acesso) // "Admin" ou "User"
                                 editor.apply()
