@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProdutoAdapter(private val lista: List<Produto>) :
+class ProdutoAdapter(private var lista: List<Produto>) :
     RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
     class ProdutoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -31,7 +31,6 @@ class ProdutoAdapter(private val lista: List<Produto>) :
         val txtQuantidade: TextView = view.findViewById(R.id.txt_quantidade)
         val imgProduto: ImageView = view.findViewById(R.id.imgExibiProduto_Produto)
 
-        // Mapeando os 3 botões do seu item_produto.xml
         val btnAdd: Button = view.findViewById(R.id.ExibiProd_BtnAdicionar)
         val btnEdit: Button = view.findViewById(R.id.ExibiProd_BtnEditar)
         val btnRemove: Button = view.findViewById(R.id.Remover)
@@ -41,6 +40,11 @@ class ProdutoAdapter(private val lista: List<Produto>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_produto, parent, false)
         return ProdutoViewHolder(view)
+    }
+
+    fun updateLista(novaLista: List<Produto>) {
+        lista = novaLista
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
@@ -57,7 +61,7 @@ class ProdutoAdapter(private val lista: List<Produto>) :
             holder.txtValor.text = contexto.getString(R.string.currency_symbol) + " " + valorSeguro
             holder.txtQuantidade.text = "Estoque: $quantidadeSegura"
 
-            val baseUrl = "http://192.168.15.5/dlmtech_api/" // Confirme se o IP continua o mesmo!
+            val baseUrl = "http://192.168.15.5/dlmtech_api/" 
             val imageUrl = if (!produto.imagem.isNullOrEmpty()) baseUrl + produto.imagem else ""
 
             Glide.with(contexto)
@@ -67,7 +71,6 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 .centerCrop()
                 .into(holder.imgProduto)
 
-            // 1. CLICAR NO FUNDO (Vai para detalhes)
             holder.itemView.setOnClickListener {
                 val intent = Intent(contexto, Activity_produto::class.java)
                 intent.putExtra("ID_PRODUTO", produto.id)
@@ -79,13 +82,24 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 contexto.startActivity(intent)
             }
 
-            // 2. BOTÃO ADICIONAR (Carrinho)
             holder.btnAdd.setOnClickListener {
                 val preferences = contexto.getSharedPreferences("DLMTechPrefs", Context.MODE_PRIVATE)
-                val clienteId = preferences.getInt("USER_ID", -1)
+                val userId = preferences.getInt("USER_ID", -1)
+                val tipo = preferences.getString("TIPO_USUARIO", "cliente")
 
-                if (clienteId != -1) {
-                    RetrofitClient.instance.addCarrinho(produto.id, clienteId).enqueue(object : Callback<ApiResponse> {
+                if (userId != -1) {
+                    // Ajustado para a nova assinatura da API
+                    val funcionarioId = if (tipo == "funcionario") userId else 0
+                    val clienteId = if (tipo == "cliente") userId else 0
+
+                    RetrofitClient.instance.addCarrinho(
+                        id = null,
+                        produtoId = produto.id,
+                        clienteId = clienteId,
+                        funcionarioId = funcionarioId,
+                        quantidade = 1,
+                        valor = valorSeguro
+                    ).enqueue(object : Callback<ApiResponse> {
                         override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                             if (response.isSuccessful && response.body()?.sucesso == true) {
                                 Toast.makeText(contexto, "Adicionado ao carrinho!", Toast.LENGTH_SHORT).show()
@@ -102,7 +116,6 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 }
             }
 
-            // 3. BOTÃO EDITAR
             holder.btnEdit.setOnClickListener {
                 val intent = Intent(contexto, activity_edit_produto::class.java)
                 intent.putExtra("ID_PRODUTO", produto.id)
@@ -113,7 +126,6 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                 contexto.startActivity(intent)
             }
 
-            // 4. BOTÃO REMOVER
             holder.btnRemove.setOnClickListener {
                 AlertDialog.Builder(contexto)
                     .setTitle("Excluir Produto")
@@ -123,7 +135,6 @@ class ProdutoAdapter(private val lista: List<Produto>) :
                             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                                 if (response.isSuccessful && response.body()?.sucesso == true) {
                                     Toast.makeText(contexto, "Produto excluído!", Toast.LENGTH_SHORT).show()
-                                    // Truque ninja para recarregar a tela de Estoque instantaneamente
                                     if (contexto is android.app.Activity) {
                                         contexto.recreate()
                                     }
