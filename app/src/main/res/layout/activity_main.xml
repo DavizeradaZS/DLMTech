@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/degrade"
-    tools:context=".activity_login">
+    tools:context=".MainActivity">
 
     <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -151,9 +151,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Dashboard Section -->
-
-            <!-- Improved Chart: Top Products -->
+            <!-- Logout Button -->
             <ImageButton
                 android:id="@+id/btnLogout"
                 style="@style/btnLogout"
@@ -161,7 +159,6 @@
                 android:layout_height="35dp" />
 
             <TextView
-                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_condensed_regular"
@@ -171,6 +168,7 @@
                 android:textColor="#FF0000"
                 android:textStyle="bold" />
 
+            <!-- Dashboard Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -189,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:text="Produtos Mais Vendidos"
+                        android:text="Ranking de Vendas"
                         android:textColor="#CC0000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -201,46 +199,37 @@
 
                         <!-- Ranking 1 -->
                         <TableRow android:layout_marginBottom="8dp">
-                            <TextView
-                                android:paddingEnd="8dp"
-                                android:text="1º"
-                                android:textColor="#FF0000"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
+                            <TextView android:text="1º" android:textColor="#FF0000" android:textStyle="bold" android:paddingEnd="8dp"/>
                             <LinearLayout android:orientation="vertical">
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-
-                                    <TextView
-                                        android:id="@+id/tvProd1Name"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="15dp"
-                                        android:layout_alignParentTop="true"
-                                        android:layout_alignParentBottom="true"
-                                        android:layout_marginTop="0dp"
-                                        android:layout_marginBottom="0dp"
-                                        android:text="Carregando..."
-                                        android:textColor="#333333"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-                                    <TextView
-                                        android:id="@+id/tvProd1Count"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentEnd="true"
-                                        android:text="0 un."
-                                        android:textColor="#FF0000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                                    <TextView android:id="@+id/tvProd1Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carregando..." android:textColor="#333333" android:textStyle="bold" android:clickable="true" android:focusable="true"/>
+                                    <TextView android:id="@+id/tvProd1Count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="0 un." android:textColor="#FF0000" android:textSize="12sp" />
                                 </RelativeLayout>
-                                <ProgressBar
-                                    android:id="@+id/pbProd1"
-                                    style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="8dp"
-                                    android:progress="0"
-                                    android:progressTint="#FF0000" />
+                                <ProgressBar android:id="@+id/pbProd1" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:progressTint="#FF0000" />
+                            </LinearLayout>
+                        </TableRow>
+
+                        <!-- Ranking 2 -->
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="2º" android:textColor="#FF0000" android:textStyle="bold" android:paddingEnd="8dp"/>
+                            <LinearLayout android:orientation="vertical">
+                                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                                    <TextView android:id="@+id/tvProd2Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carregando..." android:textColor="#333333" android:textStyle="bold" android:clickable="true" android:focusable="true"/>
+                                    <TextView android:id="@+id/tvProd2Count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="0 un." android:textColor="#FF0000" android:textSize="12sp" />
+                                </RelativeLayout>
+                                <ProgressBar android:id="@+id/pbProd2" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:progressTint="#FF0000" />
+                            </LinearLayout>
+                        </TableRow>
+
+                        <!-- Ranking 3 -->
+                        <TableRow>
+                            <TextView android:text="3º" android:textColor="#FF0000" android:textStyle="bold" android:paddingEnd="8dp"/>
+                            <LinearLayout android:orientation="vertical">
+                                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                                    <TextView android:id="@+id/tvProd3Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carregando..." android:textColor="#333333" android:textStyle="bold" android:clickable="true" android:focusable="true"/>
+                                    <TextView android:id="@+id/tvProd3Count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="0 un." android:textColor="#FF0000" android:textSize="12sp" />
+                                </RelativeLayout>
+                                <ProgressBar android:id="@+id/pbProd3" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:progressTint="#FF0000" />
                             </LinearLayout>
                         </TableRow>
 
@@ -248,9 +237,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Improved Card: Number of Clients -->
-
-            <!-- Improved Card: Top Employee -->
+            <!-- Top Vendedor Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -258,51 +245,19 @@
                 app:cardBackgroundColor="#F5F5F5"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginEnd="12dp"
-                        android:src="@android:drawable/ic_menu_agenda"
-                        app:tint="#CC0000" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Top Vendedor"
-                            android:textColor="#CC0000"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvTopFuncionario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Carregando..."
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center_vertical" android:orientation="horizontal" android:padding="12dp">
+                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="12dp" android:src="@android:drawable/ic_menu_agenda" app:tint="#CC0000" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Top Vendedor" android:textColor="#CC0000" android:textSize="12sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvTopFuncionario" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carregando..." android:textColor="#000000" android:textSize="18sp" android:textStyle="bold" />
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Categories Section -->
             <TextView
-                android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -314,156 +269,42 @@
                 android:textStyle="bold" />
 
             <HorizontalScrollView
-                android:id="@+id/scrollCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:scrollbars="none">
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
-
-                    <LinearLayout
-                        android:id="@+id/cardCat1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat1"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_1" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_cables"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    android:layout_width="wrap_content" android:layout_height="match_parent"
+                    android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp">
+                    <LinearLayout android:id="@+id/cardCat1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_1" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_cables" android:textColor="#FFFFFF" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardCat2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat2"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_2" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_carregador"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    <LinearLayout android:id="@+id/cardCat2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_2" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_carregador" android:textColor="#FFFFFF" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardCat3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat3"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_3" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_som"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    <LinearLayout android:id="@+id/cardCat3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_3" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_som" android:textColor="#FFFFFF" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardCat4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat4"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_4" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_fones"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    <LinearLayout android:id="@+id/cardCat4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_4" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_fones" android:textColor="#FFFFFF" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardCat5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat5"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_23" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_relogio"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    <LinearLayout android:id="@+id/cardCat5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_23" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_relogio" android:textColor="#FFFFFF" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardCat6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/imgCat6"
-                            android:layout_width="74dp"
-                            android:layout_height="77dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/image_23_1_" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_condensed_regular"
-                            android:text="@string/label_capinha"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
+                    <LinearLayout android:id="@+id/cardCat6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:gravity="center" android:orientation="vertical">
+                        <ImageView android:layout_width="74dp" android:layout_height="77dp" android:src="@drawable/image_23_1_" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_capinha" android:textColor="#FFFFFF" />
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
 
             <!-- Top Sellers Section -->
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -474,125 +315,37 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <!-- Product 1 -->
-                <LinearLayout
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:cardCornerRadius="12dp">
-                        <ImageView
-                            android:id="@+id/ivBottomProd1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@null"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image_10" />
+                <!-- Product Card 1 -->
+                <LinearLayout android:id="@+id/layoutProdBottom1" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+                    <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
+                        <ImageView android:id="@+id/ivBottomProd1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_10" />
                     </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:id="@+id/tvBottomProd1Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Carregando..."
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/tvBottomProd1Price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="R$ 0,00"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
+                    <TextView android:id="@+id/tvBottomProd1Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvBottomProd1Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
 
-                <!-- Product 2 -->
-                <LinearLayout
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:cardCornerRadius="12dp">
-                        <ImageView
-                            android:id="@+id/ivBottomProd2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@null"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image_9" />
+                <!-- Product Card 2 -->
+                <LinearLayout android:id="@+id/layoutProdBottom2" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+                    <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
+                        <ImageView android:id="@+id/ivBottomProd2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_9" />
                     </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:id="@+id/tvBottomProd2Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Carregando..."
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/tvBottomProd2Price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="R$ 0,00"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
+                    <TextView android:id="@+id/tvBottomProd2Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvBottomProd2Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
 
-                <!-- Product 3 -->
-                <LinearLayout
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:cardCornerRadius="12dp">
-                        <ImageView
-                            android:id="@+id/ivBottomProd3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@null"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image_6" />
+                <!-- Product Card 3 -->
+                <LinearLayout android:id="@+id/layoutProdBottom3" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+                    <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
+                        <ImageView android:id="@+id/ivBottomProd3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_6" />
                     </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:id="@+id/tvBottomProd3Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Carregando..."
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/tvBottomProd3Price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="R$ 0,00"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
+                    <TextView android:id="@+id/tvBottomProd3Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvBottomProd3Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 

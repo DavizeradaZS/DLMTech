@@ -9,27 +9,40 @@ $response = [
     "topVendedorVendas" => 0
 ];
 
-// 1. CALCULA O TOTAL DE PRODUTOS (Resolve o erro do contador)
+// 1. CALCULA O TOTAL DE PRODUTOS
 $sqlTotal = "SELECT COUNT(*) as total FROM produtos";
 $resTotal = $conn->query($sqlTotal);
 if ($resTotal && $rowTotal = $resTotal->fetch_assoc()) {
     $response["totalProdutos"] = (int)$rowTotal['total'];
 }
 
-// 2. BUSCA O PRODUTO MAIS VENDIDO
-// O truque: 'SUM(v.quantidade) as quantidade_estoque' evita que você precise mexer na classe do Kotlin!
-$sqlProdutos = "SELECT p.id, p.nome, p.valor, p.imagem, p.descricao, SUM(v.quantidade) as quantidade_estoque
+// 2. BUSCA OS PRODUTOS MAIS VENDIDOS (LIMIT 3)
+// Se houver vendas, pega os mais vendidos.
+// Caso contrário, pega os primeiros 3 produtos cadastrados para não deixar a tela vazia.
+$sqlProdutosVendas = "SELECT p.id, p.nome, p.valor, p.imagem, p.descricao, SUM(v.quantidade) as quantidade_estoque
                 FROM vendas v
                 JOIN produtos p ON v.id_produto = p.id
                 GROUP BY p.id
                 ORDER BY quantidade_estoque DESC
-                LIMIT 1";
+                LIMIT 3";
 
-$resProdutos = $conn->query($sqlProdutos);
-if ($resProdutos && $rowProd = $resProdutos->fetch_assoc()) {
-    $rowProd['id'] = (int)$rowProd['id'];
-    $rowProd['quantidade_estoque'] = (int)$rowProd['quantidade_estoque'];
-    $response["maisVendidos"][] = $rowProd;
+$resProdutos = $conn->query($sqlProdutosVendas);
+
+if ($resProdutos && $resProdutos->num_rows > 0) {
+    while ($rowProd = $resProdutos->fetch_assoc()) {
+        $rowProd['id'] = (int)$rowProd['id'];
+        $rowProd['quantidade_estoque'] = (int)$rowProd['quantidade_estoque'];
+        $response["maisVendidos"][] = $rowProd;
+    }
+} else {
+    // Se não houver vendas, preenche com os primeiros produtos da tabela
+    $sqlFallback = "SELECT id, nome, valor, imagem, descricao, 0 as quantidade_estoque FROM produtos LIMIT 3";
+    $resFallback = $conn->query($sqlFallback);
+    while ($rowFallback = $resFallback->fetch_assoc()) {
+        $rowFallback['id'] = (int)$rowFallback['id'];
+        $rowFallback['quantidade_estoque'] = 0;
+        $response["maisVendidos"][] = $rowFallback;
+    }
 }
 
 // 3. BUSCA O FUNCIONÁRIO DESTAQUE

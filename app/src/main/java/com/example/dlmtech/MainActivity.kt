@@ -1,5 +1,6 @@
 package com.example.dlmtech
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.dlmtech.api.DashboardResponse
+import com.example.dlmtech.api.Produto
 import com.example.dlmtech.api.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +24,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    // URL base configurada para apontar corretamente para a pasta da sua API no XAMPP
     private val imageBaseUrl = "http://192.168.15.5/dlmtech_api/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,47 +39,17 @@ class MainActivity : AppCompatActivity() {
 
         configurarNavegacao()
         verificarAcesso()
-
-        // Ativando os cliques nas categorias da Home mapeadas do seu XML
         configurarCategorias()
-
-        // Chamada ativada para carregar os dados reais do banco de dados!
         carregarDadosDashboard()
     }
 
-    // ==========================================
-    // SISTEMA DE FILTRO DE CATEGORIAS
-    // ==========================================
     private fun configurarCategorias() {
-        // 1. Cabos
-        findViewById<View>(R.id.cardCat1)?.setOnClickListener {
-            abrirEstoqueComFiltro("Cabos")
-        }
-
-        // 2. Carregadores
-        findViewById<View>(R.id.cardCat2)?.setOnClickListener {
-            abrirEstoqueComFiltro("Carregadores")
-        }
-
-        // 3. Som
-        findViewById<View>(R.id.cardCat3)?.setOnClickListener {
-            abrirEstoqueComFiltro("Som")
-        }
-
-        // 4. Fones
-        findViewById<View>(R.id.cardCat4)?.setOnClickListener {
-            abrirEstoqueComFiltro("Fones")
-        }
-
-        // 5. Relógios
-        findViewById<View>(R.id.cardCat5)?.setOnClickListener {
-            abrirEstoqueComFiltro("Relógios")
-        }
-
-        // 6. Capinhas
-        findViewById<View>(R.id.cardCat6)?.setOnClickListener {
-            abrirEstoqueComFiltro("Capinhas")
-        }
+        findViewById<View>(R.id.cardCat1)?.setOnClickListener { abrirEstoqueComFiltro("Cabos") }
+        findViewById<View>(R.id.cardCat2)?.setOnClickListener { abrirEstoqueComFiltro("Carregadores") }
+        findViewById<View>(R.id.cardCat3)?.setOnClickListener { abrirEstoqueComFiltro("Som") }
+        findViewById<View>(R.id.cardCat4)?.setOnClickListener { abrirEstoqueComFiltro("Fones") }
+        findViewById<View>(R.id.cardCat5)?.setOnClickListener { abrirEstoqueComFiltro("Relógios") }
+        findViewById<View>(R.id.cardCat6)?.setOnClickListener { abrirEstoqueComFiltro("Capinhas") }
     }
 
     private fun abrirEstoqueComFiltro(categoria: String) {
@@ -87,75 +58,96 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // ==========================================
-    // CARREGAMENTO DO DASHBOARD
-    // ==========================================
     private fun carregarDadosDashboard() {
         RetrofitClient.instance.getDashboardData().enqueue(object : Callback<DashboardResponse> {
             override fun onResponse(call: Call<DashboardResponse>, response: Response<DashboardResponse>) {
                 if (response.isSuccessful && response.body()?.sucesso == true) {
                     val data = response.body()!!
-
-                    // 1. DADOS DO PRODUTO (Pegamos apenas o primeiro da lista)
-                    val prod1 = data.maisVendidos.firstOrNull()
-
-                    if (prod1 != null) {
-                        // Preenche a imagem e o cardzinho inferior
-                        findViewById<TextView>(R.id.tvBottomProd1Name).text = prod1.nome ?: "Produto 1"
-                        findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ ${prod1.valor}"
-
-                        // Preenche a barra de progresso no topo
-                        findViewById<TextView>(R.id.tvProd1Name).text = prod1.nome
-                        // O PHP enviou o total de vendas camuflado de 'quantidade_estoque', então usamos ele!
-                        findViewById<TextView>(R.id.tvProd1Count).text = "${prod1.quantidade_estoque} un."
-                        findViewById<ProgressBar>(R.id.pbProd1).progress = 100
-                    } else {
-                        // Tratamento caso o banco ainda não tenha vendas registradas
-                        findViewById<TextView>(R.id.tvBottomProd1Name).text = "Sem vendas"
-                        findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ 0,00"
-                        findViewById<TextView>(R.id.tvProd1Name).text = "Sem vendas"
-                        findViewById<TextView>(R.id.tvProd1Count).text = "0 un."
-                        findViewById<ProgressBar>(R.id.pbProd1).progress = 0
-                    }
-
-                    // 2. DADOS DO FUNCIONÁRIO E TOTAL DE PRODUTOS GERAIS
-                    val nomeVendedor = data.topVendedorNome ?: "Nenhum"
-                    val vendasVendedor = data.topVendedorVendas ?: 0
-
-                    findViewById<TextView>(R.id.tvTopFuncionario).text = nomeVendedor
-
+                    exibirProdutosDashboard(data.maisVendidos)
+                    findViewById<TextView>(R.id.tvTopFuncionario).text = data.topVendedorNome ?: "Nenhum"
                 } else {
                     Toast.makeText(this@MainActivity, "Erro ao carregar Dashboard", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<DashboardResponse>, t: Throwable) {
                 Log.e("API_ERROR", "Erro no Dashboard: ${t.message}")
             }
         })
     }
 
+    private fun exibirProdutosDashboard(produtos: List<Produto>) {
+        // PRODUTO 1 (Ranking Topo e Card 1)
+        produtos.getOrNull(0)?.let { prod ->
+            findViewById<TextView>(R.id.tvProd1Name).apply {
+                text = prod.nome
+                setOnClickListener { abrirDetalhesProduto(prod) }
+            }
+            findViewById<TextView>(R.id.tvProd1Count).text = "${prod.quantidade_estoque} un."
+            findViewById<ProgressBar>(R.id.pbProd1).progress = 100
+            
+            findViewById<TextView>(R.id.tvBottomProd1Name).text = prod.nome
+            findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ ${prod.valor}"
+            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd1))
+            findViewById<View>(R.id.layoutProdBottom1)?.setOnClickListener { abrirDetalhesProduto(prod) }
+        }
+
+        // PRODUTO 2 (Ranking Topo e Card 2)
+        produtos.getOrNull(1)?.let { prod ->
+            findViewById<TextView>(R.id.tvProd2Name).apply {
+                text = prod.nome
+                setOnClickListener { abrirDetalhesProduto(prod) }
+            }
+            findViewById<TextView>(R.id.tvProd2Count).text = "${prod.quantidade_estoque} un."
+            findViewById<ProgressBar>(R.id.pbProd2).progress = 80 // Valor ilustrativo
+            
+            findViewById<TextView>(R.id.tvBottomProd2Name).text = prod.nome
+            findViewById<TextView>(R.id.tvBottomProd2Price).text = "R$ ${prod.valor}"
+            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd2))
+            findViewById<View>(R.id.layoutProdBottom2)?.setOnClickListener { abrirDetalhesProduto(prod) }
+        }
+
+        // PRODUTO 3 (Ranking Topo e Card 3)
+        produtos.getOrNull(2)?.let { prod ->
+            findViewById<TextView>(R.id.tvProd3Name).apply {
+                text = prod.nome
+                setOnClickListener { abrirDetalhesProduto(prod) }
+            }
+            findViewById<TextView>(R.id.tvProd3Count).text = "${prod.quantidade_estoque} un."
+            findViewById<ProgressBar>(R.id.pbProd3).progress = 60 // Valor ilustrativo
+            
+            findViewById<TextView>(R.id.tvBottomProd3Name).text = prod.nome
+            findViewById<TextView>(R.id.tvBottomProd3Price).text = "R$ ${prod.valor}"
+            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd3))
+            findViewById<View>(R.id.layoutProdBottom3)?.setOnClickListener { abrirDetalhesProduto(prod) }
+        }
+    }
+
+    private fun abrirDetalhesProduto(produto: Produto) {
+        val intent = Intent(this, Activity_produto::class.java)
+        intent.putExtra("ID_PRODUTO", produto.id)
+        intent.putExtra("NOME_PRODUTO", produto.nome)
+        intent.putExtra("VALOR_PRODUTO", produto.valor.toString())
+        intent.putExtra("DESC_PRODUTO", produto.descricao ?: "Sem descrição")
+        intent.putExtra("QUANTIDADE_PRODUTO", produto.quantidade_estoque)
+        
+        val url = if (produto.imagem?.startsWith("http") == true) produto.imagem else imageBaseUrl + produto.imagem
+        intent.putExtra("IMG_PRODUTO", url)
+        
+        startActivity(intent)
+    }
+
     private fun configurarNavegacao() {
-        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener {
-            startActivity(Intent(this, Activity_Sobre::class.java))
-        }
-        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener {
-            startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java))
-        }
-        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener {
-            startActivity(Intent(this, Activity_VisualizarClientes::class.java))
-        }
-        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_already_on_home), Toast.LENGTH_SHORT).show()
-        }
-        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
-            startActivity(Intent(this, Activity_Estoque::class.java))
-        }
-        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener {
-            startActivity(Intent(this, Activity_Carrinho::class.java))
-        }
-        findViewById<ImageButton>(R.id.btnLogout).setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNavAnalise).setOnClickListener { startActivity(Intent(this, Activity_Sobre::class.java)) }
+        findViewById<ImageButton>(R.id.btnNavFuncionarios).setOnClickListener { startActivity(Intent(this, Activity_VisualizarFuncionarios::class.java)) }
+        findViewById<ImageButton>(R.id.btnNavClientes).setOnClickListener { startActivity(Intent(this, Activity_VisualizarClientes::class.java)) }
+        findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener { Toast.makeText(this, getString(R.string.msg_already_on_home), Toast.LENGTH_SHORT).show() }
+        findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener { startActivity(Intent(this, Activity_Estoque::class.java)) }
+        findViewById<ImageButton>(R.id.ExibiProd_ImgBtnCarinho).setOnClickListener { startActivity(Intent(this, Activity_Carrinho::class.java)) }
+
+        findViewById<ImageButton>(R.id.btnLogout).setOnClickListener { 
+            getSharedPreferences("DLMTechPrefs", MODE_PRIVATE).edit().clear().apply()
             startActivity(Intent(this, activity_login::class.java))
+            finish()
         }
     }
 

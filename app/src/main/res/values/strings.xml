@@ -41,6 +41,8 @@
     <string name="btn_finalizar_compra">Finalizar Compra</string>
     <string name="label_Cliente">Cliente</string>
     <string name="label_Funcionario">Funcionario</string>
+    <string name="fmt_funcionario_logado">%1$s (ID: %2$d)</string>
+    <string name="msg_user_not_identified">Usuário não identificado</string>
 
     <string name="label_login">Login</string>
     <string name="label_senha">Senha</string>
