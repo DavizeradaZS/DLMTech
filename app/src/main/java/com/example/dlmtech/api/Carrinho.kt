@@ -4,6 +4,7 @@ data class Carrinho(
     val id: Int,
     val produto_id: Int,
     val cliente_id: Int,
+    val funcionario_id: Int,
     val nome: String,
     val valor: String,
     val quantidade: Int

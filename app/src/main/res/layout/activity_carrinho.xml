@@ -89,12 +89,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Activity_estoque" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/edtCliente"
         android:layout_width="180dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bordaredonda"
+        android:completionThreshold="1"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/edtFuncionario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCliente"
