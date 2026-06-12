@@ -324,8 +324,7 @@
                 <!-- Product Card 1 -->
                 <LinearLayout android:id="@+id/layoutProdBottom1" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
                     <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
-                        <ImageView android:id="@+id/ivBottomProd1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_10" />
-                    </androidx.cardview.widget.CardView>
+                         </androidx.cardview.widget.CardView>
                     <TextView android:id="@+id/tvBottomProd1Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
                     <TextView android:id="@+id/tvBottomProd1Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
@@ -333,8 +332,7 @@
                 <!-- Product Card 2 -->
                 <LinearLayout android:id="@+id/layoutProdBottom2" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
                     <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
-                        <ImageView android:id="@+id/ivBottomProd2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_9" />
-                    </androidx.cardview.widget.CardView>
+                        </androidx.cardview.widget.CardView>
                     <TextView android:id="@+id/tvBottomProd2Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
                     <TextView android:id="@+id/tvBottomProd2Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
@@ -342,8 +340,7 @@
                 <!-- Product Card 3 -->
                 <LinearLayout android:id="@+id/layoutProdBottom3" android:layout_width="110dp" android:layout_height="wrap_content" android:layout_margin="4dp" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
                     <androidx.cardview.widget.CardView android:layout_width="100dp" android:layout_height="100dp" app:cardCornerRadius="12dp">
-                        <ImageView android:id="@+id/ivBottomProd3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/image_6" />
-                    </androidx.cardview.widget.CardView>
+                       </androidx.cardview.widget.CardView>
                     <TextView android:id="@+id/tvBottomProd3Name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Carregando..." android:textAlignment="center" android:textColor="@color/white" android:textStyle="bold" />
                     <TextView android:id="@+id/tvBottomProd3Price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="R$ 0,00" android:textAlignment="center" android:textColor="@color/white" />
                 </LinearLayout>
