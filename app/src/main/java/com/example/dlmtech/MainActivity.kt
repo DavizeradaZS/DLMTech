@@ -14,7 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.dlmtech.api.DashboardResponse
 import com.example.dlmtech.api.Produto
 import com.example.dlmtech.api.RetrofitClient
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd1Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd1Name))
+          //  carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd1Name))
             findViewById<View>(R.id.layoutProdBottom1)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
 
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd2Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd2Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd2Name))
+           // carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd2Name))
             findViewById<View>(R.id.layoutProdBottom2)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
 
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd3Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd3Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd3Name))
+            //carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd3Name))
             findViewById<View>(R.id.layoutProdBottom3)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
     }
@@ -162,15 +162,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun carregarImagem(caminho: String?, imageView: ImageView) {
-        if (!caminho.isNullOrEmpty()) {
-            val url = if (caminho.startsWith("http")) caminho else imageBaseUrl + caminho
-            Glide.with(this)
-                .load(url)
-                .placeholder(R.drawable.image_10)
-                .error(R.drawable.image_10)
-                .centerCrop()
-                .into(imageView)
-        }
-    }
+    //private fun carregarImagem(caminho: String?, imageView: ImageView) {
+    //    if (!caminho.isNullOrEmpty()) {
+     //       val url = if (caminho.startsWith("http")) caminho else imageBaseUrl + caminho
+            //Glide.with(this)
+             //   .load(url)
+              //  .placeholder(R.drawable.image_10)
+               // .error(R.drawable.image_10)
+                //.centerCrop()
+                //.into(imageView)
+      //  }
 }
+
