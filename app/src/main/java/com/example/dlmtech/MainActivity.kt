@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd1Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd1Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd1))
+            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd1Name))
             findViewById<View>(R.id.layoutProdBottom1)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
 
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd2Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd2Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd2))
+            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd2Name))
             findViewById<View>(R.id.layoutProdBottom2)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
 
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             
             findViewById<TextView>(R.id.tvBottomProd3Name).text = prod.nome
             findViewById<TextView>(R.id.tvBottomProd3Price).text = "R$ ${prod.valor}"
-            carregarImagem(prod.imagem, findViewById(R.id.ivBottomProd3))
+            carregarImagem(prod.imagem, findViewById(R.id.tvBottomProd3Name))
             findViewById<View>(R.id.layoutProdBottom3)?.setOnClickListener { abrirDetalhesProduto(prod) }
         }
     }

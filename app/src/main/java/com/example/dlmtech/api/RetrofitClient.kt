@@ -4,8 +4,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    // Corrigido: Pasta correta é 'dlmtech_api' e não 'api_dlmtech'
-    private const val BASE_URL = "http://10.135.110.105:80/dlmtech_api/"
+    // Atualizado com o seu IP real
+    private const val BASE_URL = "http://10.135.246.35/api_dlmtech/"
 
     val instance: ApiService by lazy {
         val retrofit = Retrofit.Builder()
