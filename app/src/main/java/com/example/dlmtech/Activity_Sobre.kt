@@ -33,7 +33,7 @@ class Activity_Sobre : AppCompatActivity() {
         }
 
         findViewById<ImageButton>(R.id.btnNavHome).setOnClickListener {
-            Toast.makeText(this, getString(R.string.msg_already_on_home), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,  MainActivity::class.java))
         }
 
         findViewById<ImageButton>(R.id.btnNavEstoque).setOnClickListener {
